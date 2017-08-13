@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="微信指数," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="什么是微信指数？昨天晚上，微信推出微信指数，简单来说，微信指数是微信官方提供的基于微信大数据分析的移动端指数。如果对百度指数、微博指数、淘宝指数等有了解的人应该都知道指数这个东西有什么用途，可以用来检查某个关键词在某个时间点的被关注的情况以及舆论的走向。 与其他的指数类似但也有不同，微信指数整合了微信上的搜索和浏览两种行为数据。相对而言，微信上面搜索功能比较简单，虽然从去年年底开始，微信开始布局微">
+<meta name="keywords" content="微信指数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谈谈微信指数">
+<meta property="og:url" content="http://drugnotes.github.io/2017/03/24/谈谈微信指数/index.html">
+<meta property="og:site_name" content="第七周期">
+<meta property="og:description" content="什么是微信指数？昨天晚上，微信推出微信指数，简单来说，微信指数是微信官方提供的基于微信大数据分析的移动端指数。如果对百度指数、微博指数、淘宝指数等有了解的人应该都知道指数这个东西有什么用途，可以用来检查某个关键词在某个时间点的被关注的情况以及舆论的走向。 与其他的指数类似但也有不同，微信指数整合了微信上的搜索和浏览两种行为数据。相对而言，微信上面搜索功能比较简单，虽然从去年年底开始，微信开始布局微">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-13T03:16:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="谈谈微信指数">
+<meta name="twitter:description" content="什么是微信指数？昨天晚上，微信推出微信指数，简单来说，微信指数是微信官方提供的基于微信大数据分析的移动端指数。如果对百度指数、微博指数、淘宝指数等有了解的人应该都知道指数这个东西有什么用途，可以用来检查某个关键词在某个时间点的被关注的情况以及舆论的走向。 与其他的指数类似但也有不同，微信指数整合了微信上的搜索和浏览两种行为数据。相对而言，微信上面搜索功能比较简单，虽然从去年年底开始，微信开始布局微">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://drugnotes.github.io/2017/03/24/谈谈微信指数/"/>
+
+
+
+
+
+  <title>谈谈微信指数 | 第七周期</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">第七周期</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/03/24/谈谈微信指数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">谈谈微信指数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-24T22:21:19+08:00">
+                2017-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/互联网/" itemprop="url" rel="index">
+                    <span itemprop="name">互联网</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>什么是微信指数？</strong><br>昨天晚上，微信推出微信指数，简单来说，微信指数是微信官方提供的基于微信大数据分析的移动端指数。如果对百度指数、微博指数、淘宝指数等有了解的人应该都知道指数这个东西有什么用途，可以用来检查某个关键词在某个时间点的被关注的情况以及舆论的走向。</p>
+<p>与其他的指数类似但也有不同，微信指数整合了微信上的搜索和浏览两种行为数据。相对而言，微信上面搜索功能比较简单，虽然从去年年底开始，微信开始布局微信搜索框，准备抢占搜索入口。但是看目前的情况，直接通过微信搜索的人还比较少，所以目前微信指数很大的数据占比还是来自浏览的数据。</p>
+<p><strong>为什么要做微信指数？</strong><br>过去 PC 时代，以搜索为入口的 Google 和百度分别有 Google trends 和百度指数；淘宝有针对消费查询的消费指数（现已下线）；微博有属于社交和舆论的微博指数；知乎最近也在内测技术话题和回答的知乎指数；所以，作为体量最大，用户时间时间最长的微信，也能根据用户搜索和浏览内容去做微信指数这个产品。</p>
+<p>除此之外，上线微信指数也就意味着微信已经掌握流量和内容的入口。</p>
+<p><strong>微信指数有什么值得期待？</strong><br>目前上线的微信指数，只是一个非常简单的版本，收录的词库远远不够，只提供某个关键词的趋势，不能对相关的关键词对比，没有用户画像和需求图谱等。除此之外，在技术层面，明显是存在一些问题，很多关键词在某天突然上升几十倍甚至上百倍，而且只能保留一天，作为微信这么大体量的产品，产品数据不会出现这么大的波动，这一定就是技术的问题。</p>
+<p>简单来说，现在的微信指数，就是一个玩具，说什么读懂趋势、检测舆情动向、洞察用户兴趣、助力精准营销，统统都是吹嘘。</p>
+<p>那么，微信指数是不是就不值得期待呢？那倒不是？</p>
+<p>如果微信指数后期继续增加新功能，将用户画像，关键词需求图谱、时间点分布等功能上线之后，微信指数能在内容运营上面提供很大的帮助。过去的微信公众号运营者看到的都是订阅了自己公众号的用户行为数据，看不到整体用户的行为数据，很容易就会导致在自己的误区中生产内容。除此之外，内容生产者通过微信指数，更容易把握内容方向。假设这么一个场景：某个自媒体正在发愁今天的推送内容的时候，只需要到微信指数上面看看哪些关键词最高，然后通过这些关键词去找文章，再从这些文章中截取一部分文字，拼凑起来就成了一篇热点文章啦。</p>
+<p>写到这，我头脑里面突然冒出了一个场景：某天晚上，我打开微信订阅号，看到一排下来的推送全都是针对某个关键词，不过好像现在的公众号推送的内容也是差不多耶。</p>
+<p>当然，微信指数的功能不仅仅在内容运营上提供参考，还可以有很多种可能，可以有很大的想象空间。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/微信指数/" rel="tag"># 微信指数</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/23/赢在起跑线就一定会赢吗？/" rel="next" title="赢在起跑线就一定会赢吗？">
+                <i class="fa fa-chevron-left"></i> 赢在起跑线就一定会赢吗？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/25/Axure 学习案例：动态面板制作淘宝登录页面/" rel="prev" title="Axure 学习案例：动态面板制作淘宝登录页面">
+                Axure 学习案例：动态面板制作淘宝登录页面 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Alex" />
+          <p class="site-author-name" itemprop="name">Alex</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">138</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">162</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alex</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

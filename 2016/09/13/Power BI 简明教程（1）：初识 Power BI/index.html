@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Power BI,学习,数据分析,数据可视化," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="这是 Power BI 简明教程的第 1 篇文章，也是本人第一次尝试专题写作。作为一个 Power BI 使用者，我对这款产品满怀期待，希望可以得到 Power BI 更多的精髓。跟大家一起在这里学习和讨论 Power BI，相互学习，共同提高。 Power BI 是什么？ Power BI 是微软在去年推出的一款数据可视化工具，可以通过 Excel 、数据库、网页等数据导入或者连接，经过数据处理">
+<meta name="keywords" content="Power BI,学习,数据分析,数据可视化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Power BI 简明教程（1）：初识 Power BI">
+<meta property="og:url" content="http://drugnotes.github.io/2016/09/13/Power BI 简明教程（1）：初识 Power BI/index.html">
+<meta property="og:site_name" content="第七周期">
+<meta property="og:description" content="这是 Power BI 简明教程的第 1 篇文章，也是本人第一次尝试专题写作。作为一个 Power BI 使用者，我对这款产品满怀期待，希望可以得到 Power BI 更多的精髓。跟大家一起在这里学习和讨论 Power BI，相互学习，共同提高。 Power BI 是什么？ Power BI 是微软在去年推出的一款数据可视化工具，可以通过 Excel 、数据库、网页等数据导入或者连接，经过数据处理">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://source.drugnotes.pw/%E7%95%8C%E9%9D%A2%E4%BB%8B%E7%BB%8D%E4%BF%AE%E6%94%B9%E7%89%88.png">
+<meta property="og:image" content="http://source.drugnotes.pw/%E5%BA%94%E7%94%A8%E7%B1%BB%E5%9E%8B.png">
+<meta property="og:image" content="http://source.drugnotes.pw/%E7%94%A8%E9%80%94%E4%BB%8B%E7%BB%8D.png">
+<meta property="og:image" content="http://source.drugnotes.pw/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97.png">
+<meta property="og:image" content="http://source.drugnotes.pw/%E6%8B%93%E5%B1%95%E5%9B%BE%E8%A1%A8%E5%BA%93.png">
+<meta property="og:image" content="http://source.drugnotes.pw/sample2.png">
+<meta property="og:image" content="http://source.drugnotes.pw/sample3.png">
+<meta property="og:image" content="http://source.drugnotes.pw/sample4.png">
+<meta property="og:image" content="http://source.drugnotes.pw/sample5.png">
+<meta property="og:image" content="http://source.drugnotes.pw/sample6.png">
+<meta property="og:image" content="http://source.drugnotes.pw/sample7.png">
+<meta property="og:image" content="http://source.drugnotes.pw/sample8.png">
+<meta property="og:image" content="http://source.drugnotes.pw/sample9.png">
+<meta property="og:image" content="http://source.drugnotes.pw/sample1.png">
+<meta property="og:image" content="http://source.drugnotes.pw/web.png">
+<meta property="og:updated_time" content="2017-08-13T04:13:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Power BI 简明教程（1）：初识 Power BI">
+<meta name="twitter:description" content="这是 Power BI 简明教程的第 1 篇文章，也是本人第一次尝试专题写作。作为一个 Power BI 使用者，我对这款产品满怀期待，希望可以得到 Power BI 更多的精髓。跟大家一起在这里学习和讨论 Power BI，相互学习，共同提高。 Power BI 是什么？ Power BI 是微软在去年推出的一款数据可视化工具，可以通过 Excel 、数据库、网页等数据导入或者连接，经过数据处理">
+<meta name="twitter:image" content="http://source.drugnotes.pw/%E7%95%8C%E9%9D%A2%E4%BB%8B%E7%BB%8D%E4%BF%AE%E6%94%B9%E7%89%88.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://drugnotes.github.io/2016/09/13/Power BI 简明教程（1）：初识 Power BI/"/>
+
+
+
+
+
+  <title>Power BI 简明教程（1）：初识 Power BI | 第七周期</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">第七周期</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/09/13/Power BI 简明教程（1）：初识 Power BI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Power BI 简明教程（1）：初识 Power BI</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-13T00:17:08+08:00">
+                2016-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件技能/" itemprop="url" rel="index">
+                    <span itemprop="name">软件技能</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这是 Power BI 简明教程的第 1 篇文章，也是本人第一次尝试专题写作。作为一个 Power BI 使用者，我对这款产品满怀期待，希望可以得到 Power BI 更多的精髓。跟大家一起在这里学习和讨论 Power BI，相互学习，共同提高。</p>
+<p><strong>Power BI 是什么？</strong></p>
+<p>Power BI 是微软在去年推出的一款数据可视化工具，可以通过 Excel 、数据库、网页等数据导入或者连接，经过数据处理，绘制等操作，最后生成交互式报表。Power BI 的操作界面跟我们日常使用的 PPT 和 Excel 非常相似，并且 Power BI 采用鼠标拖拽视图的形式绘制图表，所以只要会使用 PPT 或者 Excel 制作图表，就很容易上手 Power BI。</p>
+<p><img src="http://source.drugnotes.pw/%E7%95%8C%E9%9D%A2%E4%BB%8B%E7%BB%8D%E4%BF%AE%E6%94%B9%E7%89%88.png" alt="Power BI 操作界面"></p>
+<p>Power BI 作为微软重点的可视化产品，被认为直接跟元老级可视化产品 Tableau 竞争可视化市场。所以微软非常重视这款产品，专门为此成立了几十人的开发和设计团队，不断的强化 Power BI 的功能，拓展可导入的数据源和拓展图表库。最为关键的一点就是 Power BI 采用免费政策，非常适合可视化工具初学者学习使用。</p>
+<p><strong>Power BI 有什么？</strong></p>
+<p>微软为 Power BI 分别开发了 Power BI Desktop（Windows 桌面版）、 Power BI Online（在线版）、Power BI Mobile （移动版）以及嵌入式。Power BI Desktop 目前只提供 Windows 系统，使用 Mac 的同学只能使用在线版或者移动版。移动版提供 IOS 、Android 以及 Windows Phone 三个版本。通过登录账号，桌面版、在线版和移动版支持数据同步，随时随地都可以访问自己的数据报表。并且通过在线版添加协作账号和分享链接将自己制作好的报表分享给自己的同事，实现报表共享功能。</p>
+<p><img src="http://source.drugnotes.pw/%E5%BA%94%E7%94%A8%E7%B1%BB%E5%9E%8B.png" alt="应用类型"></p>
+<p><strong>Power BI 可以做什么？</strong></p>
+<p><strong>数据获取：</strong>Power BI 作为一款数据可视化工具，最大的用处就是将导入的数据转化为交互式可视化图表，让数据更加直观，易读。目前 Power BI 支持 60 多种常见的数据导入和连接，可以满足不同公司、不同业务部门需求。<br><img src="http://source.drugnotes.pw/%E7%94%A8%E9%80%94%E4%BB%8B%E7%BB%8D.png" alt="用途介绍"></p>
+<p><strong>数据清洗、建模和更新</strong></p>
+<p>Power BI 的作用不仅仅只是简单的将数据呈现为图表，还可以对数据进行塑形、清洗、汇总、建模等。比如我们需要呈现一个月的销售情况，我们可以直接将下载得到的销售表格导入到 Power BI ，Power BI 会对特定数据进行透视汇总处理，可以直接呈现每个商品的销售总数量以及销售金额等等数据。告别过去在 Excel 数据透视、新建汇总表格，插入图表等步骤，大大的提高的工作效率。除此之外，Power BI 还可以随时随地对数据进行更新，如果数据源新增或者修改，只要在 Power BI 上面点击刷新，数据就会同步过来。</p>
+<p><img src="http://source.drugnotes.pw/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97.png" alt="清洗数据"></p>
+<p>数据可视化</p>
+<p>Power BI 官方默认提供 20 多种常见的图表类型，都是日常使用最为广泛的图表，绝大多数情况下能满足我们的需求。通过各种类型的图表搭配使用，功能更加强大。除此之外，Power BI 还在官网上面提供了丰富的拓展图表库，如果默认的图表搭配使用仍然不能满足需求的话，那就可以选择增加拓展图表。</p>
+<p><img src="http://source.drugnotes.pw/%E6%8B%93%E5%B1%95%E5%9B%BE%E8%A1%A8%E5%BA%93.png" alt=""></p>
+<p>放几张通过 Power BI 处理得到的图表，颜值高到令人发指。</p>
+<p><img src="http://source.drugnotes.pw/sample2.png" alt=""><br><img src="http://source.drugnotes.pw/sample3.png" alt=""><br><img src="http://source.drugnotes.pw/sample4.png" alt=""><br><img src="http://source.drugnotes.pw/sample5.png" alt=""><br><img src="http://source.drugnotes.pw/sample6.png" alt=""><br><img src="http://source.drugnotes.pw/sample7.png" alt=""><br><img src="http://source.drugnotes.pw/sample8.png" alt=""><br><img src="http://source.drugnotes.pw/sample9.png" alt=""><br><img src="http://source.drugnotes.pw/sample1.png" alt=""></p>
+<p><strong>分享你的报告，随时随地查看</strong></p>
+<p>通过发布功能，可以将制作好的 Power 同步到云端，使用在线版或者移动端登录之后就可以查看。除此之后，还可以邀请同事朋友参与报表制作，也可以分享报表链接给相关同事。</p>
+<p><img src="http://source.drugnotes.pw/web.png" alt=""></p>
+<p>除了上面提供的这些功能之外，Power BI 还有很多功能，可以解决很多我们日常数据可视化，数据汇报的问题。更多的功能会在后面的教程分享提到，由于本人也是在熟悉 Power BI 阶段，所以希望可以和大家一起学习，一起进步，继续前行。</p>
+<p>欢迎继续关注 Power BI 简明教程，下期再会。</p>
+<p>友情提示：Power BI 官方指导式学习教程中文版已经全部更新，阅读体验更佳，学起来更加容易理解。直达地址为：<a href="https://powerbi.microsoft.com/zh-cn/documentation/powerbi-landing-page/" target="_blank" rel="external">Power Bi官方教程文档</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Power-BI/" rel="tag"># Power BI</a>
+          
+            <a href="/tags/学习/" rel="tag"># 学习</a>
+          
+            <a href="/tags/数据分析/" rel="tag"># 数据分析</a>
+          
+            <a href="/tags/数据可视化/" rel="tag"># 数据可视化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/07/精读《乡土中国》/" rel="next" title="精读《乡土中国》">
+                <i class="fa fa-chevron-left"></i> 精读《乡土中国》
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/14/Python 字符串大小写转换/" rel="prev" title="Python 字符串大小写转换">
+                Python 字符串大小写转换 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Alex" />
+          <p class="site-author-name" itemprop="name">Alex</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">138</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">162</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alex</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

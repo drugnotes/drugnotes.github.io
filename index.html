@@ -511,9 +511,1221 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/08/10/Python 学习笔记—zfill() 函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/10/Python 学习笔记—zfill() 函数/" itemprop="url">Python 学习笔记—zfill() 函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-10T00:10:54+08:00">
+                2017-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习札记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习札记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Python 的<code>zfill()</code>函数，指定字符串长度，原字符串向右看齐，左边的空缺位数填充为 0。</p>
+<p>经常遇到这样的情况，需要将数字「1」改为「00005」，如果是以数值的形式难以实现，这时候就需要使用 <code>zfill()</code>函数， <code>zfill()</code>语法为：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str.zfill(width)</div></pre></td></tr></table></figure></p>
+<p>实例：将数字转为 5 位数，不足 5 位的前面加 0。比如需要爬去网站<a href="http://www.drugbank.ca/drugs/DB00001，链接最后面就是页码，需要自动生成页码。" target="_blank" rel="external">http://www.drugbank.ca/drugs/DB00001，链接最后面就是页码，需要自动生成页码。</a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</div><div class="line">    i = str(i)  <span class="comment">#需要将 i 转为字符型</span></div><div class="line">    i = i.zfill(<span class="number">5</span>)</div><div class="line">    <span class="keyword">print</span> (i)</div></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">runfile(<span class="string">'/Applications/anaconda/code/untitled2.py'</span>, wdir=<span class="string">'/Applications/anaconda/code'</span>)</div><div class="line"><span class="number">00001</span></div><div class="line"><span class="number">00002</span></div><div class="line"><span class="number">00003</span></div><div class="line"><span class="number">00004</span></div><div class="line"><span class="number">00005</span></div><div class="line"><span class="number">00006</span></div><div class="line"><span class="number">00007</span></div><div class="line"><span class="number">00008</span></div><div class="line"><span class="number">00009</span></div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/08/08/医药电商是不是伪需求/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/08/医药电商是不是伪需求/" itemprop="url">医药电商是不是伪需求</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-08T21:57:16+08:00">
+                2017-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/互联网/" itemprop="url" rel="index">
+                    <span itemprop="name">互联网</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/互联网/移动医疗/" itemprop="url" rel="index">
+                    <span itemprop="name">移动医疗</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1ficnrkrucij31hc140dwn.jpg" alt=""><br>2005 年国内第一张医药电商牌照发放给药房网，后来到 2010 年牌照的数量激增，到 2016 年更是简化了 C 证的申请流程，似乎医药电商迎来春天，然而在战绩上，似乎并没有多少的亮点可言。</p>
+<p>目前国内的医药电商模式主要分为五种类型，分别是以天猫医药为代表医药电商平台、以 1 药网为代表的独立 B2C 商城、以七乐康为代表的以线上问诊带动医药销售的模式，还有以叮当、快方送药等 O2O，还有就是 B2B 模式。在业绩上看， To C 的医药电商成绩并不佳，对于整个药品终端市场说，还是显得微不足道。</p>
+<p>国内某个医药数据公司发布的报告显示，医药电商占整个终端销售总额 0.4%，传统零售药店占到 25% 左右，也就意味着，医院、社区医院、个人诊所等才是药品终端的主战场。</p>
+<p>医药电商这么多年，所谓投入太多的社会资源和资金，如今占比也就不到 1%。在资源利用和资金变现上，确实不是一个好的高效率的东西。当我们了解到这些事实之后，证明互联网并不是什么万金油，有可能是绊脚石。</p>
+<p>很早之前，就听说医药电商要冲击实体药店，但是很多年过去的，0.4% 的占比怎么去冲击 实体的 25%。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/08/08/没落的博客时代/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/08/没落的博客时代/" itemprop="url">没落的博客时代</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-08T00:06:06+08:00">
+                2017-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/互联网/" itemprop="url" rel="index">
+                    <span itemprop="name">互联网</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/互联网/生活随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">生活随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>内容创业时代，很多人博客人将注意力集中到了新的平台，微信公众号、知乎、微博等等。这样的平台，似乎太急功近利，也并不是说内容创作者不能变现，但是很多时候，这样的平台，带给创作者不是创作，更多的是迎合。不知道从什么时候开始，10 万+成为创作者追求的最终目标。这样的追求，无论对创作者还是读者来说，都是消费内容。许多内容，追随热点，热点过后，再读文章，并不会给人带来任何的思考。</p>
+<p>虽然我是在 2014 年开始写博客，但是在 2009 就开始关注博客，那时候我还在读初中，那时候在新浪博客看韩寒什么的。后来越来越多人自建博客，内容也是非常不错，很多内容到现在还能出现在搜索引擎的第一页，读完还是能给人带来很多的思考。</p>
+<p>晚上，想要找一些有深度一点的内容来读，第一时间去翻的并不是微信公众号，而是去找书签上面的博客，发现还有极少的博主还在更新。当然，这跟互联网转型有着很大的关系，有的博主转战新平台，有的继续停留在博客上，有的则是奋战多地。但是我想，写公众号不会有写博客那样的乐趣和喜悦，这也恰恰是为什么微信公众号越来越少经得起时间考验的内容。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/08/01/专业主义的一些特征/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/01/专业主义的一些特征/" itemprop="url">专业主义的一些特征</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-01T20:35:42+08:00">
+                2017-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习札记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习札记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>日本学者大前研一有一本书，书的名字叫做《专业主义》，在书的开头有这么一个句话——专业主义：21世纪你唯一的生存之道。是的，在这个时代，专业不应该是我们的最终追求，而应该是我们对自己的基本要求。</p>
+<p>在这本书中，大前研一介绍了什么是专业主义？专业主义的人都具有什么特质？一本书都是围绕这些内容来讲。今天刚好在吴军老师专栏——《硅谷来信》听到吴军老师对于专业的五点看法，所以整理一下，分享与您。</p>
+<p>第一点，专业的人能控制自己的情绪。专业人士在任何情况下，都是将工作（或者说事情）本身考虑，不会因为自己的个人情绪或者外部环境而影响到自身的工作和对事情的态度。在专业主义这本书中也有提到，专业主义就是需要控制自己的情绪，并依靠理性而行动。</p>
+<p>第二点，专业的人精通并且遵守行业流程和规范。在工作中，需要对自己面对的工作内容熟悉，并且精通该项工作的基本流程和规范，是专业素养的一个体现。一个专业的医生，在给病人看病的时候，需要根据临床路径和指南来给患者进行诊断和治疗。同样的，每个行业都需要有这样的规范，否则就会忽略某个环节而把事情搞砸。</p>
+<p>第三点，专业的人充满好奇心（好学心）寻找更好的解决方案。专业的人，并不是简单解决问题，而是发现问题，找到解决方案，找到尽可能好的解决方案，当然这是在实现条件允许的情况下。不专业的人，会为了交差而敷衍了事。同样的，在《专业主义》中也提到，专业的人应该是充满好奇心，去寻找工作上更多的答案。</p>
+<p>第四点，专业的人具备完整的知识体系。针对已知的问题，对于绝大多数人，只要有足够的时间和资源，都能把问题解决掉。但是对于未知问题，只能是那些具有该领域完整知识体系的人才能解决。这就是专业与不专业的区别，专业的人可以在现实预测未来可能发生的问题，不专业的人只能解决当下出现的问题。</p>
+<p>第五点，专业的人能在动态中不断学习，进步。无论是从事什么行业，现在知识的变更越来越快，如果不学习，很快就会发现过去掌握的知识已经不再适用，也就称不上专业。这个观点和第三点是类似的，强调好奇心对专业主义的作用，只有不断进步，才能保持专业。</p>
+<p>以上就是关于无论老师分享的关于专业主义的五点特质，不知道你满足了多少条？</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/07/31/SEO 中的爬行、抓取、索引和收录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/31/SEO 中的爬行、抓取、索引和收录/" itemprop="url">SEO 中的爬行、抓取、索引和收录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T21:43:27+08:00">
+                2017-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/互联网/" itemprop="url" rel="index">
+                    <span itemprop="name">互联网</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>搜索引擎的基本原理：首先使用搜索引擎蜘蛛，沿着网站的 URL 「爬行」，每爬一个 URL，就保存该 URL 到待抓取库，然后访问待抓取库中的 URL，对该页面的内容进行「抓取」，解析 <code>HTML</code> 的内容，系统判断该页面内容的质量，考虑是否值得「收录」，如果值得收录，那就将该 URL 在搜索引擎系统中建立「索引」。</p>
+<p>开头的这段话分别介绍四个动作，那就是「爬行」、「抓取」、「收录」和「索引」，也是今天这篇文章讨论的内容？</p>
+<p><strong>什么是爬行？</strong><br>爬行是指搜索引擎的爬虫机器人，我们称之为「搜索引擎蜘蛛」，从已知网站的URL 出发，沿着网站的每个URL地址，新发现的 URL 进行不断的爬行，并将新发现的 URL 地址保存在待抓取的地址库中。</p>
+<p><strong>什么是抓取？</strong><br>抓取是指访问在爬行中获取到的待抓取地址库中的 URL，并且将这些 URL 的页面进行解析，将其解析到的内容（HTML 代码）保存在数据库中。</p>
+<p><strong>什么是索引？</strong><br>索引是指将前面解析出来，并且认为是「有价值内容」的页面，在数据库中建立对应关系，形成索引库。当用户在搜索引擎中针对某个关键词进行搜索，根据关键词和索引的关系，将页面反馈给到用户，这也是搜索引擎的基本工作原理。也就是说，只有添加了索引的 URL 才能被用户在搜索引擎中搜索出来。</p>
+<p><strong>什么是收录？</strong><br>其实收录的意思就是指 URL 的信息在搜索引擎的索引库中建立了索引，所以收录和索引是一样的意思，索引是指机器索引，对于网页来说，是被机器收录。</p>
+<p><strong><code>nofollow</code> 属性是什么？</strong><br>在网站页面中，通常会存在一些链接，我们可以对这些链接设置<code>nofollow</code>属性。<code>nofollow</code>属性的意义就是告诉爬虫蜘蛛：这个 URL 地址不要继续爬行，就当作不是链接来处理。为什么会存在 <code>nofollow</code>属性呢？最根本的作用就是：对于外链，尤其是质量差外链（比如付费广告），站长需要添加 <code>nofollow</code>属性来减少网站 RP 值的外流，保持网站的权重。虽然爬虫蜘蛛在某个页面爬到某个 URL 有<code>nofollow</code>属性，停止爬行。但是在别的地方再遇到这个 URL 的时候，并且没有<code>nofollow</code>属性，这个 URL 还是会被蜘蛛爬行，抓取，甚至是建立索引，将其收录。</p>
+<p><strong><code>noindex</code> 标签是什么？</strong><br>在网页头部信息中，添加<code>meta noindex</code>标签信息，告诉搜索引擎，我这个网页不要添加索引，不要让用户在搜索引擎中搜索出来。具有<code>noindex</code>标签的页面，搜索引擎蜘蛛是会爬行并且抓取的，因为爬行和抓取是在索引的前面的，只是到解释到该页面的HTML内容的时候，发现存在<code>noindex</code>标签，只会将其内容保存起来，但是不会对页面建立索引，用户也就不能在搜索引擎搜索到该页面。</p>
+<p><strong>robots.txt 是什么？</strong><br>robots.txt 亦称之为 robots 协议，一般存在于网站的根目录下，一般直接访问「www.xxxx.com/robots.txt」都能看到 robots.txt 的内容。robots 协议会告诉搜索引擎蜘蛛，该网站下哪些页面可以抓取，哪些页面不可以抓取。robots 协议并不是所有的搜索引擎都遵守，但是主流搜索引擎都是遵守 robots 协议的。所以说，robots 协议并不是行业规范，也是一种约定俗称。</p>
+<p><strong>最后几点补充</strong><br>无论是<code>nofollow</code> 、<code>noindex</code>还是 robots 协议，当然还有其他的一些搜索引擎规则，这些属性、标签和协议，并不是一开始，所有的搜索引擎都遵守。比如说，对于 robots 协议，直到 2008 年，Google、雅虎、百度这些主流的搜索引擎才一致承认这样的协议，承诺自家的搜索引擎蜘蛛将会遵守 robots 协议上面的内容取爬取网站的内容。所以，搜索引擎就是一个不断完善，不断进步的产品，无论是技术还是准则，都是一个迭代的过程。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/07/19/佛教与中国早期贸易/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/19/佛教与中国早期贸易/" itemprop="url">佛教与中国早期贸易</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T22:25:21+08:00">
+                2017-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/生活随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">生活随笔</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/生活随笔/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>中国与外部世界交往的方式中，最重要的是贸易。而最初的贸易，只是官府的副产品，由于官府一直对商人存有疑虑，贸易大多为外国人所控制。早期沿着『丝绸之路』，将中国丝绸卖到印度、波斯，甚至是罗马。</p>
+<p>在西方流入中国的商品则是相反，大部分流入中国的商品都是用来满足统治精英的好奇心稀有物品，并且很多一部分带有文化元素，其中最重要的就是佛教。</p>
+<p>茶叶与白糖随着佛教的兴起增加了需求，椅子也随着佛教从西域传入中国，纸张改良和印刷术发展也受到佛教信仰的重要影响。</p>
+<p>对于外来的珍稀商品，最后会被放在佛像前或寺庙中，用于供奉朝拜。这些珍惜物品最首要的就属『七宝』：黄金、白银、天青石、水晶或石英、珍珠、红珊瑚、玛瑙或者珊瑚。出了来自异域的『七宝』之外，在佛教信仰中用到的焚香各种香料也是从印度进口而来。</p>
+<p>除此之外，佛教信仰也在文化层面改变人类的思考和观念，形成新的消费和经营观念，在某种程度也改变了未来的商业社会。因此而知，信仰不仅可以带来文化的改变，还会改变商业社会，人类的消费观念。</p>
+<p>之道今天，还有人利用信仰销售，甚至是利用人们的信仰骗取财产。最典型的例子就是有人利用微信公众号，进行信仰传播，开发虚拟的祭奠、放生的小游戏，骗取老年人的钱。这样的事情并不是个例，而是屡见不鲜。</p>
+<p>当然，这并不是证明信仰，尤其是佛教的不好，甚至完全没有这个意思，仅仅是用来阐述过去佛教是怎么影响国内的贸易，仅此而已。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/07/18/互联网的本质：联·互·网/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/18/互联网的本质：联·互·网/" itemprop="url">互联网的本质：联·互·网</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-18T22:57:31+08:00">
+                2017-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/互联网/" itemprop="url" rel="index">
+                    <span itemprop="name">互联网</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>互联网作为这个时代最重要的技术革命，其本质就是三个字：联·互·网。</p>
+<p>第一个关键字：联，也就是联结。最早，互联网将机器与机器，人与机器，人与人以及人与社会连接起来。使得任何的物品不再是孤立，任何的人也不再是孤立的个体。在未来，物联网的发展，物与物、物与人直接的联结，物品也会变得更加的智能。</p>
+<p>第二个关键字：互，也就是互动。过去，互联网不仅将人与机器连接，并且能与机器进行互动。但是，人机之间的互动是非常弱，存在很大的限制。随着智能手机的出现，移动互联网技术的发展，4G 网络的普及，人机之间的互动变得更加便捷和多样化。继续发展出现人与人、人与社会的大规模互动，产生了 SNS，大量的社会协作通过互联网进行。</p>
+<p>第三个关键字：网，也就是结网。有了互联网的联结和互动，互联就是一张很大的网，这张联结和大量的人和物。通过这张网，人与人之间完成协同、分工和合作。除此之外，信息、物和人都在线了，人和人、人和信息、人与物之间的互动才会越来越丰富，最后交织成越来越繁密的网络，可以用更高效的方法去完成原来很难实现的事情。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/07/17/浅谈王者荣耀/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/17/浅谈王者荣耀/" itemprop="url">浅谈王者荣耀</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-17T23:40:11+08:00">
+                2017-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/互联网/" itemprop="url" rel="index">
+                    <span itemprop="name">互联网</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>近日，王者荣耀陷入舆论的风波，原因是这款游戏让玩家沉迷，尤其是未成年人，以至于腾讯上线防沉迷系统。也正因为防沉迷系统，将王者荣耀再次推向舆论的浪尖。</p>
+<p>一直以来，网络游戏都是充满争议性的话题，只是近年来，互联网巨头进军游戏行业，从业者越来越多，行业逐渐规范，电子竞技比赛规模化，网络游戏被越来越多的人接受。</p>
+<p>王者荣耀，让人沉迷其中，说明这款游戏有它的过人之处，可以说，王者荣耀取得国内手游厂家从未做到的成功，也让同行羡慕。但总不能因为别人做了一款用户喜欢的产品，然后集体声讨，除了声讨，似乎也没有更好的建议。</p>
+<p>从腾讯方面上线的未成年人防沉迷系统来看，看到腾讯对这个问题的重视程度。对于未成年人沉迷游戏，不能只靠社会舆论倒逼企业，而是整个社会协作起来，其中主导的还得是未成年人的家长，如果家长一天到晚都玩，凭什么不能让孩子沉迷呢？</p>
+<p>-END-</p>
+<p>2017-7-17 于杭州</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -557,12 +1769,21 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">138</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
           
 
           
@@ -570,7 +1791,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">162</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

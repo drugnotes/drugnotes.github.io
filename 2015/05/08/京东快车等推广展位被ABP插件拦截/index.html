@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="京东,ABP,浏览器," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="相信很多人使用Firefox、chrome或者360等可以安装插件的浏览器的时候都会安装一个叫做「Adblock Plus」的插件，简称ABP.这是一个过滤网站广告的插件，使用了之后很多网站的边栏广告、底部推广、弹屏广告视频网站的广告都会被屏蔽掉，用起来非常的清爽。我今天不是为了介绍这个软件，而是关于这个插件对于B2C电商平台站内、站外精准推广的影响，比如淘宝的直通车和钻石展位、京东的京东快车等。">
+<meta name="keywords" content="京东,ABP,浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="京东快车等推广展位被ABP插件拦截">
+<meta property="og:url" content="http://drugnotes.github.io/2015/05/08/京东快车等推广展位被ABP插件拦截/index.html">
+<meta property="og:site_name" content="第七周期">
+<meta property="og:description" content="相信很多人使用Firefox、chrome或者360等可以安装插件的浏览器的时候都会安装一个叫做「Adblock Plus」的插件，简称ABP.这是一个过滤网站广告的插件，使用了之后很多网站的边栏广告、底部推广、弹屏广告视频网站的广告都会被屏蔽掉，用起来非常的清爽。我今天不是为了介绍这个软件，而是关于这个插件对于B2C电商平台站内、站外精准推广的影响，比如淘宝的直通车和钻石展位、京东的京东快车等。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.drugnotes.pw/wp-content/uploads/2015/05/taobao.jpg">
+<meta property="og:image" content="http://www.drugnotes.pw/wp-content/uploads/2015/05/taobao1.jpg">
+<meta property="og:image" content="http://www.drugnotes.pw/wp-content/uploads/2015/05/tianmao.jpg">
+<meta property="og:image" content="http://www.drugnotes.pw/wp-content/uploads/2015/05/suning1.jpg">
+<meta property="og:image" content="http://www.drugnotes.pw/wp-content/uploads/2015/05/suning2.jpg">
+<meta property="og:image" content="http://www.drugnotes.pw/wp-content/uploads/2015/05/guomei1.jpg">
+<meta property="og:image" content="http://www.drugnotes.pw/wp-content/uploads/2015/05/guomei2.jpg">
+<meta property="og:image" content="http://www.drugnotes.pw/wp-content/uploads/2015/05/jd1.jpg">
+<meta property="og:image" content="http://www.drugnotes.pw/wp-content/uploads/2015/05/jd4.jpg">
+<meta property="og:image" content="http://www.drugnotes.pw/wp-content/uploads/2015/05/jd2.jpg">
+<meta property="og:image" content="http://www.drugnotes.pw/wp-content/uploads/2015/05/jd0.jpg">
+<meta property="og:updated_time" content="2017-08-13T01:14:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="京东快车等推广展位被ABP插件拦截">
+<meta name="twitter:description" content="相信很多人使用Firefox、chrome或者360等可以安装插件的浏览器的时候都会安装一个叫做「Adblock Plus」的插件，简称ABP.这是一个过滤网站广告的插件，使用了之后很多网站的边栏广告、底部推广、弹屏广告视频网站的广告都会被屏蔽掉，用起来非常的清爽。我今天不是为了介绍这个软件，而是关于这个插件对于B2C电商平台站内、站外精准推广的影响，比如淘宝的直通车和钻石展位、京东的京东快车等。">
+<meta name="twitter:image" content="http://www.drugnotes.pw/wp-content/uploads/2015/05/taobao.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://drugnotes.github.io/2015/05/08/京东快车等推广展位被ABP插件拦截/"/>
+
+
+
+
+
+  <title>京东快车等推广展位被ABP插件拦截 | 第七周期</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">第七周期</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2015/05/08/京东快车等推广展位被ABP插件拦截/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">京东快车等推广展位被ABP插件拦截</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-05-08T01:57:59+08:00">
+                2015-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/互联网/" itemprop="url" rel="index">
+                    <span itemprop="name">互联网</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>相信很多人使用Firefox、chrome或者360等可以安装插件的浏览器的时候都会安装一个叫做「Adblock Plus」的插件，简称ABP.这是一个过滤网站广告的插件，使用了之后很多网站的边栏广告、底部推广、弹屏广告视频网站的广告都会被屏蔽掉，用起来非常的清爽。我今天不是为了介绍这个软件，而是关于这个插件对于B2C电商平台站内、站外精准推广的影响，比如淘宝的直通车和钻石展位、京东的京东快车等。</p>
+<p>几乎在所有的B2C类网站的搜索主页和分类主页都会存在这样的精准推广，具有数据分析，在淘宝网站上面因为这样的推广，每一次的搜索就可以给淘宝带来1.05元的收入，就算用户搜索完成之后什么也没干选择了马上退出，也可以淘宝带来1.05元的收入。不要小看着1.05元（很可能可能不止这个价），淘宝用户这么多，那个总额我就不会算了，自己脑补吧。那么，如果要是这个ABP把这些广告给屏蔽了,那么卖家和淘宝可不愿意啊。当然，淘宝并没有，但是有的B2C网站就有，下面就来看一下吧。</p>
+<p>首先看一下淘宝的搜索页面情况：</p>
+<p>在开启了ABP和PRO着两个广告拦截插件下，淘宝的直通车展位的推广还是可以看到的（图一）；同样的淘宝的钻石展位也是可以看到的（图二）。</p>
+<p><img src="http://www.drugnotes.pw/wp-content/uploads/2015/05/taobao.jpg" alt="taobao"></p>
+<p><img src="http://www.drugnotes.pw/wp-content/uploads/2015/05/taobao1.jpg" alt="taobao1">由于天猫的搜索页只保留了底部的直通车，但是还是可以显示的。</p>
+<p><img src="http://www.drugnotes.pw/wp-content/uploads/2015/05/tianmao.jpg" alt="tianmao"></p>
+<p>从上面的这几张图可以看出来，淘宝的站内精准推广并没有收到ABP类型的软件任何的影响，马云还是赚的满满的。</p>
+<p>后来用了同样的方式测试了京东、苏宁易购、国美在线，发现了苏宁易购没有受到这类软件的影响，国美在线这是有一种推广展位受到了影响，让人吃惊的是京东快车的展位居然全被屏蔽了。看图</p>
+<p>这是苏宁易购的，一切正常。</p>
+<p><img src="http://www.drugnotes.pw/wp-content/uploads/2015/05/suning1.jpg" alt="suning1"></p>
+<p><img src="http://www.drugnotes.pw/wp-content/uploads/2015/05/suning2.jpg" alt="suning2"><br>下面的是国美的，对比前后两张图片，可以看出国美的「推广商品」的展位被屏蔽了，但是还保留了「热销推荐」。估计这类插件是按照标题过滤的，哈哈，当然不是这么简单啦。</p>
+<p><img src="http://www.drugnotes.pw/wp-content/uploads/2015/05/guomei1.jpg" alt="guomei1"></p>
+<p><img src="http://www.drugnotes.pw/wp-content/uploads/2015/05/guomei2.jpg" alt="guomei2"><br>最后再来看一下京东的，这的就是彻底的屏蔽掉了，一个都没有，都没有，没有，有。</p>
+<p>这是没有开启插件的左边栏的京东快车展位显示为「推广商品」推广效果。</p>
+<p><img src="http://www.drugnotes.pw/wp-content/uploads/2015/05/jd1.jpg" alt="jd1"><br>这是没有开启插件的搜索页底部的京东快车展位显示为「商品精选」推广效果。</p>
+<p><img src="http://www.drugnotes.pw/wp-content/uploads/2015/05/jd4.jpg" alt="jd4"><br>那么下面就是把插件打开之后的效果，是的，「推广商品」和「商品精选」的推广展位不见了，这酸爽。</p>
+<p><img src="http://www.drugnotes.pw/wp-content/uploads/2015/05/jd2.jpg" alt="jd2"></p>
+<p><img src="http://www.drugnotes.pw/wp-content/uploads/2015/05/jd0.jpg" alt="jd0"><br>是的，这就是ABP类软件直接把京东快车等推广展位给屏蔽了，不知道作为全国第二大的B2C平台的京东平台的开发人员知道这件事情是一种怎样的感受？</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/京东/" rel="tag"># 京东</a>
+          
+            <a href="/tags/ABP/" rel="tag"># ABP</a>
+          
+            <a href="/tags/浏览器/" rel="tag"># 浏览器</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/05/06/我为什么写作/" rel="next" title="我为什么写作">
+                <i class="fa fa-chevron-left"></i> 我为什么写作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/10/解密京东物流（一）/" rel="prev" title="解密京东物流（一）">
+                解密京东物流（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Alex" />
+          <p class="site-author-name" itemprop="name">Alex</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">138</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">162</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alex</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

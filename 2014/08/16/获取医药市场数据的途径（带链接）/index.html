@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CFDA,医药数据," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="本文大部分信息来源新浪博客，具体出处不详，因看到没有添加链接，故添加上去。 1. 产品信息产品批文国内产品数据来源：药监局网址-数据查询-公众查询/专业查询；中国药品注册数据库。国外产品数据来源：美国FDA；欧盟EMA；公司官网（导航网站）； 评点：以前药监局数据下载较难，于是偏好用中国药品注册数据库下载和查询。现在药监局开放公众查询，独家剂型和规格查看相对一目了然。不足之处是数据联动更新较慢，部">
+<meta name="keywords" content="CFDA,医药数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="获取医药市场数据的途径（带链接）">
+<meta property="og:url" content="http://drugnotes.github.io/2014/08/16/获取医药市场数据的途径（带链接）/index.html">
+<meta property="og:site_name" content="第七周期">
+<meta property="og:description" content="本文大部分信息来源新浪博客，具体出处不详，因看到没有添加链接，故添加上去。 1. 产品信息产品批文国内产品数据来源：药监局网址-数据查询-公众查询/专业查询；中国药品注册数据库。国外产品数据来源：美国FDA；欧盟EMA；公司官网（导航网站）； 评点：以前药监局数据下载较难，于是偏好用中国药品注册数据库下载和查询。现在药监局开放公众查询，独家剂型和规格查看相对一目了然。不足之处是数据联动更新较慢，部">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-13T03:05:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="获取医药市场数据的途径（带链接）">
+<meta name="twitter:description" content="本文大部分信息来源新浪博客，具体出处不详，因看到没有添加链接，故添加上去。 1. 产品信息产品批文国内产品数据来源：药监局网址-数据查询-公众查询/专业查询；中国药品注册数据库。国外产品数据来源：美国FDA；欧盟EMA；公司官网（导航网站）； 评点：以前药监局数据下载较难，于是偏好用中国药品注册数据库下载和查询。现在药监局开放公众查询，独家剂型和规格查看相对一目了然。不足之处是数据联动更新较慢，部">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://drugnotes.github.io/2014/08/16/获取医药市场数据的途径（带链接）/"/>
+
+
+
+
+
+  <title>获取医药市场数据的途径（带链接） | 第七周期</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">第七周期</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2014/08/16/获取医药市场数据的途径（带链接）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">获取医药市场数据的途径（带链接）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-08-16T16:20:19+08:00">
+                2014-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动医疗/" itemprop="url" rel="index">
+                    <span itemprop="name">移动医疗</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文大部分信息来源新浪博客，具体出处不详，因看到没有添加链接，故添加上去。</p>
+<p><strong>1. 产品信息</strong><br>产品批文国内产品数据来源：<a href="http://app1.sfda.gov.cn/datasearch/face3/dir.html" target="_blank" rel="external">药监局网址-数据查询-公众查询/专业查询</a>；<a href="http://www.drugfuture.com/cndrug/" target="_blank" rel="external">中国药品注册数据库</a>。国外产品数据来源：<a href="http://www.fda.gov/" target="_blank" rel="external">美国FDA</a>；<a href="http://www.ema.europa.eu/ema/" target="_blank" rel="external">欧盟EMA</a>；<a href="http://go.dxy.cn/med-corp/" target="_blank" rel="external">公司官网</a>（导航网站）；</p>
+<p>评点：以前药监局数据下载较难，于是偏好用中国药品注册数据库下载和查询。现在药监局开放公众查询，独家剂型和规格查看相对一目了然。不足之处是数据联动更新较慢，部分数据在专业查询中能体现，但公众查询中不能体现。</p>
+<p><strong>2.  产品在研情况</strong><br>国内在研数据来源：<a href="http://www.dxy.cn/" target="_blank" rel="external">丁香园</a>；<a href="http://www.cde.org.cn/" target="_blank" rel="external">CDE</a>；<a href="http://www.mims.com/" target="_blank" rel="external">MIMS</a>；<a href="http://db.yaozh.com/" target="_blank" rel="external">药智数据</a>；<a href="http://www.menet.com.cn/Vip/templets/index.aspx" target="_blank" rel="external">米内网</a> ；<a href="http://www.pharmadl.com/" target="_blank" rel="external">医药地理</a>；公司年报；证券公司行研。</p>
+<p>国外在研数据来源：<a href="http://www.fda.gov/" target="_blank" rel="external">美国FDA</a>；<a href="http://www.ema.europa.eu/ema/" target="_blank" rel="external">欧盟EMA</a>；<a href="http://go.dxy.cn/med-corp/" target="_blank" rel="external">公司年报/官网</a>；证券公司行研；科研杂志。</p>
+<p>评点：CDE越来越难破了，还要U-key，然后丁香园也不免费了，其他的都会按会员等级收费的。</p>
+<p><strong>3. 产品说明书</strong><br>国内数据来源：<a href="http://app1.sfda.gov.cn/datasearch/face3/dir.html" target="_blank" rel="external">药监局网址-数据查询-OTC说明书</a>；药典有部分相关内容。其实最好的还是直接用丁香园的<a href="http://drugs.dxy.cn/index.htm" target="_blank" rel="external">用药助手</a>，而且有<a href="http://app.dxy.cn/drugs.htm#iphone" target="_blank" rel="external">手机端的app</a></p>
+<p>国外数据来源：<a href="http://www.mims.com/" target="_blank" rel="external">MIMS</a>、<a href="http://www.drugs.com/" target="_blank" rel="external">Drugs.com</a>、<a href="http://www.fda.gov/" target="_blank" rel="external">美国FDA</a>；、<a href="http://www.ema.europa.eu/ema/" target="_blank" rel="external">欧盟EMA</a>。</p>
+<p>评点：我国官方公布说明书的只有OTC药。平常查相关说明书要靠度娘本身嘈点就很多了，所以推荐使用丁香园的<a href="http://drugs.dxy.cn/index.htm" target="_blank" rel="external">用药助手</a>。</p>
+<p><strong>4. 医保信息</strong><br>全国医保数据来源：<a href="http://www.12333sb.com/" target="_blank" rel="external">人社</a>。</p>
+<p>各省增补医保数据来源：各省人社。</p>
+<p><strong>5. 基药目录信息</strong><br>全国基药目录数据来源：<a href="http://www.nhfpc.gov.cn/" target="_blank" rel="external">卫计委</a>，<a href="http://app1.sfda.gov.cn/datasearch/face3/dir.html" target="_blank" rel="external">药监局-数据查询</a>。</p>
+<p>各省增补医保数据来源：各省卫计委。</p>
+<p>评点：2012年版520国家版基药懂了吧，2013年省增补基药也懂了吧，那哪些省基药招标还要看2010年省增补知道吗？</p>
+<p><strong>6. 其它</strong></p>
+<ol>
+<li><p>是否OTC，OTC甲类/乙类？<br>数据来源：<a href="http://app1.sfda.gov.cn/datasearch/face3/dir.html" target="_blank" rel="external">药监局</a>。</p>
+</li>
+<li><p>不良反应？<br>数据来源：<a href="http://www.sfda.gov.cn/WS01/CL0104/" target="_blank" rel="external">药监局通报</a>；<a href="http://www.cnki.net/" target="_blank" rel="external">CNKI数据库</a></p>
+</li>
+<li><p>生产厂家更换？<br>数据来源：国内外上市企业公告；<a href="http://www.menet.com.cn/Vip/templets/index.aspx" target="_blank" rel="external">米内网</a>；IMS；微信微薄各种小道消息。</p>
+</li>
+<li><p>抗生素管理等级？<br>数据来源：各省卫计委。</p>
+</li>
+</ol>
+<p><strong>6. 价格</strong></p>
+<ol>
+<li><p>最高零售价<br>数据来源：发改委；<a href="http://www.pharmnet.com.cn/" target="_blank" rel="external">华招</a> ；<a href="http://www.pharmnet.com.cn/" target="_blank" rel="external">中国医药网</a>。<br>评点：含单独定价，一般定价。主要医保产品。</p>
+</li>
+<li><p>地方物价<br>数据来源：地方物价局；<a href="http://www.emed.cc/" target="_blank" rel="external">华招</a> ；<a href="http://www.pharmnet.com.cn/" target="_blank" rel="external">中国医药网</a>。<br>评点：发改委通知再下达，地方增补医保产品。</p>
+</li>
+<li><p>中标价<br>数据来源：各省采购平台；华招。</p>
+</li>
+<li><p>技术分公司规模<br>数据来源：工信部。<br>评点：目前分为基药和非基药招标，数据公开不公开看各省喜欢，数据难不难下载更是各省喜欢。此外，加入各省招标群也是获得数据的一种办法。</p>
+</li>
+</ol>
+<p><strong>7. 市场规模</strong><br>国内免费数据：IMS公开数据；<a href="http://www.menet.com.cn/Vip/templets/index.aspx" target="_blank" rel="external">米内网</a>；公司年报；证券公司行研；<a href="http://xueqiu.com/" target="_blank" rel="external">雪球</a>；<a href="http://bbs.fuliaochina.com/" target="_blank" rel="external">辅料中国论坛</a>。</p>
+<p>国内收费数据：IMS，<a href="http://www.menet.com.cn/Vip/templets/index.aspx" target="_blank" rel="external">米内网</a>。</p>
+<p>国外免费数据：IMS公开数据；<a href="http://www.drugs.com/" target="_blank" rel="external">Drugs.com</a>；公司年报；<a href="http://xueqiu.com/" target="_blank" rel="external">雪球</a>；证券公司行研。</p>
+<p>国外收费数据：IMS。</p>
+<p>评点：国内的抽样数据，如果拿来考核，先弄清楚第三方布点哪家，然后下死命令开发，第三方数据辅助证明目前市场占有率真高。但是二级医院/县级医院没布点的真的不值得投资吗？</p>
+<p>行研数据以前很喜欢慧博，现在慧博也收费了，就在慧博那里搜索，然后度娘下载。</p>
+<p><strong>8. 产品策略信息</strong></p>
+<ol>
+<li><p>产品ppt：<a href="www.docin.com">豆丁</a>；<a href="http://wenku.baidu.com" target="_blank" rel="external">百度文库</a>；<a href="http://vdisk.weibo.com" target="_blank" rel="external">微盘</a>；<a href="www.v.iask.com">爱问</a>；公司网站等。诚意推荐<a href="http://rj.baidu.com/soft/detail/23385.html?ald" target="_blank" rel="external">冰点</a>下载。</p>
+</li>
+<li><p>指南&amp;解读：<a href="http://www.caos-china.org/" target="_blank" rel="external">中华学会/医师协会各分会网站</a>；<a href="http://www.dxy.cn/" target="_blank" rel="external">丁香园</a>；<a href="http://www.nccnchina.org/" target="_blank" rel="external">NCCN在中国</a>；医脉通；<a href="http://www.cnki.net/" target="_blank" rel="external">CNKI</a>；微薄微信博客等医师解读；。</p>
+</li>
+<li><p>DA：参加各分会年会收集。代理产品可参加药交会收集。</p>
+</li>
+<li><p>流行病学：<a href="http://www.cnki.net/" target="_blank" rel="external">CNKI</a>，卫计委年鉴。</p>
+</li>
+<li><p>患者流：第三方调研。</p>
+</li>
+<li><p>处方分析（收费）：IMS、医工院上海医院。</p>
+</li>
+</ol>
+<p>评点：个人觉得不是在专业网站上面的文档并不是非常可靠，一般不会是自家人上传的！</p>
+<p>以上就是各种坊间正规途径的数据来源。至于数据如何解读，每个人的判断不一，偶觉得要多和别人分享、沟通，才能挖掘到数据下面的秘密。</p>
+<p>第三方的数据仅仅是作为公司现状和外界均值比较的参考值。需知业界各著名第三方平均20%的行业增长率是拍脑袋出来，因为市场规模的放大倍数是“统计推算”出来的，不同推算方案结果不一。有时候，看到有些产品的增长率翻倍，大可以大胆预测，那一定是该产品原有市场基数很低。通常这样大胆的预测笔者应证十之八九是正确的。</p>
+<p>对于自己公司的数据应如何分析，如何结合第三方数据分析，不在本文研究范围之内。如有兴趣，请留言探讨。此处对开篇问题作一些补充，话说数据分析是一件很时髦的工作方式。于是偶经常听到这样的故事：某童鞋拿到某第三方的数据，兴冲冲地在目标地图脑补这省份此类药市场潜力大哦，明年可以做目标市场哦。结果老板告之，此处市场准入规则不好玩公司要弃标。此案例说明：数据只能辅助决策，而不能完全取代决策。实际执行中，思考层面越多，数据越精准，判断可能越稳妥。</p>
+<p>数据获取实质上没有啥秘笈，关键是要查得勤快且要善用Google和百度等搜索引擎。</p>
+<p>对国内医药数据的期望？期望规格能统一格式，100mg 与 0.1g 可否统一。通用名统一格式。各省的医院有标准化的数据，级别能有数据可查。还有，统方合法化。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CFDA/" rel="tag"># CFDA</a>
+          
+            <a href="/tags/医药数据/" rel="tag"># 医药数据</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/08/14/至关重要的关系/" rel="next" title="至关重要的关系">
+                <i class="fa fa-chevron-left"></i> 至关重要的关系
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/08/29/从杭州到广州/" rel="prev" title="从杭州到广州">
+                从杭州到广州 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Alex" />
+          <p class="site-author-name" itemprop="name">Alex</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">138</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">162</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alex</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

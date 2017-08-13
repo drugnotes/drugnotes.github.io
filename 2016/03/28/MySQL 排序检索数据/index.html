@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Mysql," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="通过使用 SELECT 语句可以检索出来数据表格里面的数据，但是检索出来的数据的顺序是没有确定的排列顺序的，所以往往每一次进行相同的检索的时候的出来的排序确实不一样的。所以这时候就需要使用到 SQL 的检索排序。检索排序的语句为 ORDER BY 。具体使用方法如下： 单行数据进行排列如果需要从 user 表中检索出来的 user_name 进行排序，那么只要在语句的后面加上 ORDER BY u">
+<meta name="keywords" content="Mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 排序检索数据">
+<meta property="og:url" content="http://drugnotes.github.io/2016/03/28/MySQL 排序检索数据/index.html">
+<meta property="og:site_name" content="第七周期">
+<meta property="og:description" content="通过使用 SELECT 语句可以检索出来数据表格里面的数据，但是检索出来的数据的顺序是没有确定的排列顺序的，所以往往每一次进行相同的检索的时候的出来的排序确实不一样的。所以这时候就需要使用到 SQL 的检索排序。检索排序的语句为 ORDER BY 。具体使用方法如下： 单行数据进行排列如果需要从 user 表中检索出来的 user_name 进行排序，那么只要在语句的后面加上 ORDER BY u">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-13T03:48:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL 排序检索数据">
+<meta name="twitter:description" content="通过使用 SELECT 语句可以检索出来数据表格里面的数据，但是检索出来的数据的顺序是没有确定的排列顺序的，所以往往每一次进行相同的检索的时候的出来的排序确实不一样的。所以这时候就需要使用到 SQL 的检索排序。检索排序的语句为 ORDER BY 。具体使用方法如下： 单行数据进行排列如果需要从 user 表中检索出来的 user_name 进行排序，那么只要在语句的后面加上 ORDER BY u">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://drugnotes.github.io/2016/03/28/MySQL 排序检索数据/"/>
+
+
+
+
+
+  <title>MySQL 排序检索数据 | 第七周期</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">第七周期</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/03/28/MySQL 排序检索数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL 排序检索数据</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-28T21:21:48+08:00">
+                2016-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习札记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习札记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>通过使用 SELECT 语句可以检索出来数据表格里面的数据，但是检索出来的数据的顺序是没有确定的排列顺序的，所以往往每一次进行相同的检索的时候的出来的排序确实不一样的。所以这时候就需要使用到 SQL 的检索排序。检索排序的语句为 ORDER BY 。具体使用方法如下：</p>
+<h4 id="单行数据进行排列"><a href="#单行数据进行排列" class="headerlink" title="单行数据进行排列"></a>单行数据进行排列</h4><p>如果需要从 user 表中检索出来的 user_name 进行排序，那么只要在语句的后面加上 ORDER BY user_name 这个语法就可以了。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql -&gt;SELECT user_name</div><div class="line"></div><div class="line">            -&gt;FROM</div><div class="line"></div><div class="line">            -&gt;user</div><div class="line"></div><div class="line">            -&gt;ORDER BY user_name;</div></pre></td></tr></table></figure></p>
+<p>那么检索出来的数据就会根据 user_name 里面的数据按照 A-Z 来进行排序，并且打印出来。</p>
+<p>上面这种是按照正常（A-Z）的排序方式进行排序，那么我们还可以在 ORDER BY 语句后面加上 DESC 这个语句来进行倒序（Z-A）排列。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql &gt; SELECT user_name</div><div class="line"></div><div class="line">        -&gt;FROM</div><div class="line"></div><div class="line">        -&gt;user</div><div class="line"></div><div class="line">        -&gt;ORDER BY user_name DESC;</div></pre></td></tr></table></figure>
+<p>在原来的基础上面添加上 DESC 这个语句就可以将原来的顺序倒转过来进行检索，并且打印出来。</p>
+<h4 id="多行数据进行排列"><a href="#多行数据进行排列" class="headerlink" title="多行数据进行排列"></a>多行数据进行排列</h4><p>除了可以对单行数据进行排列之外，还可以进行多行数据进行排列，这里只要将需要排序的列名称都添加到 ORDER BY 后面，并且通过逗号隔开就可以了。例如需要将 user 数据表里面的 user_id 和 user_name ，user_phone  ，这些数据都检索出来，并且通过 user_name 和 user_id 进行排序。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql &gt; SELECT user_id, user_name, user_phone</div><div class="line"></div><div class="line">        -&gt;FROM</div><div class="line"></div><div class="line">        -&gt;user</div><div class="line"></div><div class="line">        -&gt;ORDER BY user_name, user_id ;</div></pre></td></tr></table></figure>
+<p>上面的语句就是首先通过 user_name 进行排列，user_name 排序之后在对 user_id 进行排序，最后见排序后的检索结果打印出来。</p>
+<p>处理直接的在 ORDER BY 后面直接指明需要排序的列的名称之外，还可以通过指定检索时候列的顺序数字进行排序，所以上面的语句可以下面这样写，结果和机理都是一样的。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql &gt; SELECT user_id, user_name, user_phone</div><div class="line"></div><div class="line">        -&gt;FROM</div><div class="line"></div><div class="line">        -&gt;user</div><div class="line"></div><div class="line">        -&gt;ORDER BY 2,  2 ;</div></pre></td></tr></table></figure>
+<p>上面就是关于数据检索的一个排序的学习历程，其中值得注意的是 ORDER BY 语句一定是要放在整个语句的后米那，否则的话数据库就会报错，不能正确的打印出来想要的结果。</p>
+<p>现在简单的总结一下：</p>
+<ol>
+<li>SQL 数据检索排序需要使用 ORDER BY 这个语句，并且这个语句一定是放在整个语句的最后一行；</li>
+<li>这个排序可以是按照（A-Z）这个顺序进行排列，还可以通过添加 DESC 去调整实现（Z-A）排序；</li>
+<li>除了针对单行排序之外，还可以进行多行数据排列，只要将需要排列行的列名称或者检索的列顺序放在 ORDER BY 后面，并且通过逗号分割开；</li>
+<li>如果需要多行的倒序排列，那么就要在每一个列名称后面都加上 DESC 。</li>
+</ol>
+<p>-EOF-</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mysql/" rel="tag"># Mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/25/MySQL 插入数据/" rel="next" title="MySQL 插入数据">
+                <i class="fa fa-chevron-left"></i> MySQL 插入数据
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/29/MySQL 检索过滤数据/" rel="prev" title="MySQL 检索过滤数据">
+                MySQL 检索过滤数据 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Alex" />
+          <p class="site-author-name" itemprop="name">Alex</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">138</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">162</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#单行数据进行排列"><span class="nav-number">1.</span> <span class="nav-text">单行数据进行排列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多行数据进行排列"><span class="nav-number">2.</span> <span class="nav-text">多行数据进行排列</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alex</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="原型设计,产品,Azure," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="效果分析 通过点击右上角的图标切换扫码、账号登录方式； 在扫码登录页面，鼠标移入、移出二维码时，二维码平行移动，并且弹出图片的动态效果； 在账号登录页面，当文本框获取焦点后，输入框的边框为蓝色。失去焦点后，边框颜色为灰色。  元件组成介绍 扫码登录页面元件介绍。 账号登录页面元件介绍。  实现步骤 设计动态面板   打开 Axure ，新建文件，在画布中拖入动态面板，并且设置动态面版宽度和高度均为">
+<meta name="keywords" content="原型设计,产品,Azure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Axure 学习案例：动态面板制作淘宝登录页面">
+<meta property="og:url" content="http://drugnotes.github.io/2017/04/25/Axure 学习案例：动态面板制作淘宝登录页面/index.html">
+<meta property="og:site_name" content="第七周期">
+<meta property="og:description" content="效果分析 通过点击右上角的图标切换扫码、账号登录方式； 在扫码登录页面，鼠标移入、移出二维码时，二维码平行移动，并且弹出图片的动态效果； 在账号登录页面，当文本框获取焦点后，输入框的边框为蓝色。失去焦点后，边框颜色为灰色。  元件组成介绍 扫码登录页面元件介绍。 账号登录页面元件介绍。  实现步骤 设计动态面板   打开 Axure ，新建文件，在画布中拖入动态面板，并且设置动态面版宽度和高度均为">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/173324381.gif">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/173513119.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/173545239.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/173646439.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/173733361.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/173811194.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/173911497.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/173950439.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/174244668.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/174326336.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/174354851.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/174433099.gif">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/174500029.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/174527476.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/174557553.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/174616861.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/174638161.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/174700532.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/174723248.gif">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/174757034.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/174818612.png">
+<meta property="og:image" content="http://source.drugnotes.pw/blog/20170425/173324381.gif">
+<meta property="og:updated_time" content="2017-08-13T00:24:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Axure 学习案例：动态面板制作淘宝登录页面">
+<meta name="twitter:description" content="效果分析 通过点击右上角的图标切换扫码、账号登录方式； 在扫码登录页面，鼠标移入、移出二维码时，二维码平行移动，并且弹出图片的动态效果； 在账号登录页面，当文本框获取焦点后，输入框的边框为蓝色。失去焦点后，边框颜色为灰色。  元件组成介绍 扫码登录页面元件介绍。 账号登录页面元件介绍。  实现步骤 设计动态面板   打开 Axure ，新建文件，在画布中拖入动态面板，并且设置动态面版宽度和高度均为">
+<meta name="twitter:image" content="http://source.drugnotes.pw/blog/20170425/173324381.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://drugnotes.github.io/2017/04/25/Axure 学习案例：动态面板制作淘宝登录页面/"/>
+
+
+
+
+
+  <title>Axure 学习案例：动态面板制作淘宝登录页面 | 第七周期</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">第七周期</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/04/25/Axure 学习案例：动态面板制作淘宝登录页面/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Axure 学习案例：动态面板制作淘宝登录页面</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T17:44:55+08:00">
+                2017-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/互联网/" itemprop="url" rel="index">
+                    <span itemprop="name">互联网</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="效果分析"><a href="#效果分析" class="headerlink" title="效果分析"></a>效果分析</h4><ol>
+<li>通过点击右上角的图标切换扫码、账号登录方式；</li>
+<li>在扫码登录页面，鼠标移入、移出二维码时，二维码平行移动，并且弹出图片的动态效果；</li>
+<li>在账号登录页面，当文本框获取焦点后，输入框的边框为蓝色。失去焦点后，边框颜色为灰色。<br><img src="http://source.drugnotes.pw/blog/20170425/173324381.gif" alt="淘宝登录原型预览"></li>
+</ol>
+<h4 id="元件组成介绍"><a href="#元件组成介绍" class="headerlink" title="元件组成介绍"></a>元件组成介绍</h4><ol>
+<li>扫码登录页面元件介绍。<br><img src="http://source.drugnotes.pw/blog/20170425/173513119.png" alt="动态面板_扫码登录"></li>
+<li>账号登录页面元件介绍。<br><img src="http://source.drugnotes.pw/blog/20170425/173545239.png" alt="动态面板_账户登录"></li>
+</ol>
+<h4 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h4><ul>
+<li><strong>设计动态面板</strong></li>
+</ul>
+<ol>
+<li>打开 Axure ，新建文件，在画布中拖入动态面板，并且设置动态面版宽度和高度均为 350。</li>
+<li>然后双击动态面板，打开面板状态管理窗口，为面板多增加一个状态（面板变为两个状态），并且将面板重命名，命名随意，方便个人理解即可。如下图显示，其中 scan_code 状态就是需要存放扫码登录界面的元件，user_name 状态就是存放用户名登录界面的元件；<br><img src="http://source.drugnotes.pw/blog/20170425/173646439.png" alt="动态面板管理界面"></li>
+</ol>
+<ul>
+<li><strong>设计 scan_code 页面</strong></li>
+</ul>
+<ol>
+<li>鼠标双击「scan_code」，打开scan_code页面；</li>
+<li>将面板背景颜色调整为 #F0F8FA；</li>
+<li>在页面中拖入一个矩形，选中矩形后右键，将矩形转换为自定义形状，调整图形形状为去掉右上角的五边形。去掉右上角是为了显示右上角的图标。</li>
+<li><p>拖放一张电脑 icon 到右上角，图标可以在 <a href="http://www.iconfont.cn/" target="_blank" rel="external">iconfont</a> 这个网站找到。<br><img src="http://source.drugnotes.pw/blog/20170425/173733361.png" alt="scan_code添加五边形和电脑图标"></p>
+</li>
+<li><p>插入二维码和手机图片，设置二维码图片大小为 140&#42;140，将手机图片设置为隐藏。<br><img src="http://source.drugnotes.pw/blog/20170425/173811194.png" alt="插入二维码图片和手机图片"></p>
+<ol>
+<li>设置鼠标移入时用例。第一个，设置鼠标移入二维码区域时，当前组件（二维码）移动，设置参数为：绝对位置、x=30，y=78，动画为线性、时间为500毫秒；第二个，设置等待时间300毫秒；第三个，显示弹窗图片，动画为逐渐，时间为200毫米。（思路是加上等待时间的300毫秒，二维码停止移动时图片完全显示出来）<br><img src="http://source.drugnotes.pw/blog/20170425/173911497.png" alt="设置鼠标移入二维码时水平左移"><br><img src="http://source.drugnotes.pw/blog/20170425/173950439.png" alt="设置显示弹窗图片"></li>
+</ol>
+</li>
+<li><p>设置鼠标移出二维码用例。选中二维码，新增鼠标移出用例，当前组件（二维码）移动，设置参数为：绝对位置、x=110，y=78，动画为线性、时间为500毫秒；第二个，设置等待时间200毫秒；第三个，显示弹窗图片，动画为逐渐，时间为300毫米。（思路是当二维码移动将要接触图片的时候，图片开始隐藏）<br><img src="http://source.drugnotes.pw/blog/20170425/174244668.png" alt="设置鼠标移出二维码时水平右移"><br><img src="http://source.drugnotes.pw/blog/20170425/174326336.png" alt="设置隐藏弹窗图片"></p>
+</li>
+<li><p>经过上面的步骤，scan_code 主要的交互效果已经完成，接下来就是将其他的文本元素补齐就好了，这些内容比较好理解，所以不过多讲述；补齐其他元件后，scan_code完整的元件目录如下；<br><img src="http://source.drugnotes.pw/blog/20170425/174354851.png" alt="scan_code完整的元件"></p>
+</li>
+</ol>
+<p>完成上面的步骤之后，scan_code 页面的已经完成，看一下实际效果：<br><img src="http://source.drugnotes.pw/blog/20170425/174433099.gif" alt="scan_code页面的实际效果"></p>
+<ul>
+<li><strong>设计 user_name 状态</strong></li>
+</ul>
+<ol>
+<li>鼠标双击「user_name」，打开 user_name 页面；</li>
+<li>同样的，将面板背景颜色调整为 #F0F8FA；</li>
+<li><p>跟前面一样，添加任意图形和右上角图标；<br><img src="http://source.drugnotes.pw/blog/20170425/174500029.png" alt="user_name 添加五边形和半个二维码图标"></p>
+</li>
+<li><p>设置用户名输入框。首先，插入icon文本，使用FontAwesome字体，（关于FontAwesome字体请移步：<a href="http://www.woshipm.com/rp/578031.html" target="_blank" rel="external">如何在Axure RP 8 中规范使用 Font Awesome 图标库完成设计</a>，大小为37&#42;40。第二，插入文本框，260 &#42; 40，设置文本框属性隐藏边框，提示文字：会员名/邮箱/手机号。第三，添加矩形框，大小为298&#42;42，并且放置在icon和文本框底部。<br><img src="http://source.drugnotes.pw/blog/20170425/174527476.png" alt="设置用户名输入框"></p>
+</li>
+<li><p>设置密码输入框。跟设置用户名输入框一样的形式添加密码输入框。<br><img src="http://source.drugnotes.pw/blog/20170425/174557553.png" alt="设置密码输入框"></p>
+</li>
+<li><p>设置文本框获取焦点后用例。选择用户名输入框，添加获取焦点时用例，用户名输入框底下的矩形框（用户名框）选中状态为Ture。在添加用例，当文本框失去焦点时，用户名框状态为False.<br><img src="http://source.drugnotes.pw/blog/20170425/174616861.png" alt="设置用户名输入框底下的矩形框为选中"></p>
+</li>
+<li><p>设置用户名框被选中时的交互样式。前面一步中，输入框获取焦点后，底下的矩形框（用户名框）就会被选中，所以需要继续设置用户名框被选中时边框颜色又灰色变为蓝色。（简单理解就是输入框获取焦点可以触发用户名框选中，用户名框选中就会变色。）<br><img src="http://source.drugnotes.pw/blog/20170425/174638161.png" alt="设置用户名框被选中时的交互样式"></p>
+</li>
+<li><p>设置密码输入框获取焦点后的交互效果。跟用户名输入框一样设置密码输入框，达到相同的效果。</p>
+</li>
+<li><p>完善页面其余的信息，完善后整个user_name状态下元件组成。<br><img src="http://source.drugnotes.pw/blog/20170425/174700532.png" alt="user_name元件组成"></p>
+</li>
+<li><p>user_name状态页面已经完成，整体的效果如下：<br><img src="http://source.drugnotes.pw/blog/20170425/174723248.gif" alt="user_name整体效果"></p>
+</li>
+</ol>
+<ul>
+<li><p><strong>设置点击右上角图标切换扫码登录和账号登录页面。</strong></p>
+<p>原型制作到这一步，基本已经完成，但是还没有起到动态面板的作用，关键的时候到了，接下来就是设置通过点击右上角的图标实现不同登录界面的切换。</p>
+</li>
+</ul>
+<ol>
+<li><p>设置scan_code状态页点击右上角半个电脑转换为账号登录。选择右上角的电脑图标，添加一个单击用例，添加「设置面板状态」，配置动态中选中动态面板，选择状态为user_name。<br><img src="http://source.drugnotes.pw/blog/20170425/174757034.png" alt="为右上角电脑图标添加单击用例"></p>
+</li>
+<li><p>设置user_name状态页点击右上角半个二维码转换为扫码登录。跟上面同样的操作，选择右上角的半个二维码图标，添加一个单击用例，添加「设置面板状态」，配置动态中选中动态面板，选择状态为scan_code。<br><img src="http://source.drugnotes.pw/blog/20170425/174818612.png" alt="为右上角二维码图标添加单击用例"></p>
+</li>
+<li><p>最后，整个原型基本完成，可能还需要增加一些额外的细节需要继续优化，需要慢慢调整，但是基本符合淘宝登录界面，整体的预览效果如下。<br><img src="http://source.drugnotes.pw/blog/20170425/173324381.gif" alt="淘宝登录原型预览"></p>
+</li>
+</ol>
+<p><strong>总结这个原型涉及到的知识点</strong></p>
+<ol>
+<li>通过移入移出鼠标实现元件的移动、显示和隐藏之间的切换。</li>
+<li>通过获取焦点实现其他的元件选中，并且实现被选中的组织交互样式的改变。</li>
+<li>通过切换动态面板的不同状态实现不同页面的切换。</li>
+</ol>
+<p>原型文件下载地址：<br><a href="http://pan.baidu.com/s/1jIp4YmM" target="_blank" rel="external">http://pan.baidu.com/s/1jIp4YmM</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/原型设计/" rel="tag"># 原型设计</a>
+          
+            <a href="/tags/产品/" rel="tag"># 产品</a>
+          
+            <a href="/tags/Azure/" rel="tag"># Azure</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/24/谈谈微信指数/" rel="next" title="谈谈微信指数">
+                <i class="fa fa-chevron-left"></i> 谈谈微信指数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/04/PyMySQL 插入中文报错处理方法/" rel="prev" title="PyMySQL 插入中文报错处理方法">
+                PyMySQL 插入中文报错处理方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Alex" />
+          <p class="site-author-name" itemprop="name">Alex</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">138</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">162</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#效果分析"><span class="nav-number">1.</span> <span class="nav-text">效果分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元件组成介绍"><span class="nav-number">2.</span> <span class="nav-text">元件组成介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现步骤"><span class="nav-number">3.</span> <span class="nav-text">实现步骤</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alex</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

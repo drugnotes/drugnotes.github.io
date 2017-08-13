@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="数据化管理,黄成明," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1. 周权重指数  寻找店铺零售规律  传统零售一般周末是销售高峰，电子商务恰恰相反。 特殊的节日数据需要剔除。   周权重指数  一般介于7.0~14.0之间 每个零售业应该制定同一的周权重指数 写字楼的周末日权重指数较低，工作日较高。   周权重指数计算  收集一个年度的销售数据 整理得到企业的日销售数据 剔除异常数据 一周为单位整理，得出平均日销售 以最低的日销售权重设为1.0，并用其他6日">
+<meta name="keywords" content="数据化管理,黄成明">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《数据化管理》之寻找零售密码">
+<meta property="og:url" content="http://drugnotes.github.io/2015/03/14/《数据化管理》之寻找零售密码/index.html">
+<meta property="og:site_name" content="第七周期">
+<meta property="og:description" content="1. 周权重指数  寻找店铺零售规律  传统零售一般周末是销售高峰，电子商务恰恰相反。 特殊的节日数据需要剔除。   周权重指数  一般介于7.0~14.0之间 每个零售业应该制定同一的周权重指数 写字楼的周末日权重指数较低，工作日较高。   周权重指数计算  收集一个年度的销售数据 整理得到企业的日销售数据 剔除异常数据 一周为单位整理，得出平均日销售 以最低的日销售权重设为1.0，并用其他6日">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-13T02:36:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《数据化管理》之寻找零售密码">
+<meta name="twitter:description" content="1. 周权重指数  寻找店铺零售规律  传统零售一般周末是销售高峰，电子商务恰恰相反。 特殊的节日数据需要剔除。   周权重指数  一般介于7.0~14.0之间 每个零售业应该制定同一的周权重指数 写字楼的周末日权重指数较低，工作日较高。   周权重指数计算  收集一个年度的销售数据 整理得到企业的日销售数据 剔除异常数据 一周为单位整理，得出平均日销售 以最低的日销售权重设为1.0，并用其他6日">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://drugnotes.github.io/2015/03/14/《数据化管理》之寻找零售密码/"/>
+
+
+
+
+
+  <title>《数据化管理》之寻找零售密码 | 第七周期</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">第七周期</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2015/03/14/《数据化管理》之寻找零售密码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《数据化管理》之寻找零售密码</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-03-14T01:10:46+08:00">
+                2015-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>1. 周权重指数</strong></p>
+<ol>
+<li><p>寻找店铺零售规律</p>
+<ul>
+<li>传统零售一般周末是销售高峰，电子商务恰恰相反。</li>
+<li>特殊的节日数据需要剔除。</li>
+</ul>
+</li>
+<li><p>周权重指数</p>
+<ul>
+<li>一般介于7.0~14.0之间</li>
+<li>每个零售业应该制定同一的周权重指数</li>
+<li>写字楼的周末日权重指数较低，工作日较高。</li>
+</ul>
+</li>
+<li><p>周权重指数计算</p>
+<ul>
+<li>收集一个年度的销售数据</li>
+<li>整理得到企业的日销售数据</li>
+<li>剔除异常数据</li>
+<li>一周为单位整理，得出平均日销售</li>
+<li>以最低的日销售权重设为1.0，并用其他6日数据除以最低的权重日权重指数（1.0）得出相应的日权重指数。</li>
+<li>每日权重指数相加的周权重指数。</li>
+</ul>
+</li>
+<li><p>日权重指数的特殊处理</p>
+<ul>
+<li>三天假期规律：第一天约等于周六的日权重指数；第二天、第三天约等于周日的日权重指数。</li>
+<li>春节假期：确定月份，并且提前计算春节假期前一个星期。</li>
+<li>促销档期：设0级促销为日权重指数为1.0，则1级促销为销售提升10%，则日权重指数为1.1，以此类推</li>
+</ul>
+</li>
+</ol>
+<p><strong>2. 周权重指数的应用</strong></p>
+<ol>
+<li><p>判断零售业销售规律辅助营运。根据权重指数安排店铺员工排班、安排店铺陈列调整时间、部署送货时间窗口。</p>
+</li>
+<li><p>分解日销售目标。日销售目标 = 月销售目标 *（日权重指数　÷　月权重指数）</p>
+</li>
+<li><p>月度销售预测。月销售预测值　＝　∑日销售额　（∑日权重指数　÷　月权重指数）</p>
+</li>
+<li><p>销售对比。单位权重（销售）／值　＝　∑日销售额　÷　∑日权重指数</p>
+</li>
+</ol>
+<p><strong>3. 奇的黄氏曲线－单位权重（销售）值曲线</strong></p>
+<ol>
+<li><p>单位权重（销售）值曲线。正常的权重曲线是一条围绕某一个值变化的曲线</p>
+</li>
+<li><p>销售追踪过程中。销售首先是追踪出来的，其次才是分析出来的。</p>
+</li>
+<li><p>特殊时间的量化处理。对待特殊日期、特殊事件下产生的销售，可以使用权重曲线重新评估。</p>
+</li>
+<li><p>促销活动的分析及评估。 促销成果不能简单的用促销前销量和促销销量对比。</p>
+</li>
+<li><p>新产品上市的分析及评估。</p>
+<ul>
+<li>只需做上市前和上市后的黄氏曲线。</li>
+<li>分析新品占比判断变化是否有新品引起。</li>
+<li>分析黄氏曲线爆发度和衰减度。</li>
+</ul>
+</li>
+<li><p>其他应用</p>
+<ul>
+<li>分析短缺货对销售的影响，尤其是突然短缺性产品。</li>
+<li>同行竞争分析、竞品分析。</li>
+<li>关键人物离任、到任对销售的影响分析。</li>
+<li>店铺其他状态变化对销售影响的分析。</li>
+<li>网站改版对销售的分析。</li>
+<li>其他情况</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据化管理/" rel="tag"># 数据化管理</a>
+          
+            <a href="/tags/黄成明/" rel="tag"># 黄成明</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/03/11/《数据化管理》之什么是数据化管理/" rel="next" title="《数据化管理》之什么是数据化管理">
+                <i class="fa fa-chevron-left"></i> 《数据化管理》之什么是数据化管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/03/15/我看电商/" rel="prev" title="我看电商">
+                我看电商 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Alex" />
+          <p class="site-author-name" itemprop="name">Alex</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">138</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">162</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alex</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

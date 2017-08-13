@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Mysql," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="在数据库里面，很多时候我们的数据都是一个一个类进行储存起来的，并且不是我们程序所需要的格式，举个最简单的例子就是我们用户的地址是通过省份（Pronvince）、城市（City)、地区（County）以及下面的详细街道地址组成的；还比如说商品销售的总额是有单品价格乘以销售数量。但是上面的这些每一段数据都是单独储存起来的，如果需要一个完整的用户地址或者需要销售金额，那么我们就需要把这些数据并接或者通过">
+<meta name="keywords" content="Mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 创建计算字段">
+<meta property="og:url" content="http://drugnotes.github.io/2016/04/01/MySQL 创建计算字段/index.html">
+<meta property="og:site_name" content="第七周期">
+<meta property="og:description" content="在数据库里面，很多时候我们的数据都是一个一个类进行储存起来的，并且不是我们程序所需要的格式，举个最简单的例子就是我们用户的地址是通过省份（Pronvince）、城市（City)、地区（County）以及下面的详细街道地址组成的；还比如说商品销售的总额是有单品价格乘以销售数量。但是上面的这些每一段数据都是单独储存起来的，如果需要一个完整的用户地址或者需要销售金额，那么我们就需要把这些数据并接或者通过">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-13T03:43:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL 创建计算字段">
+<meta name="twitter:description" content="在数据库里面，很多时候我们的数据都是一个一个类进行储存起来的，并且不是我们程序所需要的格式，举个最简单的例子就是我们用户的地址是通过省份（Pronvince）、城市（City)、地区（County）以及下面的详细街道地址组成的；还比如说商品销售的总额是有单品价格乘以销售数量。但是上面的这些每一段数据都是单独储存起来的，如果需要一个完整的用户地址或者需要销售金额，那么我们就需要把这些数据并接或者通过">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://drugnotes.github.io/2016/04/01/MySQL 创建计算字段/"/>
+
+
+
+
+
+  <title>MySQL 创建计算字段 | 第七周期</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">第七周期</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/04/01/MySQL 创建计算字段/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL 创建计算字段</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-01T08:23:42+08:00">
+                2016-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习札记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习札记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在数据库里面，很多时候我们的数据都是一个一个类进行储存起来的，并且不是我们程序所需要的格式，举个最简单的例子就是我们用户的地址是通过省份（Pronvince）、城市（City)、地区（County）以及下面的详细街道地址组成的；还比如说商品销售的总额是有单品价格乘以销售数量。但是上面的这些每一段数据都是单独储存起来的，如果需要一个完整的用户地址或者需要销售金额，那么我们就需要把这些数据并接或者通过运算的方式去提取出来，这时候就需要使用 SQL 的计算字段功能了。</p>
+<p>值得注意的是， SQL 的计算字段是会在数据库管理系统里面进行的，不需要我们在自己的电脑去转换格式然后在拼接起来，这样大大的提高了我们对于数据的处理能力和效率，这就是计算字段的功能强大之处。</p>
+<h4 id="1-拼接字段"><a href="#1-拼接字段" class="headerlink" title="1. 拼接字段"></a>1. 拼接字段</h4><p>正如上面举的例子那样，我们需要用户的详细地址的时候，我们需要通过拼接省份（Pronvince）、城市（City)、地区（County）这些字段来组成详细的用户地址。在使用 SELECT 语句里面，通过使用特殊的操作符就可以拼接字段。根据具体的数据库管理系统，拼接字段的操作符可以是「+」和「||」有或者是 「concat()」操作符，具体使用那一个就需要查询相关的手册。MySQL 数据库之支持「concat()」操作符进行拼接字段。使用方法看下面实例</p>
+<p>mysql &gt;SELECT </p>
+<pre><code>&gt;concat(province, city, county) 
+&gt;FROM
+&gt;Address;
+</code></pre> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">上面的语句就是通过「concat」这个操作符将省份（Pronvince）、城市（City)、地区（County）这些字段拼接在一个组成一个新的字段，并且打印出来，打印出来的一部分结果是这样的。</div><div class="line"></div><div class="line">```sql</div><div class="line">+--------------------------------+</div><div class="line"></div><div class="line">| concat(province, city, county) |</div><div class="line"></div><div class="line">+--------------------------------+</div><div class="line"></div><div class="line">| guangdongguangzhouhaizhu       |</div><div class="line"></div><div class="line">| sichuanchengdujinjiang         |</div><div class="line"></div><div class="line">| hubeiwuhanhuaiji               |</div><div class="line"></div><div class="line">| yunnandalidali                 |</div><div class="line"></div><div class="line">| beijingbeijingdongchengqu      |</div><div class="line"></div><div class="line">| shanghaishanghaixuhui          |</div><div class="line"></div><div class="line">| guizhouguiyangguiyang          |</div><div class="line"></div><div class="line">| fujianningdexiapuxian          |</div><div class="line"></div><div class="line">| guangxiyulinyulin              |</div></pre></td></tr></table></figure>
+<h4 id="2-使用别名"><a href="#2-使用别名" class="headerlink" title="2. 使用别名"></a>2. 使用别名</h4><p>从上面打印的结果可以看到，对于拼接起来的那个新的字段是没有被命名的，需要给他一个新的命名，比如说是address，那么就需要使用 AS new_name 这个操作符进行命名，如下操作：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql &gt;SELECT </div><div class="line">             &gt;concat(province, city, county) </div><div class="line">             &gt;AS address</div><div class="line">             &gt;FROM</div><div class="line">             &gt;Address;</div></pre></td></tr></table></figure>
+<pre><code>使用上面的语句就是在拼接语句后面添加一个 AS address 的语句，意思就是新拼接的字段命名为「address」，那么打印出来的字段抬头就是不之前的 「concat(province, city, county)」而是变成了「address」 ，其打印部分结果如下：
+</code></pre><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">+<span class="comment">---------------------------+</span></div><div class="line"></div><div class="line">| address                   |</div><div class="line"></div><div class="line">+<span class="comment">---------------------------+</span></div><div class="line"></div><div class="line">| guangdongguangzhouhaizhu  |</div><div class="line"></div><div class="line">| sichuanchengdujinjiang    |</div><div class="line"></div><div class="line">| hubeiwuhanhuaiji          |</div><div class="line"></div><div class="line">| yunnandalidali            |</div><div class="line"></div><div class="line">| beijingbeijingdongchengqu |</div><div class="line"></div><div class="line">| shanghaishanghaixuhui     |</div><div class="line"></div><div class="line">| guizhouguiyangguiyang     |</div><div class="line"></div><div class="line">| fujianningdexiapuxian     |</div><div class="line"></div><div class="line">| guangxiyulinyulin         |</div></pre></td></tr></table></figure>
+<h4 id="3-使用算术计算"><a href="#3-使用算术计算" class="headerlink" title="3. 使用算术计算"></a>3. 使用算术计算</h4><p>除了上面的需要拼接的方式得到详细的地址的情况之外，在实际应用上面经常需要的就是对数据库字段进行运算符的计算，包括「+」、「-」、「×」、「/」这些常用的运算。比如说一个电商网站需要在用户结算的时候通过使用商品单价「item_price」乘以商品数量「quantity」来的出商品总价格「item_sum」，那么这个实际应用就需要使用到字段自己的算术运算了，具体实现为：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql &gt;select prod_id,quantity,item_price,quantity*item_price AS item_sum</div><div class="line">         &gt;FROM</div><div class="line">         &gt;OrderItems;</div></pre></td></tr></table></figure>
+<p>上面的语句就是检索出来这些字段，并且通过 quantity*item_price 的算术运算得到商品总价「item_sum」 ，打印出来部分结果如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">+<span class="comment">---------+----------+------------+----------+</span></div><div class="line"></div><div class="line">| prod_id | quantity | item_price | item_sum |</div><div class="line"></div><div class="line">+<span class="comment">---------+----------+------------+----------+</span></div><div class="line"></div><div class="line">|      51 |       27 |         50 |     1350 |</div><div class="line"></div><div class="line">|      57 |       17 |        100 |     1700 |</div><div class="line"></div><div class="line">|      17 |       16 |         75 |     1200 |</div><div class="line"></div><div class="line">|      14 |       25 |         51 |     1275 |</div><div class="line"></div><div class="line">|      19 |        3 |        101 |      303 |</div><div class="line"></div><div class="line">|      63 |       12 |         76 |      912 |</div><div class="line"></div><div class="line">|     100 |       25 |         52 |     1300 |</div><div class="line"></div><div class="line">|       3 |        8 |        102 |      816 |</div><div class="line"></div><div class="line">|      91 |       26 |         77 |     2002 |</div></pre></td></tr></table></figure>
+<p>通过简单的计算验证，得到的计算结果是正确的。对于别的算数运算符来说，操作方式是一致的，可以进行自我尝试。</p>
+<p>这篇文章的内容主要讲的就是如果创建计算字段，最主要的两个内容就是字段拼接和字段直接通过算术运算的方式计算相关的值，还有提到的是使用「AS」来命名被计算出来的字段。</p>
+<p>—EOF—</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mysql/" rel="tag"># Mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/30/MySQL 使用通配符过滤检索数据/" rel="next" title="MySQL 使用通配符过滤检索数据">
+                <i class="fa fa-chevron-left"></i> MySQL 使用通配符过滤检索数据
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/07/记录的好处/" rel="prev" title="记录的好处">
+                记录的好处 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Alex" />
+          <p class="site-author-name" itemprop="name">Alex</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">138</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">162</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-拼接字段"><span class="nav-number">1.</span> <span class="nav-text">1. 拼接字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-使用别名"><span class="nav-number">2.</span> <span class="nav-text">2. 使用别名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-使用算术计算"><span class="nav-number">3.</span> <span class="nav-text">3. 使用算术计算</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alex</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
