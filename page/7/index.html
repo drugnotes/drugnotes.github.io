@@ -274,156 +274,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/02/26/PHP 文件创建:写入/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alex">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="第七周期">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/02/26/PHP 文件创建:写入/" itemprop="url">PHP 文件创建/写入</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-26T22:51:28+08:00">
-                2016-02-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习札记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习札记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>对文件内容进行创建和写入常用的函数有 fopen() 、fwrite() 这两个函数，当然还有其他的函数。</p>
-<p>在昨天的文章上面提到，fopen() 这个函数可以打开文件，然后利用其他的函数可以对文件进行操作。其实 fopen() 这个函数还可以用来创建文件，语法相对来说也是和打开文件时候一样的，只是在查找该文件名没有的时候就会自动创建一个文件，并且保存在和代码文件同一个目录之下。比如需要创建一个名为 textfile.txt 的文件，那么代码实现就是：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;? php</div><div class="line">    $myfile = fopen(<span class="string">"testfile.txt"</span>,<span class="string">"w"</span>);</div><div class="line">?&amp;gt;</div></pre></td></tr></table></figure></p>
-<p>通过上面的代码，文件就已经被创建成功了，回去查看文件目录的时候就能看到这个文件了。</p>
-<h4 id="写入文件（fwrite-）"><a href="#写入文件（fwrite-）" class="headerlink" title="写入文件（fwrite()）"></a>写入文件（fwrite()）</h4><p>被打开的文件可以通过使用 fwrite() 这个函数来写入给文件写入。比如代码如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;? php</div><div class="line">$myfile = fopen(<span class="string">"testfile.txt"</span>,<span class="string">"w"</span>);</div><div class="line">fwrite($myfile,<span class="string">"hello world"</span>);</div><div class="line">fwrite($myfile,<span class="string">"THis is a demo"</span>);</div><div class="line">?&lt;</div></pre></td></tr></table></figure>
-<p>这时候打开文件看到应该含有下面这些内容，因为总共输入了两次，一次是“hello world”，还有一个是”THis is a demo“。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; &gt; hello world</div><div class="line">&gt; &gt; </div><div class="line">&gt; &gt; THis is a demo</div></pre></td></tr></table></figure></p>
-<p>这里每一次打开文件如写入指针都是同开头开始的，所以第二次打开文件写入的话，之前的 ”hello world“和”This is a demo”这些内容就会被覆盖掉。</p>
-<p>这是今天学习到的关于 PHP 文件的操作，关于写入的话，应该还有很多的函数是可以使用。后面学到会继续更新上来。</p>
-<p>更新ing</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/02/25/PHP 操作文件基本语法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1255,17 +1105,6 @@
 
                 
                 
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习札记/生活随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">生活随笔</span>
-                  </a>
-                </span>
-
-                
-                
               
             </span>
           
@@ -1718,17 +1557,6 @@
 
                 
                 
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习札记/软件技能/" itemprop="url" rel="index">
-                    <span itemprop="name">软件技能</span>
-                  </a>
-                </span>
-
-                
-                
               
             </span>
           
@@ -1778,6 +1606,154 @@
 <li><p>除此之外，我还建议你看一下由知乎网友 Hindy 在他的知乎周刊上面发表的文章<a href="http://zhuanlan.zhihu.com/uicircle/20506092" target="_blank" rel="external">写给大家看的中文排版指南</a>，上面讲述了平时写作的时候会遇到的一些排版问题，非常实用。</p>
 </li>
 </ol>
+<p>-EOF-</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/02/15/WordPress 侧边栏添加微信二维码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/02/15/WordPress 侧边栏添加微信二维码/" itemprop="url">WordPress 侧边栏添加微信二维码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-15T17:14:12+08:00">
+                2016-02-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习札记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习札记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>很多在 WordPress 站长都是利用侧边栏的一块小小的位置给自己做一个简单的介绍，让访问者对站长有些了解，这样的好处不仅减少了网站的页面数量，而且还让访问者第一眼就能看到作者的信息，详情可以参考我这个网站。</p>
+<p>还有一些站长喜欢将自己的微信二维码或者是支付宝、微信的收款二维码放到网站侧边来，方便访问者添加作者的微信或者对作者进行打赏。除此之外，还有一些站长喜欢放一些广告，获取一些广告费用来支付一直服务器和域名的支出。但是很多官方的主题侧边栏都是没有直接给出添加图片这个功能的，部分 WordPress 站长又不想着花时间去学习修改代码。今天就来介绍一下不用修改代码，也不用插件实现侧边栏添加图片功能，只需要用到「小工具」中的「文本」工具。</p>
+<p>方法很简单：将「文本」工具拖拽到侧边栏上，然后输入标题和内容，其中这里面的内容是支持 HTML 格式的，所以这里之前添加一个图片的链接标签就可以了，我添加的代码如下：</p>
+<p><img src="http://www.drugnotes.pw/wp-content/uploads/2016/02/WeChat.jpg" alt="enter image description here"><br>上面是一个图片的一个 HTML 标签，并且设置了高度(Height)和宽度(Width)，图片地址和格式可以根据自己的网站自主设置。</p>
+<p><img src="http://www.drugnotes.pw/wp-content/uploads/2016/02/addpicture.jpg" alt=""></p>
+<p>其实这个思路可以用来做很多的东西，不仅可以放微信二维码，还可以放收款码、广告图、音乐播放器、小视频。反正可以放很多的东西，但是需要注意的就是网站的影响速度，所以建议不要添加太大的文件在上面，保持网站的运营速度和精简度。</p>
 <p>-EOF-</p>
 
           
@@ -1864,7 +1840,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">138</span>
+                <span class="site-state-item-count">137</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1874,10 +1850,10 @@
             
             
             <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">13</span>
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -1885,10 +1861,10 @@
             
             
             <div class="site-state-item site-state-tags">
-              
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">162</span>
                 <span class="site-state-item-name">标签</span>
-              
+              </a>
             </div>
           
 
