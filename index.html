@@ -286,6 +286,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/08/18/Pandas 基础：使用 merge 合并多个数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/18/Pandas 基础：使用 merge 合并多个数据/" itemprop="url">Pandas 基础：使用 merge 合并多个数据</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-18T07:12:23+08:00">
+                2017-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习札记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习札记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/18/Pandas 基础：使用 merge 合并多个数据/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/18/Pandas 基础：使用 merge 合并多个数据/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Python 的 pandas 库，经常需要用到 merge 进行多个数据的合并，使用 merge 进行数据合并是横向的，pandas 还有一个函数是 cancat ，也是用于多个数据的合并，但是 concat 是纵向合并，merge 是横向合并。</p>
+<p>merge 基础合并操作中，需要掌握的有下面几点：</p>
+<ol>
+<li>依据一组 key 数据进行合并；</li>
+<li>依据两组或者两组以上的 key 进行合并；</li>
+<li>依据 index 进行合并；</li>
+<li>合并的四种方式，分别是 inner、outer、left、right；</li>
+<li>显示合并的方式，也就是 indicator 参数；</li>
+<li>合并时，表头重名时的处理方法，也就是使用 suffixes 生成别称。</li>
+</ol>
+<p>好吧，下面就跟着代码一起学习学习</p>
+<h4 id="依据一组-key-数据进行合并"><a href="#依据一组-key-数据进行合并" class="headerlink" title="依据一组 key 数据进行合并"></a>依据一组 key 数据进行合并</h4><p>首先，生成两个Dataframe，以一组key为合并依据，合并两列数据<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#导入 pandas 和 numpy</span></div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">df1 = pd.DataFrame(&#123;<span class="string">"key"</span>:[<span class="string">"k1"</span>,<span class="string">"k2"</span>,<span class="string">"k3"</span>,<span class="string">"k4"</span>],</div><div class="line">                   <span class="string">"a"</span>:range(<span class="number">1</span>,<span class="number">5</span>),</div><div class="line">                   <span class="string">"b"</span>:range(<span class="number">1</span>,<span class="number">5</span>)&#125;)</div><div class="line"></div><div class="line">df2 = pd.DataFrame(&#123;<span class="string">"key"</span>:[<span class="string">"k1"</span>,<span class="string">"k2"</span>,<span class="string">"k3"</span>,<span class="string">"k4"</span>,<span class="string">"k5"</span>],</div><div class="line">                   <span class="string">"c"</span>:range(<span class="number">5</span>,<span class="number">10</span>),</div><div class="line">                   <span class="string">"d"</span>:range(<span class="number">5</span>,<span class="number">10</span>)&#125;)</div><div class="line"><span class="keyword">print</span> (df1)</div><div class="line"><span class="keyword">print</span> (df2)</div><div class="line"></div><div class="line">df = pd.merge(df1,df2,on = <span class="string">"key"</span>)</div><div class="line"><span class="keyword">print</span> (df)</div><div class="line"></div><div class="line"><span class="comment">#打印结果</span></div><div class="line">a  b key</div><div class="line"><span class="number">0</span>  <span class="number">1</span>  <span class="number">1</span>  k1</div><div class="line"><span class="number">1</span>  <span class="number">2</span>  <span class="number">2</span>  k2</div><div class="line"><span class="number">2</span>  <span class="number">3</span>  <span class="number">3</span>  k3</div><div class="line"><span class="number">3</span>  <span class="number">4</span>  <span class="number">4</span>  k4</div><div class="line">   c  d key</div><div class="line"><span class="number">0</span>  <span class="number">5</span>  <span class="number">5</span>  k1</div><div class="line"><span class="number">1</span>  <span class="number">6</span>  <span class="number">6</span>  k2</div><div class="line"><span class="number">2</span>  <span class="number">7</span>  <span class="number">7</span>  k3</div><div class="line"><span class="number">3</span>  <span class="number">8</span>  <span class="number">8</span>  k4</div><div class="line"><span class="number">4</span>  <span class="number">9</span>  <span class="number">9</span>  k5</div><div class="line">   a  b key  c  d</div><div class="line"><span class="number">0</span>  <span class="number">1</span>  <span class="number">1</span>  k1  <span class="number">5</span>  <span class="number">5</span></div><div class="line"><span class="number">1</span>  <span class="number">2</span>  <span class="number">2</span>  k2  <span class="number">6</span>  <span class="number">6</span></div><div class="line"><span class="number">2</span>  <span class="number">3</span>  <span class="number">3</span>  k3  <span class="number">7</span>  <span class="number">7</span></div><div class="line"><span class="number">3</span>  <span class="number">4</span>  <span class="number">4</span>  k4  <span class="number">8</span>  <span class="number">8</span></div></pre></td></tr></table></figure></p>
+<h4 id="依据两组或者两组以上的-key-进行合并"><a href="#依据两组或者两组以上的-key-进行合并" class="headerlink" title="依据两组或者两组以上的 key 进行合并"></a>依据两组或者两组以上的 key 进行合并</h4><p>除了单个key进行合并之外，merge 还支持多组key进行合并，比如两组 key （key1和key2）为依据进行合并<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">df3 = pd.DataFrame(&#123;<span class="string">"key1"</span>:[<span class="string">"k1"</span>,<span class="string">"k2"</span>,<span class="string">"k3"</span>,<span class="string">"k4"</span>],</div><div class="line">                    <span class="string">"key2"</span>:[<span class="string">"k0"</span>,<span class="string">"k2"</span>,<span class="string">"k3"</span>,<span class="string">"k4"</span>],</div><div class="line">                   <span class="string">"a"</span>:range(<span class="number">1</span>,<span class="number">5</span>),</div><div class="line">                   <span class="string">"b"</span>:range(<span class="number">1</span>,<span class="number">5</span>)&#125;)</div><div class="line"></div><div class="line">df4 = pd.DataFrame(&#123;<span class="string">"key1"</span>:[<span class="string">"k1"</span>,<span class="string">"k2"</span>,<span class="string">"k3"</span>,<span class="string">"k4"</span>,<span class="string">"k5"</span>],</div><div class="line">                    <span class="string">"key2"</span>:[<span class="string">"k1"</span>,<span class="string">"k2"</span>,<span class="string">"k3"</span>,<span class="string">"k4"</span>,<span class="string">"k5"</span>],</div><div class="line">                   <span class="string">"c"</span>:range(<span class="number">5</span>,<span class="number">10</span>),</div><div class="line">                   <span class="string">"d"</span>:range(<span class="number">5</span>,<span class="number">10</span>)&#125;)</div><div class="line"><span class="keyword">print</span> (d3)</div><div class="line"><span class="keyword">print</span> (d4)</div><div class="line"></div><div class="line">df = pd.merge(df3,df4, on = [<span class="string">"key1"</span>,<span class="string">"key2"</span>])</div><div class="line"><span class="keyword">print</span> (df)</div><div class="line"></div><div class="line"><span class="comment">#打印结果</span></div><div class="line">a  b key</div><div class="line"><span class="number">0</span>  <span class="number">1</span>  <span class="number">1</span>  k1</div><div class="line"><span class="number">1</span>  <span class="number">2</span>  <span class="number">2</span>  k2</div><div class="line"><span class="number">2</span>  <span class="number">3</span>  <span class="number">3</span>  k3</div><div class="line"><span class="number">3</span>  <span class="number">4</span>  <span class="number">4</span>  k4</div><div class="line">   c  d key</div><div class="line"><span class="number">0</span>  <span class="number">5</span>  <span class="number">5</span>  k1</div><div class="line"><span class="number">1</span>  <span class="number">6</span>  <span class="number">6</span>  k2</div><div class="line"><span class="number">2</span>  <span class="number">7</span>  <span class="number">7</span>  k3</div><div class="line"><span class="number">3</span>  <span class="number">8</span>  <span class="number">8</span>  k4</div><div class="line"><span class="number">4</span>  <span class="number">9</span>  <span class="number">9</span>  k5</div><div class="line">   a  b key1 key2  c  d</div><div class="line"><span class="number">0</span>  <span class="number">2</span>  <span class="number">2</span>   k2   k2  <span class="number">6</span>  <span class="number">6</span></div><div class="line"><span class="number">1</span>  <span class="number">3</span>  <span class="number">3</span>   k3   k3  <span class="number">7</span>  <span class="number">7</span></div><div class="line"><span class="number">2</span>  <span class="number">4</span>  <span class="number">4</span>   k4   k4  <span class="number">8</span>  <span class="number">8</span></div></pre></td></tr></table></figure></p>
+<h4 id="依据-index-进行合并"><a href="#依据-index-进行合并" class="headerlink" title="依据 index 进行合并"></a>依据 index 进行合并</h4><p>除了支持一组和多组key进行合并外，还支持index为依据进行合并<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">df1 = pd.DataFrame(&#123;<span class="string">"a"</span>:range(<span class="number">1</span>,<span class="number">5</span>),</div><div class="line">                   <span class="string">"b"</span>:range(<span class="number">1</span>,<span class="number">5</span>)&#125;,</div><div class="line">                   index=[<span class="string">"k1"</span>,<span class="string">"k2"</span>,<span class="string">"k3"</span>,<span class="string">"k4"</span>])</div><div class="line"></div><div class="line">df2 = pd.DataFrame(&#123;<span class="string">"c"</span>:range(<span class="number">5</span>,<span class="number">10</span>),</div><div class="line">                   <span class="string">"d"</span>:range(<span class="number">5</span>,<span class="number">10</span>)&#125;,</div><div class="line">                    index=[<span class="string">"k1"</span>,<span class="string">"k2"</span>,<span class="string">"k3"</span>,<span class="string">"k4"</span>,<span class="string">"k5"</span>])</div><div class="line"><span class="keyword">print</span> (df1)</div><div class="line"><span class="keyword">print</span> (df2)</div><div class="line"></div><div class="line">df = pd.merge(df1,df2,left_index = <span class="keyword">True</span>,right_index = <span class="keyword">True</span>)</div><div class="line"><span class="keyword">print</span> (df)</div><div class="line"></div><div class="line"><span class="comment">#打印结果</span></div><div class="line">a  b</div><div class="line">k1  <span class="number">1</span>  <span class="number">1</span></div><div class="line">k2  <span class="number">2</span>  <span class="number">2</span></div><div class="line">k3  <span class="number">3</span>  <span class="number">3</span></div><div class="line">k4  <span class="number">4</span>  <span class="number">4</span></div><div class="line">    c  d</div><div class="line">k1  <span class="number">5</span>  <span class="number">5</span></div><div class="line">k2  <span class="number">6</span>  <span class="number">6</span></div><div class="line">k3  <span class="number">7</span>  <span class="number">7</span></div><div class="line">k4  <span class="number">8</span>  <span class="number">8</span></div><div class="line">k5  <span class="number">9</span>  <span class="number">9</span></div><div class="line">    a  b  c  d</div><div class="line">k1  <span class="number">1</span>  <span class="number">1</span>  <span class="number">5</span>  <span class="number">5</span></div><div class="line">k2  <span class="number">2</span>  <span class="number">2</span>  <span class="number">6</span>  <span class="number">6</span></div><div class="line">k3  <span class="number">3</span>  <span class="number">3</span>  <span class="number">7</span>  <span class="number">7</span></div><div class="line">k4  <span class="number">4</span>  <span class="number">4</span>  <span class="number">8</span>  <span class="number">8</span></div></pre></td></tr></table></figure></p>
+<h4 id="合并的四种方式，分别是-inner、outer、left、right"><a href="#合并的四种方式，分别是-inner、outer、left、right" class="headerlink" title="合并的四种方式，分别是 inner、outer、left、right"></a>合并的四种方式，分别是 inner、outer、left、right</h4><p>How参数声明合并方式，4 中合并方式，分别是inner、outer、left、right。默认情况下，使用inner，只有 key 值相同的行才合并<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">df1 = pd.DataFrame(&#123;<span class="string">"key"</span>:[<span class="string">"k1"</span>,<span class="string">"k2"</span>,<span class="string">"k3"</span>,<span class="string">"k4"</span>],</div><div class="line">                   <span class="string">"a"</span>:range(<span class="number">1</span>,<span class="number">5</span>),</div><div class="line">                   <span class="string">"b"</span>:range(<span class="number">1</span>,<span class="number">5</span>)&#125;)</div><div class="line"></div><div class="line">df2 = pd.DataFrame(&#123;<span class="string">"key"</span>:[<span class="string">"k1"</span>,<span class="string">"k2"</span>,<span class="string">"k3"</span>,<span class="string">"k4"</span>,<span class="string">"k5"</span>],</div><div class="line">                   <span class="string">"c"</span>:range(<span class="number">5</span>,<span class="number">10</span>),</div><div class="line">                   <span class="string">"d"</span>:range(<span class="number">5</span>,<span class="number">10</span>)&#125;)</div><div class="line"><span class="keyword">print</span> (df1)</div><div class="line"><span class="keyword">print</span> (df2)</div><div class="line"></div><div class="line">df = pd.merge(df1,df2,on =<span class="string">"key"</span>)</div><div class="line"><span class="comment">#df = pd.merge(df1,df2,on ="key",how = "inner") #也可以这么表示，结果一样。</span></div><div class="line"><span class="keyword">print</span> (df)</div><div class="line"></div><div class="line"><span class="comment">#打印结果</span></div><div class="line">a  b key</div><div class="line"><span class="number">0</span>  <span class="number">1</span>  <span class="number">1</span>  k1</div><div class="line"><span class="number">1</span>  <span class="number">2</span>  <span class="number">2</span>  k2</div><div class="line"><span class="number">2</span>  <span class="number">3</span>  <span class="number">3</span>  k3</div><div class="line"><span class="number">3</span>  <span class="number">4</span>  <span class="number">4</span>  k4</div><div class="line">   c  d key</div><div class="line"><span class="number">0</span>  <span class="number">5</span>  <span class="number">5</span>  k1</div><div class="line"><span class="number">1</span>  <span class="number">6</span>  <span class="number">6</span>  k2</div><div class="line"><span class="number">2</span>  <span class="number">7</span>  <span class="number">7</span>  k3</div><div class="line"><span class="number">3</span>  <span class="number">8</span>  <span class="number">8</span>  k4</div><div class="line"><span class="number">4</span>  <span class="number">9</span>  <span class="number">9</span>  k5</div><div class="line">   a  b key  c  d</div><div class="line"><span class="number">0</span>  <span class="number">1</span>  <span class="number">1</span>  k1  <span class="number">5</span>  <span class="number">5</span></div><div class="line"><span class="number">1</span>  <span class="number">2</span>  <span class="number">2</span>  k2  <span class="number">6</span>  <span class="number">6</span></div><div class="line"><span class="number">2</span>  <span class="number">3</span>  <span class="number">3</span>  k3  <span class="number">7</span>  <span class="number">7</span></div><div class="line"><span class="number">3</span>  <span class="number">4</span>  <span class="number">4</span>  k4  <span class="number">8</span>  <span class="number">8</span></div></pre></td></tr></table></figure></p>
+<p>使用outer，将每一行字段进行合并，没有的部分使用NaN填充<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">df = pd.merge(df1,df2,on =<span class="string">"key"</span>,how = <span class="string">"outer"</span>) </div><div class="line"><span class="keyword">print</span> (df)</div><div class="line"></div><div class="line"><span class="comment">#打印结果</span></div><div class="line">a    b key  c  d</div><div class="line"><span class="number">0</span>  <span class="number">1.0</span>  <span class="number">1.0</span>  k1  <span class="number">5</span>  <span class="number">5</span></div><div class="line"><span class="number">1</span>  <span class="number">2.0</span>  <span class="number">2.0</span>  k2  <span class="number">6</span>  <span class="number">6</span></div><div class="line"><span class="number">2</span>  <span class="number">3.0</span>  <span class="number">3.0</span>  k3  <span class="number">7</span>  <span class="number">7</span></div><div class="line"><span class="number">3</span>  <span class="number">4.0</span>  <span class="number">4.0</span>  k4  <span class="number">8</span>  <span class="number">8</span></div><div class="line"><span class="number">4</span>  NaN  NaN  k5  <span class="number">9</span>  <span class="number">9</span></div></pre></td></tr></table></figure></p>
+<p>使用left，以左边的 DataFrame 条件（key)为准合并，左边没有的去掉,类似SQL语句中的左连接。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">df = pd.merge(df1,df2,on =<span class="string">"key"</span>,how = <span class="string">"left"</span>) </div><div class="line"><span class="keyword">print</span> (df)</div><div class="line"></div><div class="line"><span class="comment">#打印结果</span></div><div class="line">a  b key  c  d</div><div class="line"><span class="number">0</span>  <span class="number">1</span>  <span class="number">1</span>  k1  <span class="number">5</span>  <span class="number">5</span></div><div class="line"><span class="number">1</span>  <span class="number">2</span>  <span class="number">2</span>  k2  <span class="number">6</span>  <span class="number">6</span></div><div class="line"><span class="number">2</span>  <span class="number">3</span>  <span class="number">3</span>  k3  <span class="number">7</span>  <span class="number">7</span></div><div class="line"><span class="number">3</span>  <span class="number">4</span>  <span class="number">4</span>  k4  <span class="number">8</span>  <span class="number">8</span></div></pre></td></tr></table></figure>
+<p>使用right，以右边的 DataFrame 条件（key)为准合并，右边没有的去掉，类似SQL语句中的右连接。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">df = pd.merge(df1,df2,on =<span class="string">"key"</span>,how = <span class="string">"right"</span>) </div><div class="line"><span class="keyword">print</span> (df)</div><div class="line"></div><div class="line"><span class="comment">#打印结果</span></div><div class="line">a    b key  c  d</div><div class="line"><span class="number">0</span>  <span class="number">1.0</span>  <span class="number">1.0</span>  k1  <span class="number">5</span>  <span class="number">5</span></div><div class="line"><span class="number">1</span>  <span class="number">2.0</span>  <span class="number">2.0</span>  k2  <span class="number">6</span>  <span class="number">6</span></div><div class="line"><span class="number">2</span>  <span class="number">3.0</span>  <span class="number">3.0</span>  k3  <span class="number">7</span>  <span class="number">7</span></div><div class="line"><span class="number">3</span>  <span class="number">4.0</span>  <span class="number">4.0</span>  k4  <span class="number">8</span>  <span class="number">8</span></div><div class="line"><span class="number">4</span>  NaN  NaN  k5  <span class="number">9</span>  <span class="number">9</span></div></pre></td></tr></table></figure>
+<h4 id="显示合并的方式，也就是-indicator-参数"><a href="#显示合并的方式，也就是-indicator-参数" class="headerlink" title="显示合并的方式，也就是 indicator 参数"></a>显示合并的方式，也就是 indicator 参数</h4><p>merge 还提供indicator参数，用途就是在合并数据中生成新的一列，名字为_merge，用于声明每一行合并时的规则<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">df1 = pd.DataFrame(&#123;<span class="string">"key"</span>:[<span class="string">"k1"</span>,<span class="string">"k2"</span>,<span class="string">"k3"</span>,<span class="string">"k4"</span>],</div><div class="line">                   <span class="string">"a"</span>:range(<span class="number">1</span>,<span class="number">5</span>),</div><div class="line">                   <span class="string">"b"</span>:range(<span class="number">1</span>,<span class="number">5</span>)&#125;)</div><div class="line"></div><div class="line">df2 = pd.DataFrame(&#123;<span class="string">"key"</span>:[<span class="string">"k1"</span>,<span class="string">"k2"</span>,<span class="string">"k3"</span>,<span class="string">"k4"</span>,<span class="string">"k5"</span>],</div><div class="line">                   <span class="string">"c"</span>:range(<span class="number">5</span>,<span class="number">10</span>),</div><div class="line">                   <span class="string">"d"</span>:range(<span class="number">5</span>,<span class="number">10</span>)&#125;)</div><div class="line"><span class="keyword">print</span> (df1)</div><div class="line"><span class="keyword">print</span> (df2)</div><div class="line"></div><div class="line">df = pd.merge(df1,df2,on =<span class="string">"key"</span>,how=<span class="string">"outer"</span>,indicator = <span class="keyword">True</span>)</div><div class="line"><span class="keyword">print</span> (df)</div><div class="line"></div><div class="line"><span class="comment">#打印结果</span></div><div class="line">   a  b key</div><div class="line"><span class="number">0</span>  <span class="number">1</span>  <span class="number">1</span>  k1</div><div class="line"><span class="number">1</span>  <span class="number">2</span>  <span class="number">2</span>  k2</div><div class="line"><span class="number">2</span>  <span class="number">3</span>  <span class="number">3</span>  k3</div><div class="line"><span class="number">3</span>  <span class="number">4</span>  <span class="number">4</span>  k4</div><div class="line">   c  d key</div><div class="line"><span class="number">0</span>  <span class="number">5</span>  <span class="number">5</span>  k1</div><div class="line"><span class="number">1</span>  <span class="number">6</span>  <span class="number">6</span>  k2</div><div class="line"><span class="number">2</span>  <span class="number">7</span>  <span class="number">7</span>  k3</div><div class="line"><span class="number">3</span>  <span class="number">8</span>  <span class="number">8</span>  k4</div><div class="line"><span class="number">4</span>  <span class="number">9</span>  <span class="number">9</span>  k5</div><div class="line">     a    b key  c  d      _merge</div><div class="line"><span class="number">0</span>  <span class="number">1.0</span>  <span class="number">1.0</span>  k1  <span class="number">5</span>  <span class="number">5</span>        both</div><div class="line"><span class="number">1</span>  <span class="number">2.0</span>  <span class="number">2.0</span>  k2  <span class="number">6</span>  <span class="number">6</span>        both</div><div class="line"><span class="number">2</span>  <span class="number">3.0</span>  <span class="number">3.0</span>  k3  <span class="number">7</span>  <span class="number">7</span>        both</div><div class="line"><span class="number">3</span>  <span class="number">4.0</span>  <span class="number">4.0</span>  k4  <span class="number">8</span>  <span class="number">8</span>        both</div><div class="line"><span class="number">4</span>  NaN  NaN  k5  <span class="number">9</span>  <span class="number">9</span>  right_only</div></pre></td></tr></table></figure></p>
+<p>当然，你还可以对新生成的_merge列进行新的命名<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">df1 = pd.DataFrame(&#123;<span class="string">"key"</span>:[<span class="string">"k1"</span>,<span class="string">"k2"</span>,<span class="string">"k3"</span>,<span class="string">"k4"</span>],</div><div class="line">                   <span class="string">"a"</span>:range(<span class="number">1</span>,<span class="number">5</span>),</div><div class="line">                   <span class="string">"b"</span>:range(<span class="number">1</span>,<span class="number">5</span>)&#125;)</div><div class="line"></div><div class="line">df2 = pd.DataFrame(&#123;<span class="string">"key"</span>:[<span class="string">"k1"</span>,<span class="string">"k2"</span>,<span class="string">"k3"</span>,<span class="string">"k4"</span>,<span class="string">"k5"</span>],</div><div class="line">                   <span class="string">"c"</span>:range(<span class="number">5</span>,<span class="number">10</span>),</div><div class="line">                   <span class="string">"d"</span>:range(<span class="number">5</span>,<span class="number">10</span>)&#125;)</div><div class="line"><span class="keyword">print</span> (df1)</div><div class="line"><span class="keyword">print</span> (df2)</div><div class="line"></div><div class="line">df = pd.merge(df1,df2,on =<span class="string">"key"</span>,how=<span class="string">"outer"</span>,indicator = <span class="string">"how_merge"</span>)</div><div class="line"><span class="keyword">print</span> (df)</div><div class="line"></div><div class="line"><span class="comment">#打印结果</span></div><div class="line">   a  b key</div><div class="line"><span class="number">0</span>  <span class="number">1</span>  <span class="number">1</span>  k1</div><div class="line"><span class="number">1</span>  <span class="number">2</span>  <span class="number">2</span>  k2</div><div class="line"><span class="number">2</span>  <span class="number">3</span>  <span class="number">3</span>  k3</div><div class="line"><span class="number">3</span>  <span class="number">4</span>  <span class="number">4</span>  k4</div><div class="line">   c  d key</div><div class="line"><span class="number">0</span>  <span class="number">5</span>  <span class="number">5</span>  k1</div><div class="line"><span class="number">1</span>  <span class="number">6</span>  <span class="number">6</span>  k2</div><div class="line"><span class="number">2</span>  <span class="number">7</span>  <span class="number">7</span>  k3</div><div class="line"><span class="number">3</span>  <span class="number">8</span>  <span class="number">8</span>  k4</div><div class="line"><span class="number">4</span>  <span class="number">9</span>  <span class="number">9</span>  k5</div><div class="line">     a    b key  c  d   how_merge</div><div class="line"><span class="number">0</span>  <span class="number">1.0</span>  <span class="number">1.0</span>  k1  <span class="number">5</span>  <span class="number">5</span>        both</div><div class="line"><span class="number">1</span>  <span class="number">2.0</span>  <span class="number">2.0</span>  k2  <span class="number">6</span>  <span class="number">6</span>        both</div><div class="line"><span class="number">2</span>  <span class="number">3.0</span>  <span class="number">3.0</span>  k3  <span class="number">7</span>  <span class="number">7</span>        both</div><div class="line"><span class="number">3</span>  <span class="number">4.0</span>  <span class="number">4.0</span>  k4  <span class="number">8</span>  <span class="number">8</span>        both</div><div class="line"><span class="number">4</span>  NaN  NaN  k5  <span class="number">9</span>  <span class="number">9</span>  right_only</div></pre></td></tr></table></figure></p>
+<h4 id="合并时，表头重名时的处理方法，也就是使用-suffixes-生成别称"><a href="#合并时，表头重名时的处理方法，也就是使用-suffixes-生成别称" class="headerlink" title="合并时，表头重名时的处理方法，也就是使用 suffixes 生成别称"></a>合并时，表头重名时的处理方法，也就是使用 suffixes 生成别称</h4><p>在合并中，两个DataFrame中的表头信息相同时，需要使用到suffixes这个参数，比如两个DataFrame中两列都是a,b,就可以在生成新表的时候生成别名<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">df1 = pd.DataFrame(&#123;<span class="string">"key"</span>:[<span class="string">"k1"</span>,<span class="string">"k2"</span>,<span class="string">"k3"</span>,<span class="string">"k4"</span>],</div><div class="line">                   <span class="string">"a"</span>:range(<span class="number">1</span>,<span class="number">5</span>),</div><div class="line">                   <span class="string">"b"</span>:range(<span class="number">1</span>,<span class="number">5</span>)&#125;)</div><div class="line"></div><div class="line">df2 = pd.DataFrame(&#123;<span class="string">"key"</span>:[<span class="string">"k1"</span>,<span class="string">"k2"</span>,<span class="string">"k3"</span>,<span class="string">"k4"</span>,<span class="string">"k5"</span>],</div><div class="line">                   <span class="string">"a"</span>:range(<span class="number">5</span>,<span class="number">10</span>),</div><div class="line">                   <span class="string">"b"</span>:range(<span class="number">5</span>,<span class="number">10</span>)&#125;)</div><div class="line"><span class="keyword">print</span> (df1)</div><div class="line"><span class="keyword">print</span> (df2)</div><div class="line"></div><div class="line">df = pd.merge(df1,df2,on =<span class="string">"key"</span>,how=<span class="string">"outer"</span>,indicator = <span class="string">"how_merge"</span>,suffixes=[<span class="string">"_left"</span>,<span class="string">"_right"</span>])</div><div class="line"><span class="keyword">print</span> (df)</div><div class="line"></div><div class="line"><span class="comment">#打印结果</span></div><div class="line">   a  b key</div><div class="line"><span class="number">0</span>  <span class="number">1</span>  <span class="number">1</span>  k1</div><div class="line"><span class="number">1</span>  <span class="number">2</span>  <span class="number">2</span>  k2</div><div class="line"><span class="number">2</span>  <span class="number">3</span>  <span class="number">3</span>  k3</div><div class="line"><span class="number">3</span>  <span class="number">4</span>  <span class="number">4</span>  k4</div><div class="line">   a  b key</div><div class="line"><span class="number">0</span>  <span class="number">5</span>  <span class="number">5</span>  k1</div><div class="line"><span class="number">1</span>  <span class="number">6</span>  <span class="number">6</span>  k2</div><div class="line"><span class="number">2</span>  <span class="number">7</span>  <span class="number">7</span>  k3</div><div class="line"><span class="number">3</span>  <span class="number">8</span>  <span class="number">8</span>  k4</div><div class="line"><span class="number">4</span>  <span class="number">9</span>  <span class="number">9</span>  k5</div><div class="line">   a_left  b_left key  a_right  b_right   how_merge</div><div class="line"><span class="number">0</span>     <span class="number">1.0</span>     <span class="number">1.0</span>  k1        <span class="number">5</span>        <span class="number">5</span>        both</div><div class="line"><span class="number">1</span>     <span class="number">2.0</span>     <span class="number">2.0</span>  k2        <span class="number">6</span>        <span class="number">6</span>        both</div><div class="line"><span class="number">2</span>     <span class="number">3.0</span>     <span class="number">3.0</span>  k3        <span class="number">7</span>        <span class="number">7</span>        both</div><div class="line"><span class="number">3</span>     <span class="number">4.0</span>     <span class="number">4.0</span>  k4        <span class="number">8</span>        <span class="number">8</span>        both</div><div class="line"><span class="number">4</span>     NaN     NaN  k5        <span class="number">9</span>        <span class="number">9</span>  right_only</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/08/15/圣费尔明节/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1700,164 +1875,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/07/17/浅谈王者荣耀/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alex">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="第七周期">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/17/浅谈王者荣耀/" itemprop="url">浅谈王者荣耀</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-17T23:40:11+08:00">
-                2017-07-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/互联网/" itemprop="url" rel="index">
-                    <span itemprop="name">互联网</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/07/17/浅谈王者荣耀/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/07/17/浅谈王者荣耀/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>近日，王者荣耀陷入舆论的风波，原因是这款游戏让玩家沉迷，尤其是未成年人，以至于腾讯上线防沉迷系统。也正因为防沉迷系统，将王者荣耀再次推向舆论的浪尖。</p>
-<p>一直以来，网络游戏都是充满争议性的话题，只是近年来，互联网巨头进军游戏行业，从业者越来越多，行业逐渐规范，电子竞技比赛规模化，网络游戏被越来越多的人接受。</p>
-<p>王者荣耀，让人沉迷其中，说明这款游戏有它的过人之处，可以说，王者荣耀取得国内手游厂家从未做到的成功，也让同行羡慕。但总不能因为别人做了一款用户喜欢的产品，然后集体声讨，除了声讨，似乎也没有更好的建议。</p>
-<p>从腾讯方面上线的未成年人防沉迷系统来看，看到腾讯对这个问题的重视程度。对于未成年人沉迷游戏，不能只靠社会舆论倒逼企业，而是整个社会协作起来，其中主导的还得是未成年人的家长，如果家长一天到晚都玩，凭什么不能让孩子沉迷呢？</p>
-<p>-END-</p>
-<p>2017-7-17 于杭州</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1908,7 +1925,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">138</span>
+                <span class="site-state-item-count">139</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1930,7 +1947,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">163</span>
+                <span class="site-state-item-count">164</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

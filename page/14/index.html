@@ -286,6 +286,171 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2014/09/15/解决wordpress因加载google字体响应变慢的问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/09/15/解决wordpress因加载google字体响应变慢的问题/" itemprop="url">解决wordpress因加载google字体响应变慢的问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-09-15T15:29:49+08:00">
+                2014-09-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/互联网/" itemprop="url" rel="index">
+                    <span itemprop="name">互联网</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/09/15/解决wordpress因加载google字体响应变慢的问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2014/09/15/解决wordpress因加载google字体响应变慢的问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>之前把我的博客放在bae上面运营，响应特别的慢，就觉得是bae响应慢，没有考虑到google字体加载的问题，虽然经常听其他人所这个问题。后来自己买了个linux主机，结果还是这样。于是就让服务商看一下什么情况，后来发现是google字体的问题，最后在技术人员的指导下，完美的解决了这个问题，所以现在就在这里总结一下，供大家参考。</p>
+<p>google字体的原因是wordpress调用的google字体库，因被屏蔽导致国内站点无法连接字体库，出现了打开慢的情况。我们就把这个加载的字符串找出来，替换成另一个网址来解决此问题。</p>
+<p>一般的服务商提供的虚拟主机，在虚拟主机管理面板，打开文件管理功能，来到代码文件管理页面，页面上方工具栏都会有有替换功能，先选择好要替换文件的目录，默认是更目录不修改，让后下面查找字符串fonts.googleapis.com替换为fonts.useso.com，请见截图</p>
+<p><img src="http://lietome.gotoip4.com/wp-content/uploads/2014/09/google-300x157.jpg" alt="google "></p>
+<p>第一步，替换调用的字体库链接：</p>
+<p>输入要替换的字符串（注意替换的字符前面或后面一定不要有空格）：</p>
+<p>填写<code>fonts.googleapis.com</code>替换为：填写<code>fonts.useso.com</code></p>
+<p>第二步，替换调用的AJAX Libraries API架构：</p>
+<p>输入要替换的字符串（注意替换的字符前面或后面一定不要有空格）：</p>
+<p>填写<code>ajax.googleapis.com</code>替换为：<code>ajax.useso.com</code></p>
+<p>但是有一些虚拟主机，比如是linux主机不能直接在这个页面完成替换，只能先把含有该字符串的文件找出来，如图</p>
+<p><img src="http://lietome.gotoip4.com/wp-content/uploads/2014/09/google1-300x42.jpg" alt="google"></p>
+<p>然后用ftp工具替换按上述的替换步骤替换就可以了</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2014/08/29/从杭州到广州/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1659,7 +1824,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">138</span>
+                <span class="site-state-item-count">139</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1681,7 +1846,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">163</span>
+                <span class="site-state-item-count">164</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

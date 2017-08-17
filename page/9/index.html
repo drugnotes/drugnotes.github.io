@@ -286,6 +286,198 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/01/05/模仿Echarts学习制作嵌套饼图/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/01/05/模仿Echarts学习制作嵌套饼图/" itemprop="url">模仿Echarts学习制作嵌套饼图</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-05T23:53:05+08:00">
+                2016-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件技能/" itemprop="url" rel="index">
+                    <span itemprop="name">软件技能</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/01/05/模仿Echarts学习制作嵌套饼图/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/01/05/模仿Echarts学习制作嵌套饼图/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天偶然的机会发现了Echarts这个数据可视化的工具，发现里面的很多图表的样式和设置都非常不错。刚好自己最近在学习用Excel制作商业图表，所以就把这些图表来练练手。<br><img src="http://www.drugnotes.pw/wp-content/uploads/2016/01/Echarts.jpg" alt=""></p>
+<p>上面是我在Echarts上面看到的一个嵌套饼图，非常符合我现在的业务需求，也是非常简洁美观的。虽然可以再网站上面输入自己的数据生成这样的图片，然后下载图片放到PPT上面也是很好看。但是本着学习的态度，我觉得模仿一下这个图表，希望可以从中学习东西。好了，下面就是我制作这个图表的介绍。</p>
+<p><strong>第一步：准备数据。</strong></p>
+<p>按照原来的图表的数据输进去Excel上面，得到下面的这张图片，这就准备好了数据。<br><img src="http://www.drugnotes.pw/wp-content/uploads/2016/01/shujuzhunbei.jpg" alt=""></p>
+<p>值得注意的是，上面图表的排版是有要求的，上面部分就是一个总体的归类，下面的就是总体归类相对应的分类，比如说搜索引擎包括了百度、Google、必应和其他。这里面的数据排列下来一定是要一一对应起来的，否者做出来的数据图表没有对应性。</p>
+<p><strong>第二步：添加图表</strong></p>
+<p>在Excel工作簿的任意空白位置上面插入一个图表，不懂的怎么插入图表的朋友可以参考下图或者百度一下相关的教程。<br><img src="http://www.drugnotes.pw/wp-content/uploads/2016/01/tiaojiatubiao.jpg" alt=""></p>
+<p>这里添加图表的类型为圆环图。</p>
+<p><strong>第三步：添加数据</strong></p>
+<p>添加图表之后就是右击图表，选择数据。<br><img src="http://www.drugnotes.pw/wp-content/uploads/2016/01/xuanzeshuju1.jpg" alt=""></p>
+<p>在弹出来的选择数据框上面点击「添加数据」按钮。<br><img src="http://www.drugnotes.pw/wp-content/uploads/2016/01/xuanzeshuju2.jpg" alt=""></p>
+<p>首先系列值选择小归类下面的数据，系列名称可以随意填写，也可以不填写，然后点击确定。完成这个步骤之后仅需添加数据，这次选择大分类的数据。如下图：</p>
+<p><strong>第四步：修改图表类型，做出嵌套图原型</strong></p>
+<ol>
+<li>右键选择「更改系列图表类型」按钮；</li>
+<li>将系列2（大分类）的图表类型设置为饼状图；</li>
+<li>将系列1设置为次坐标。<br><img src="http://www.drugnotes.pw/wp-content/uploads/2016/01/tianjiashuju4.jpg" alt=""><br><img src="http://www.drugnotes.pw/wp-content/uploads/2016/01/genggai.jpg" alt=""><br><img src="http://www.drugnotes.pw/wp-content/uploads/2016/01/cizuobiao.jpg" alt=""></li>
+</ol>
+<p>经过上面的三个步骤就可以得到一个关于饼状图（大分类）和圆环图的复合图形。如下图：</p>
+<p><img src="http://www.drugnotes.pw/wp-content/uploads/2016/01/fuhetu.jpg" alt=""></p>
+<p><strong>第五步：修改图表的数据系列格式</strong></p>
+<ol>
+<li>调出修改窗口<br><img src="http://www.drugnotes.pw/wp-content/uploads/2016/01/diaochushezhi.jpg" alt=""></li>
+<li><p>设置主坐标轴饼图分离程度为95%。<br><img src="http://www.drugnotes.pw/wp-content/uploads/2016/01/zhutuzuobiaozhu.jpg" alt=""></p>
+</li>
+<li><p>合拢上一步得到的分离饼图，得到下面的样式<br><img src="http://www.drugnotes.pw/wp-content/uploads/2016/01/helongbingtu.jpg" alt=""></p>
+</li>
+<li><p>设置圆环图的内径大小为70%。<br><img src="http://www.drugnotes.pw/wp-content/uploads/2016/01/shezhineijing.jpg" alt=""></p>
+</li>
+<li><p>将两个图形的边线框设置为无边线。就可以得到了类似于网站上面的图表，并且大小分类的数据是一一对应的。<br><img src="http://www.drugnotes.pw/wp-content/uploads/2016/01/shezhiwubianxian.jpg" alt=""></p>
+</li>
+</ol>
+<p><strong>第六步：修改图表样式，让图表亮起来</strong></p>
+<p>这里主要就是根据图表做一些颜色颜色上面的修改，并且设置一下图表的标签。在这里我就直接按照网站上面的的图表颜色来填充，顺便推荐一款取色的小软件，软件的名字是Colorpix，非常方便好用的小软件。具体使用方法和下载地址可以自行百度。</p>
+<p>填充后的效果，是不是感觉十分的相似，卧槽，吊炸天了。</p>
+<p><img src="http://www.drugnotes.pw/wp-content/uploads/2016/01/xiugaiyanse.jpg" alt=""></p>
+<p>最后就是加上数据标签，和一些必要的说明，因为这些数据是随便拿来的，所以没有写注释，各位读者朋友可以根据自己的业务情况添加标签和说明。</p>
+<p><img src="http://www.drugnotes.pw/wp-content/uploads/2016/01/zuihou.jpg" alt=""></p>
+<p>看上面的标签的样式还是可以做进一步的修改，完成可以达到Echarts一样的水平，由于时间的关系，这里就没有继续进行下去。</p>
+<p>这篇文章主要就是分享一下关于符合图标的制作，这是其中的一种方法，可能会有更好的方法。欢迎各位读者朋友分享讨论。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/01/05/零基础学习SQL的资源推荐/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1748,168 +1940,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2015/10/12/Excel函数学习—vlookup函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alex">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="第七周期">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/10/12/Excel函数学习—vlookup函数/" itemprop="url">Excel函数学习—vlookup函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-12T00:29:47+08:00">
-                2015-10-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/软件技能/" itemprop="url" rel="index">
-                    <span itemprop="name">软件技能</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/10/12/Excel函数学习—vlookup函数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/10/12/Excel函数学习—vlookup函数/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在Excel里面，vlookup函数称之为查找和引用函数，在日常的办公中经常用到。它的主要作用就是在一张具有多列和多行的表格中，根据特定一行的内容去查找该表中或者其他表格中的内容，一句话就是匹配相应的数据，下面举个栗子。</p>
-<p><img src="http://lietome.gotoip4.com/wp-content/uploads/2015/10/1.jpg" alt="1"></p>
-<p>如上面的表格当中，根据姓名查找并返回对应的工资，那么在B15中写上公式：=VLOOKUP($A15,B3:C7,2,FALSE )，按下回车就可以返回对应的工资的值，下面简单的说一下公式中的参数。</p>
-<blockquote>
-<p>第一：第一个参数$A15（必须）指的是查找的目标，也就是说我们想要看通过哪个人的工资。</p>
-<p>第二：第二个参数B3:C7（必须）值得是查找的对象，这里是一个数组来的，其中第一个参数必须在第一列必须（B3），查找的对象必须在最后一行，我们返回的就是工资（C7）。</p>
-<p>第三：第三个参数3（必须）就是指返回结果所在的列，这里一定是最后最后一列。</p>
-<p>第四：第四个参数False（非必须）是匹配规则，False表示精准匹配，True表示模糊匹配。<br>上面就是vlookup的简单介绍，其实跟vlookup类似的函数有lookup和hlookup，使用方法类似，但是值得的是lookup适用于在数组的第一行或第一列中查找指定的值，并返回数组最后一行或最后一列中同一位置的值。当要匹配的值位于数组的第一行或第一列中时使用。而hlookup跟vlookup最大的不同就是vlookup是横向查找，而hlookup是纵向查找。</p>
-</blockquote>
-<p>今天先分享到这里，今后还会分享一下关于Excel的学习心得，欢迎大家继续关注。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1960,7 +1990,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">138</span>
+                <span class="site-state-item-count">139</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1982,7 +2012,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">163</span>
+                <span class="site-state-item-count">164</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

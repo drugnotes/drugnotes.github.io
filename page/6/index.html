@@ -286,6 +286,167 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/04/08/MySQL 汇总数据函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/04/08/MySQL 汇总数据函数/" itemprop="url">MySQL 汇总数据函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-08T00:13:19+08:00">
+                2016-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习札记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习札记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/08/MySQL 汇总数据函数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/04/08/MySQL 汇总数据函数/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在实际应用当中，我们经常不需要实际的数据列表，我们需要的是一个汇总的结果，比如说一个月销售了多少件商品？一个月销售的多少种产品？一个月销售的多少钱产品？这些都是关于数据的汇总的，对于熟悉 Excel 的人来说一定也知道 Excel 里面的这些功能，其实在 SQL 语言里面也是可以做到的，可以使用函数操作。</p>
+<p>SQL 语言里面提供了 5 个用来数据汇总的函数，分别是 COUNT() ；AVG() ；SUM()；MAX()；MIN()这五个函数，看名字就可以很好的理解这些函数，后面会慢慢的来进行解释。</p>
+<h4 id="1-使用「COUNT-」函数计算行的数目"><a href="#1-使用「COUNT-」函数计算行的数目" class="headerlink" title="1. 使用「COUNT()」函数计算行的数目"></a>1. 使用「COUNT()」函数计算行的数目</h4><p>「COUNT()」函数可以用来计算行的数量以及满足筛选条件行的数量，「COUNT()」有两种使用方式，一种就是使用「COUNT(×)」的语句来计算的所有的行数，返回行数的结果包含空值（NULL）；「COUNT()」的另外一种使用方式为「COUNT(column_name)」语句，返回在「column_name」含有值的所有行的数量，不包含空值（NULL）。所以如果需要返回 「user_email」值不为空的行数的时候就可以使用下面的语句。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql -&gt; SELECT  COUNT(user_email)  AS email_coust</div><div class="line">             -&gt; FROM</div><div class="line">             -&gt; user;</div></pre></td></tr></table></figure></p>
+<h4 id="2-使用「AVG-」函数计算平均值"><a href="#2-使用「AVG-」函数计算平均值" class="headerlink" title="2. 使用「AVG()」函数计算平均值"></a>2. 使用「AVG()」函数计算平均值</h4><p>「AVG()」 函数可以用来计算一个行里列里面所有的值或者满足特定条件的值平均值，使用的时候只需要在AVG()这个函数的括号内声明需要计算的字段就可以了。比如说需要计算一个月里面订单价格的平均值 Order_price，那么就可以使用 SELECT  AVG(Order_price)  AS AVG_order_price；当然，AVG() 这个函数还可以搭配 WHERE 这个操作符进行使用，可以计算出某些条件的平均值。</p>
+<p>还有一个地方值得注意的是，对于 NULL 的行来说， AVG() 这个函数会自动的忽略不计</p>
+<h4 id="3-使用「SUM-」函数计算总额"><a href="#3-使用「SUM-」函数计算总额" class="headerlink" title="3. 使用「SUM()」函数计算总额"></a>3. 使用「SUM()」函数计算总额</h4><p>「SUM()」 函数可以用来计算一个行里列里面所有的值或者满足特定条件的值总值，使用的时候只需要在AVG()这个函数的括号内声明需要计算的字段就可以了。比如说需要计算一个月里面订单的总金额 SUM_price ，那么就可以使用 SELECT  AVG(Order_price)  AS SUM_price；当然，AVG() 这个函数还可以搭配 WHERE 这个操作符进行使用，可以计算出某些条件的总计。</p>
+<h4 id="4-使用「MAX-」和「MIN-」函数分别返回最大值和最小值"><a href="#4-使用「MAX-」和「MIN-」函数分别返回最大值和最小值" class="headerlink" title="4. 使用「MAX()」和「MIN()」函数分别返回最大值和最小值"></a>4. 使用「MAX()」和「MIN()」函数分别返回最大值和最小值</h4><p>「MAX()」和「MIN()」这两个函数分别用来计算行或者列当中的最大值或者最小值，使用方式跟前面的函数一致，也是可以通过使用 WHERE 等语句一起搭配起来进行筛选的。</p>
+<p>上面就是简单的介绍了关于 5 个汇总函数的使用方式和技巧，还有一些值得注意的时间，后期会继续跟进，写一些更加高级的东西。</p>
+<p>—EOF—</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/04/07/记录的好处/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1783,168 +1944,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/02/28/为什么总是抓不住机会/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alex">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="第七周期">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/02/28/为什么总是抓不住机会/" itemprop="url">为什么总是抓不住机会</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-28T20:52:06+08:00">
-                2016-02-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">生活随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/02/28/为什么总是抓不住机会/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/02/28/为什么总是抓不住机会/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>周末回了趟学校，晚上几个同学散步的时候，走到了学校附近的一个新开放的楼盘里面。原本楼盘的那块地是一片长满荒草地小山坡，去年年初的时候开发商就开始推平这座小山，不到一年的时间，楼房就被建了起来，而且白天的时候来看房的人特别的多。我们在里面散步的时候，不少的同学都在叹气：「如果自己有钱，之前能把这地买了那就发了」。当然，这是一句玩笑，也是一句自嘲。</p>
-<p>面对着现实生活的压力，我们尝试在给自己的生活寻找一个突破的地方，或者去找一些可以让自己快速成长，快速发财的机会。当然，我们遇到了很多的”机会“，只是往往抓不住。</p>
-<p>在 过去的前十年，我们没有抓住互联网的爆发期；在淘宝快速成长的时候，我们没有抓住淘宝卖家的机会；在 08 年楼长高涨的时候，我们没有抓住机会；在微博时代，我们没有抓住机会；在微信时代，我们没有抓住机会；在互联网金融风口期，我们没有抓住机会；甚至是在当下很多的风口上面，我们都没有抓住机会，我们都只是一个旁观者，只能眼睁睁的看着这些机会被别人抓住了，并且在这个行业里面发展起来了。</p>
-<p>或者我们都还没有明白为什么抓不住这些机会的时候就已经过了风口期了，或者说很多东西，到了现在还是不能明白为什么当时没有抓住这个机会。</p>
-<p>在我看来，其实并不是你没有抓住这些机会，只是觉得这些所谓的”机会”对于自己来说根本就不是机会，那只是对于特定人的机会。</p>
-<p>其实行业与行业之间都是有一堵很厚的强，墙外的人根本不知道墙内里面最真实的情况，甚至连墙内也就是只有少部分的人真实准确的理解墙内的情况。在加上这些人具备了在这堵墙里面生存的根本技能，所以他们就能很好的抓住这些机会。而那些墙外的人，更多的只是充当一个旁观者，看到的也就只能是最热闹的那部分，所以也就不能很好的理解机会，更加没有在墙内生活的根本能力。</p>
-<p>李笑来之前在写一本英语学习的书的时候，使用到了关于程序的东西来帮他整理词汇，正好在很多年前，李笑来就学习了编程相关的东西，当时学习的时候，他并不知道这些编程的能力对他的未来有什么好处，也就学了。所以可以知道，出那本书的为什么是李笑来而不是其他的新东方老师，我想新东方里面肯定有比李笑来的英语好的人吧。</p>
-<p>其实我总结了一下，抓不住机会的根本原因就是你们有对这个行业有足够的知识和技能，其实说白了就是平时没有学习。</p>
-<p>今天要写的就是这么多，也就是这么简单，但并不是每个人都懂，包括我自己。</p>
-<p>-EOF-</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1995,7 +1994,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">138</span>
+                <span class="site-state-item-count">139</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2017,7 +2016,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">163</span>
+                <span class="site-state-item-count">164</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
