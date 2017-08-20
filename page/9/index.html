@@ -286,6 +286,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/01/23/XAMPP 启动 Apache 失败的解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/01/23/XAMPP 启动 Apache 失败的解决方案/" itemprop="url">XAMPP 启动 Apache 失败的解决方案</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-23T21:45:45+08:00">
+                2016-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习札记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习札记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/01/23/XAMPP 启动 Apache 失败的解决方案/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/01/23/XAMPP 启动 Apache 失败的解决方案/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近在学习 PHP，在使用 XAMPP 软件搭建 PHP环境之后，尝试启动 <code>Apache</code> 的时候却发现失败了，返回的信息如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">16:50:25  [Apache]     Status change detected: running</div><div class="line"></div><div class="line">16:50:26  [Apache]     Status change detected: stopped</div><div class="line"></div><div class="line">16:50:26  [Apache]     Error: Apache shutdown unexpectedly.</div><div class="line"></div><div class="line">16:50:26  [Apache]     This may be due to a blocked port, missing dependencies,</div><div class="line"></div><div class="line">16:50:26  [Apache]     improper privileges, a crash, or a shutdown by another method.</div><div class="line"></div><div class="line">16:50:26  [Apache]     Press the Logs button to view error logs and check</div><div class="line"></div><div class="line">16:50:26  [Apache]     the Windows Event Viewer for more clues</div><div class="line"></div><div class="line">16:50:26  [Apache]     If you need more help, copy and post this</div><div class="line"></div><div class="line">16:50:26  [Apache]     entire log window on the forums</div></pre></td></tr></table></figure></p>
+<p>一时间自己也不知道是怎么回事，第一时间想到的就是端口的问题，后来上 Google 查了一些资料，可能就真的是80端口的问题，后来就适当的调整了一下端口的配置。现在把这个过程记录下来，希望对自己以后的学习和初学者们能有帮助。</p>
+<p><strong>第1步</strong><br>从 <code>XAMPP</code> 的控制面板，选择Apache的配置，就是 <code>Start</code> 后面的 <code>config</code> 选项，并选择 <code>httpd.conf</code> 文件。然后再 <code>httpd.conf</code> 文件里面找到  <code>listen 80</code>，把 <code>80</code> 改为 <code>8080</code> 这类数值，然后把文件保存。</p>
+<p><strong>第2步</strong><br>同样的操作，在 <code>Apache</code> 下，再次点击配置按钮，但这次选择了 <code>httpd-ssl.conf</code> 这个文件，在 <code>httpd-ssl.conf</code> 文件中找到，发现一行写着 <code>listen 443</code>，并且叫 <code>443</code> 改为别的数字，比如 <code>4433</code>，然后保存文件。</p>
+<p>并改变 <code>443</code> 到任何你想要的端口。我将使用 <code>4433</code>作为新的端口号。</p>
+<p>然后再重新启动 <code>Apache</code> 就可以成功了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/01/05/模仿Echarts学习制作嵌套饼图/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1780,166 +1938,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2015/10/13/贾想—贾樟柯电影手记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alex">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="第七周期">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2015/10/13/贾想—贾樟柯电影手记/" itemprop="url">贾想—贾樟柯电影手记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-13T23:10:13+08:00">
-                2015-10-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/10/13/贾想—贾樟柯电影手记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/10/13/贾想—贾樟柯电影手记/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这本书简单的记录了从1995年到2008年贾樟柯和电影的所发生的事情，从贾樟柯的第一部作品《小山回家》到2008年的《二十四城记》。整本书一时间为线，也就是通过贾樟柯的每一部作品将贾樟柯的电影生涯衔接起来，书里面有贾樟柯自己给电影写的介绍，也有新闻媒体的报道，但跟多的篇幅用在了那些贾樟柯和别人的对话当中。</p>
-<p>书中的内容如同贾樟柯的电影一样真实，关注现实生活以及关注人与所存在的社会之间的关系。通过书中的文字我们不能彻底的了解到贾樟柯拍电影当中的经历的困难，但是我们可以看到的是贾樟柯关于电影的主张。</p>
-<p>贾樟柯的电影在中国电影里面是一个奇特的存在，她的电影很少进入中国的电影院，常常是在地下以DVD和网络形式流行。但是在外国的各大影展里屡获大奖，也得到了国内外很多同行的认可。</p>
-<p>2013年的时候，贾樟柯的电影《天注定》在嘎纳电影节里获得了多个大奖，但是因在国内的审片制度迟迟未能在国内上映，贾樟柯做了很多的努力。直至到了2014年5月中旬，《天注定》的片源在网络上面流出，为此贾樟柯放弃了在国内影院上线，并且因为这次时间赔了不少钱给投资人。</p>
-<p>贾樟柯的作品并不多，但是每一部作品都是值得我们去看看。贾樟柯的关心是人与他们说出在的社会之间的关系，所以他的电影充满着现实主义，被称之为是现实主义导演。确实是这样，贾樟柯的电影处处都可以看到现实生活的镜头，充满着生活的气息。他的电影里面呈现出来的生活才是真真正正的生活，而某些导演拍电影电影里面的生活不知道是哪来的生活。</p>
-<p>在这个以票房说话的中国电影市场里面，贾樟柯一直坚持着他的信念：拍电影是我接近自由的方式。贾樟柯不反对电影商业化，但是他反对为了商业而决定了一部电影要表达的东西。</p>
-<p>贾樟柯还在采访当中直接匹配了中国电影的审批制度，在这样的审批制度下，严重的阻碍了中国年轻导演的发展和进入，不利于今后中国电影的发展。</p>
-<p>贾樟柯在中国的电影里面就是一个特立独行的一位，展现出来的是中国电影不一样的一面。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1990,7 +1988,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">139</span>
+                <span class="site-state-item-count">140</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2012,7 +2010,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">164</span>
+                <span class="site-state-item-count">165</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
