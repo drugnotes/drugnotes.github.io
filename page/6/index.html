@@ -286,6 +286,169 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/04/09/MySQL 分组数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/04/09/MySQL 分组数据/" itemprop="url">MySQL 分组数据</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-09T22:01:00+08:00">
+                2016-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习札记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习札记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/09/MySQL 分组数据/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/04/09/MySQL 分组数据/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>对于 Excel 数据透视表比较熟悉的人应该知道，透视表最常用的就是对数据进行透视汇总，得到相关的数据就是按照其中一个字段的一个数值进行汇总展示。举个简单的例子：有一份订单详细，记录着几个月以来订单里面每个商品的销售数量和金额。由于每个订单里面的产品是不一样的，需要汇总每个产品的具体销售数据进行汇总，那么就进行分组数据。汇总这些数据在 Excel 上就可以直接使用数据透视表，在数据库使用 SQL 语音就需要用到 Group by 操作符对数据进行分组汇总。</p>
+<h4 id="1-创建分组数据"><a href="#1-创建分组数据" class="headerlink" title="1. 创建分组数据"></a>1. 创建分组数据</h4><p>假如需要对一份销售数据表进行处理，根据商品的编号（Prods_id）汇总出来每一个商品的在一个时间段的销售总数量（Prods_num_sum）。分组数据的原理就是根据不同的商品编号对商品的每个订单中的商品数量进行相加之后返回最终的结果，并且没一个商品单独一行进行展示，这里面的逻辑和 Excel 数据透视表的逻辑是一模一样的，而且运行起来要比 Excel 透视表更快，可以处理的数据量更大。具体实现如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql -&gt;SELECT Prods_id, sum(Prods_num) AS Prods_num_sum</div><div class="line">            -&gt;FROM</div><div class="line">            -&gt;Order</div><div class="line">            -&gt;Group BY Prods_id;</div></pre></td></tr></table></figure>
+<p>上面的语句就是通过商品编号进行销量合计，然后把这个合计的字段命名为 Prods_num_sum ，最后一个 Group BY Prods_id 意思就是根据 Prods_id 这个字段里面的值进行数据分组。这是一个较为简单，也是比较常用的一个数据分组操作。</p>
+<p>分组数据不仅可以返回合计值，还可以运行之前所有的数据汇总操作，包括返回平均值AVG()；行数COUNT()等等这些想要的数据汇总结果，就相当于在数据透视表上面设置字段的值是一样的，可以有多个选择。</p>
+<p>分组数据还可以通过配合 WHERE 过滤语句进行使用，比如说在一年的销售数据表里面，可以通过 WHERE 对时间进行过滤，过滤得到12月份的商品销售数据的汇总。还可以是根据商品的分类进行过滤，总之可以配合之前学习的那些功能搭配起来进行使用。</p>
+<p>对于分组数据得到的结果，还可以对数据进行排序，排序语句 ORDER BY 需要放在整个语句的最后，否则就会出现错误。</p>
+<h4 id="2-使用-HAVING-过滤分组得到的数据"><a href="#2-使用-HAVING-过滤分组得到的数据" class="headerlink" title="2. 使用 HAVING 过滤分组得到的数据"></a>2. 使用 HAVING 过滤分组得到的数据</h4><p>上面提到了关于分组数据的操作，直接得到的分组数据是所有的数据，有时候我们不需要返回所有的数据，比如我们只需要一个月销量大于 10 的结果，小于 10 的那些产品销售数据我们就不需要打印出来。需要实现这个功能就需要使用另外一个过滤操作符，那就是 HAVING 操作符，比如上面的实例添加上 HAVING sum(Prods_num)  &lt;= 10 这个语句就可以将销售数量小于 10 的数据去掉。具体实现如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -&gt;SELECT Prods_id, sum(Prods_num) AS Prods_num_sum</div><div class="line">        -&gt;FROM</div><div class="line">        -&gt;Order</div><div class="line">        -&gt;Group BY Prods_id</div><div class="line">        -&gt;sum(Prods_num)  &amp;lt;= 10;</div></pre></td></tr></table></figure>
+<p>HAVING() 和 WHERE() 都是对数据进行过滤的，但是两者是有很大区别的。为了方便理解，从它们作用的时间说起吧。WHERE() 实在计算分组数据的时候就执行的，就是说 WHERE() 是过滤哪些数据需要分组。而 HAVING() 实在数据计算分组之后执行的，意思就是判断那些不不满足条件的数据就不被打印出来。也可以理解为为 WHERE() 是对之前的 Prods_num 进行过滤，而 HAVING() 是对后面的 Prods_num_sum 进行过滤。</p>
+<p>—EOF—</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/04/09/Excel 拆分单元格之后快速填充/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1789,170 +1952,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/03/02/不忘初心，为何发出/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alex">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="第七周期">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/03/02/不忘初心，为何发出/" itemprop="url">不忘初心，为何发出</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-02T22:38:11+08:00">
-                2016-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">生活随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/03/02/不忘初心，为何发出/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/03/02/不忘初心，为何发出/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一直都流行着这么一句话——「不忘初心，继续前行」，这个词语的意思大家都能知道，但是并不是每一个人都能真正的做到「不忘初心，继续前行」。</p>
-<p>当我们需要完成一个事情的时候，在最初我们总是会有一个目的，我们可以称之为「初心」，也就是我们做这件事情的最终目的是什么？本来是冲着我们的「初心」开始卖力工作的，但是到了最后，却发现我们离最初的目的越来越远，也就是忘记了我们的「初心」。</p>
-<p>最近官网在做一些活动，其中最终的目的就是为了刺激用户，提高网站浏览量，达成交易。但是上面的领导却要求我们不停的做专场活动，简单粗暴的专场活动上线了，活动的大概形式无非就是优惠券、满减、9.9包邮，但是这些活动形式已经让用户看到就觉得厌烦了，没有了太多的新意，自然而然效果也就不会很好。还有一个问题就是，短时间内生成大量的专题，大家熬夜加班，而且这些专题基本上就是赶着做出来，整体的质量肯定是不好的，引来的流量自然而然也就只能是浪费掉。</p>
-<p>说完了集体的例子，再来谈谈我自身的问题。今天找到产品经理提交一个新的活动页面，这样的活动页面之前做过一次，但是当时没有给技术团队和产品团队反馈具体的效果，所以这次产品经理问及：上次活动的效果怎么样？这次的预计又怎么样？这时候我进陷入的沉默，发现自己犯下了很大的错误，为了做活动而做活动，没有在每一次的活动当中去收获点滴，做出合理性的调整。忘记了「初心」，忘记了自己为何出发。</p>
-<p>虽然在公司里面，有的事情领导安排下来，你不得不做，这时候可能就要忘记「初心」，但是有些远离「初心」的计划我们有能力停止，并且回到原来正确的方向，但是我们依旧还是会偏离「初心」越远。</p>
-<p>这篇文章告诫自己：无论何时出发，谨记「初心」。</p>
-<p>-EOF-</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1998,7 +2002,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">140</span>
+                <span class="site-state-item-count">141</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2020,7 +2024,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">165</span>
+                <span class="site-state-item-count">166</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
