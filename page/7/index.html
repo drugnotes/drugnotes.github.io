@@ -286,6 +286,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/03/25/MySQL 插入数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/03/25/MySQL 插入数据/" itemprop="url">MySQL 插入数据</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-25T19:39:07+08:00">
+                2016-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习札记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习札记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/25/MySQL 插入数据/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/03/25/MySQL 插入数据/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>使用 MySQL 数据的时候可以通过使用 INSERT 这个语句来进行插入操作，给数据表插入数据可以有多种方式，可以插入整行数据；可以对一行当中提定的列插入数据；还可以插入某些查询出来的结果数据；还可以复制其他表格数据到数据表里面。</p>
+<p>注：INSERT 语句不仅适合用于 MySQL ，同时适用于几乎所有类型的数据库，只是部分类型数据库操作语句有点不一样。</p>
+<p>在插入数据之前首先就要选择进入对应操作的数据表，在连接数据库成功的情况下使用 use database_neme 语句进入相应的数据库进行操作，比如需要操作数据库名为 WP 这个数据库，那么在命令行数据入 use WP ,如下显示即可成功切换数据库。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MySQL&gt; use WP</div><div class="line">Database  Changed</div></pre></td></tr></table></figure></p>
+<p>下面就是具体的插入数据的操作。</p>
+<h4 id="插入完整行数据"><a href="#插入完整行数据" class="headerlink" title="插入完整行数据"></a>插入完整行数据</h4><p>加入在名为 User 这个这个数据表里面有 user_id ; user_name ; user_address ; user_phone 这几列数据表头，这时候需要给数据表添加一条数据信息，并且这四条数据都要添加上相应的信息，那么就可以使用下面的语句进行添加：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MySQL&gt; insert into User</div><div class="line"> -&gt; values</div><div class="line"> -&gt; (1,"Alex","guangzhou","13800138000");</div></pre></td></tr></table></figure></p>
+<p>因为数据表有四列，所以下面的这些值就会根据顺序插入到对应的列里面。这种插入方式非常简单，但是因为没有声明插入的是那一列，在后面数据表结构发生改变的时候就是出现问题。所以可以选择下面这种声明具体插入列的方式来进行插入数据。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MySQL&gt; insert into User(user_id, user_name,  user_address, user_phone)</div><div class="line"> values(1,"Alex","guangzhou","13800138000");</div></pre></td></tr></table></figure></p>
+<p>上面这种插入方式及时是这个数据表里面还存在其他的列也不会受到影响，这个值会按照前面列名的那个顺序来插入数据。</p>
+<h4 id="插入部分的行数据"><a href="#插入部分的行数据" class="headerlink" title="插入部分的行数据"></a>插入部分的行数据</h4><p>上面提到了插入全部的行数据，就是只要数据表里面有的数据列都会插入一个值。除此之外，还可以通过声明列名的形式插入数据，并且可以省略部分列。比如说针对数据表 User 里面的列，只选择插入 user_id, user_name, user_phone，不插入 user_address 这个列的值，就可以这样子操作：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MySQL&gt; insert into User(user_id, user_name, user_phone)</div><div class="line">values(1,"Alex","13800138000");</div></pre></td></tr></table></figure>
+<p>那么就可以就是没有给 user_address 这个列供值，那么这个列就不会插入数据。可以看出这样子的数据表设计是比较灵活的。</p>
+<h4 id="插入检索出来的数据"><a href="#插入检索出来的数据" class="headerlink" title="插入检索出来的数据"></a>插入检索出来的数据</h4><p>有时候对数据表进行操作的时候，比一定都是通过手动赋值的形式插入数据。有一种就是通过检索另外一个数据表的数据，然后导入到擦操作的数据表里面来。这样的方式可以高效的导入数据，更新数据表，而且也是比较安全的。</p>
+<p>如果需要将一个名字为 User_old 的数据表里面的 user_id, user_name,  user_address, user_phone 这些列的数据插入到 User 这个数据表里面的话，那么就之间使用语句：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MySQL&gt; insert into User(user_id, user_name, user_address, user_phone)</div><div class="line"><span class="keyword">select</span>(user_id, user_name, user_address, user_phone)</div><div class="line"><span class="keyword">from</span> User_old;</div></pre></td></tr></table></figure></p>
+<p>这样子执行就可以将数据插入到 User 里面了。</p>
+<h4 id="复制一个表的所有数据到另外一个数据表"><a href="#复制一个表的所有数据到另外一个数据表" class="headerlink" title="复制一个表的所有数据到另外一个数据表"></a>复制一个表的所有数据到另外一个数据表</h4><p>上面提到一个数据表里面的数据可以检索出来然后插入到另外一个数据表里面，其实根据这个思维，可以发展一下。就是把检索数据的那个表的所有数据检索出来，并且插入到另外的一个表里面，那么这就完成了数据表复制了。具体为：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> *</div><div class="line"><span class="keyword">into</span> <span class="keyword">User</span></div><div class="line"><span class="keyword">from</span> User_old</div></pre></td></tr></table></figure></p>
+<p>上面代码中的 × 号代表的就是检索所有数据，into User 就是之要插入那个数据表， from User_old 就是声明从那个数据表导入。</p>
+<p>关于数据表的插入学习内容基本就是这么多了，后面会继续更新。</p>
+<p>—EOF—</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/03/02/不忘初心，为何发出/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1738,169 +1907,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/02/18/突破壁垒/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alex">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="第七周期">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/02/18/突破壁垒/" itemprop="url">突破壁垒</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-18T23:01:18+08:00">
-                2016-02-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习札记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习札记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/02/18/突破壁垒/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/02/18/突破壁垒/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<blockquote>
-<p>如果不能控制这种逃避的倾向，再多、再好的任务管理技巧都是无效的，因为任务中相当重要的一部分（通常因为重要而困难，也因为困难而重要）永远无法完成。所谓效率，是在任务完成之后才能够衡量的。这样看来，对逃避困难&gt;的人来讲，因为没有完整地完成任务，所以无论他们花了多长时间，也都没有效率（相当于分子为零）。</p>
-</blockquote>
-</blockquote>
-<p>这是李笑来在他的《把时间当朋友》这本书上面第三章中提到的观点，讲的就是：当我们做一件事情的时候，遇到困难的时候，如果直面困难，我们的效率才能说是高的，否则就是一个效率底下的人。其中的观点在书中已经讲的非常明白了。看了他的观点，让我想起来前段时间我在学习 Python 的时候发生的一些事情。</p>
-<p>我是在去年的时候开始学习 Python ，一直没有买书本，但是看了《简明 Python 教程》和《笨方法学习 Python 》，还有廖雪峰的《Python2.7 教程》我也看过了一点。看玩这些书本的时候，我对于 Python 的基本语法已经是比较了解了，可以写一些简单的爬虫。但是每当我要写一个比较大的东西，比如 Blog 网站的话，我就会在一些地方被难住了，有的困难经常就是困扰我好几天。面对这些情况，我选择重新学习那些基本的语法，再回头看语法的时候，其实我都能理解，但是再去写的时候就会不知道怎么实现。如此的恶性循环，我甚至觉得我是学不会编程的。</p>
-<p>直到现在我看了李笑来的这本书才发现，可能原因并不是我真的不会编程，而是我在这样的一个困难面前没有跨过去，也就是常说的「壁垒」。或者当时的我跨过了这个壁垒，解决了这个困难，那我学习编程的道路就会明朗很多，不会像当初那么糟糕。</p>
-<p>有些东西会让我们得心应手，这些不重要，重要的是那些阻碍我们前进的壁垒，只要突破了这些壁垒，我们就能看到新的道路。</p>
-<p>这鸡汤，干了，共勉！</p>
-<p>-EOF-</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1951,7 +1957,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">141</span>
+                <span class="site-state-item-count">142</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2061,7 +2067,7 @@
         <div class="copyright" >
   
   &copy;  2014 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
