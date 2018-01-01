@@ -286,6 +286,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/03/28/MySQL 排序检索数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/03/28/MySQL 排序检索数据/" itemprop="url">MySQL 排序检索数据</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-28T21:21:48+08:00">
+                2016-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习札记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习札记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/28/MySQL 排序检索数据/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/03/28/MySQL 排序检索数据/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>通过使用 SELECT 语句可以检索出来数据表格里面的数据，但是检索出来的数据的顺序是没有确定的排列顺序的，所以往往每一次进行相同的检索的时候的出来的排序确实不一样的。所以这时候就需要使用到 SQL 的检索排序。检索排序的语句为 ORDER BY 。具体使用方法如下：</p>
+<h4 id="单行数据进行排列"><a href="#单行数据进行排列" class="headerlink" title="单行数据进行排列"></a>单行数据进行排列</h4><p>如果需要从 user 表中检索出来的 user_name 进行排序，那么只要在语句的后面加上 ORDER BY user_name 这个语法就可以了。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql -&gt;SELECT user_name</div><div class="line"></div><div class="line">            -&gt;FROM</div><div class="line"></div><div class="line">            -&gt;user</div><div class="line"></div><div class="line">            -&gt;ORDER BY user_name;</div></pre></td></tr></table></figure></p>
+<p>那么检索出来的数据就会根据 user_name 里面的数据按照 A-Z 来进行排序，并且打印出来。</p>
+<p>上面这种是按照正常（A-Z）的排序方式进行排序，那么我们还可以在 ORDER BY 语句后面加上 DESC 这个语句来进行倒序（Z-A）排列。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql &gt; SELECT user_name</div><div class="line"></div><div class="line">        -&gt;FROM</div><div class="line"></div><div class="line">        -&gt;user</div><div class="line"></div><div class="line">        -&gt;ORDER BY user_name DESC;</div></pre></td></tr></table></figure>
+<p>在原来的基础上面添加上 DESC 这个语句就可以将原来的顺序倒转过来进行检索，并且打印出来。</p>
+<h4 id="多行数据进行排列"><a href="#多行数据进行排列" class="headerlink" title="多行数据进行排列"></a>多行数据进行排列</h4><p>除了可以对单行数据进行排列之外，还可以进行多行数据进行排列，这里只要将需要排序的列名称都添加到 ORDER BY 后面，并且通过逗号隔开就可以了。例如需要将 user 数据表里面的 user_id 和 user_name ，user_phone  ，这些数据都检索出来，并且通过 user_name 和 user_id 进行排序。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql &gt; SELECT user_id, user_name, user_phone</div><div class="line"></div><div class="line">        -&gt;FROM</div><div class="line"></div><div class="line">        -&gt;user</div><div class="line"></div><div class="line">        -&gt;ORDER BY user_name, user_id ;</div></pre></td></tr></table></figure>
+<p>上面的语句就是首先通过 user_name 进行排列，user_name 排序之后在对 user_id 进行排序，最后见排序后的检索结果打印出来。</p>
+<p>处理直接的在 ORDER BY 后面直接指明需要排序的列的名称之外，还可以通过指定检索时候列的顺序数字进行排序，所以上面的语句可以下面这样写，结果和机理都是一样的。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql &gt; SELECT user_id, user_name, user_phone</div><div class="line"></div><div class="line">        -&gt;FROM</div><div class="line"></div><div class="line">        -&gt;user</div><div class="line"></div><div class="line">        -&gt;ORDER BY 2,  2 ;</div></pre></td></tr></table></figure>
+<p>上面就是关于数据检索的一个排序的学习历程，其中值得注意的是 ORDER BY 语句一定是要放在整个语句的后米那，否则的话数据库就会报错，不能正确的打印出来想要的结果。</p>
+<p>现在简单的总结一下：</p>
+<ol>
+<li>SQL 数据检索排序需要使用 ORDER BY 这个语句，并且这个语句一定是放在整个语句的最后一行；</li>
+<li>这个排序可以是按照（A-Z）这个顺序进行排列，还可以通过添加 DESC 去调整实现（Z-A）排序；</li>
+<li>除了针对单行排序之外，还可以进行多行数据排列，只要将需要排列行的列名称或者检索的列顺序放在 ORDER BY 后面，并且通过逗号分割开；</li>
+<li>如果需要多行的倒序排列，那么就要在每一个列名称后面都加上 DESC 。</li>
+</ol>
+<p>-EOF-</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/03/25/MySQL 插入数据/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1748,165 +1920,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/02/21/黑客与画家/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alex">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="第七周期">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/02/21/黑客与画家/" itemprop="url">黑客与画家</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-21T22:11:18+08:00">
-                2016-02-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/02/21/黑客与画家/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/02/21/黑客与画家/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这是一本非常经典的书籍，作者是硅谷创业之父——Paul Graham，译者是我非常喜欢的博客作家阮一峰。这本书不仅作者写得好，译者也很给力，不会觉得读起来文字显得很生硬。</p>
-<p>只是简单的看题目，读者可能很容易会被误导为这本书讲的就是黑客与画家。其实不然，《黑客与画家》这是这本书其中的一篇文章而已，当然作者在书中的很多地方提到黑客，并且认为黑客就是技术创新发展的源头。之所以会有这样的赞誉，其中的原因就是作者就是一个黑客，另外一个原因是事实确实如此。</p>
-<p>在这本书中，作者写了很多关于互联网，财富，编程、以及产品设计的见解。他从一个技术人员和创业者的视角去审视一个行业的发展，他的那些预测未来的观点再后来被一一的证实，并且给人类带来很多的好处。</p>
-<p>作者从财富分配这个事情上面出发，讨论了我们应该怎么样的获得更多的财富，作者直接了当的说：就是通过创业来获得财富。作者认为财富是可以通过实践被创造出来，财富并不是一个零和的游戏，并不是我增加了你就必须减少。</p>
-<p>在作者看来，一个人的能力和贡献在大公司里面很容易就会被平均化，要想让自己的能力显得突出，最好就是选择一个 10 人以内的小团队，这样一个人的能力和贡献才不会被平均化。</p>
-<p>在这本书中，还有很多值得我们去认真品味的观点，虽然这本书早上 2004 年出版英文版，但是现在看来书上面的观点并不会随着时间的推移而不合时宜。</p>
-<p>-EOF-</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1957,7 +1970,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">142</span>
+                <span class="site-state-item-count">143</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1979,7 +1992,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">167</span>
+                <span class="site-state-item-count">168</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
