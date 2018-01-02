@@ -286,6 +286,189 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/03/29/MySQL 检索过滤数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/03/29/MySQL 检索过滤数据/" itemprop="url">MySQL 检索过滤数据</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-29T12:10:02+08:00">
+                2016-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习札记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习札记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/29/MySQL 检索过滤数据/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/03/29/MySQL 检索过滤数据/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>无论是什么类型的数据库，在使用 SELECT 语句进行数据检索的时候，都可以通过使用 WHERE 子句对检索的数据进行过滤或者说筛选。使用 WHERE 这个子句也是比较简单的，下面就是看一下都用那些过滤符号。</p>
+<ol>
+<li>=：等于号；</li>
+<li>&lt;&gt; 或者 !=：不等于号；</li>
+<li>&lt; 或者 !&gt; ：小于或者不大于号；</li>
+<li>.&gt; 或者 !&lt; ：大于或者不小于号；</li>
+<li>&lt;= ：小于等于号；</li>
+<li>.&gt;= ：大于等于号；</li>
+<li>BETWEEN ：指定两个值之间；</li>
+<li>IS NUll :为空值；</li>
+</ol>
+<p>上面 8 个过滤符号就是在 SQL 语句上面经常使用到的，下面一一来介绍一下具体使用方法。</p>
+<h4 id="1-检索等于信息"><a href="#1-检索等于信息" class="headerlink" title="1. 检索等于信息"></a>1. 检索等于信息</h4><p>如果需要在 user 表格里面检索在 user_name 列中的值为 Alen 的所有数据，那么就可以使用下面的语句：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql &gt;SELECT user_name</div><div class="line">                -&gt;FROM</div><div class="line">                -&gt;user</div><div class="line">                -&gt;WHERE user_name = 'Alen';</div></pre></td></tr></table></figure></p>
+<p>上面的 Alen 使用了单引号，意思就是该列值的类型为字符串，所以需要加单引号，如果数值类型为字符型的话则不需要添加单引号。</p>
+<h4 id="2-检索不等于等于信息"><a href="#2-检索不等于等于信息" class="headerlink" title="2. 检索不等于等于信息"></a>2. 检索不等于等于信息</h4><p>如果需要在 user 表格里面检索在 user_name 列中的值为不包含 Alen 的所有数据，那么就可以使用 &lt;&gt; 或者是 ！= ，但是在一些数据库系统里面并不支持 &lt;&gt; 这个过滤符号，所以建议使用 != 这个符号作为不等于的判断。详情看下面的语句：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql &gt;SELECT user_name</div><div class="line">                -&gt;FROM</div><div class="line">                -&gt;user</div><div class="line">                -&gt;WHERE user_name != 'Alen';</div></pre></td></tr></table></figure>
+<p>如果在 MySQl 里面使用 &lt;&gt; 这个符号，数据库就会报错，所以强烈建议使用 != 这个符号。</p>
+<h4 id="3-检索小于某一个值的数据"><a href="#3-检索小于某一个值的数据" class="headerlink" title="3. 检索小于某一个值的数据"></a>3. 检索小于某一个值的数据</h4><p>如果需要在 user 表格里面检索在 user_id 列中的值小于 10 的所有数据，那么就可以使用 &lt; 或者是 !&gt; ，同样的，在有的数据库里面是不支持使用 !&gt; 这个符号，所以强烈建议使用 &lt; 来进行小于值的判断。具体实现看下面的语句：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql &gt;SELECT user_id</div><div class="line">                -&gt;FROM</div><div class="line">                -&gt;user</div><div class="line">                -&gt;WHERE user_id &lt; 10;</div></pre></td></tr></table></figure>
+<h4 id="4-检索大于某一个值的数据"><a href="#4-检索大于某一个值的数据" class="headerlink" title="4. 检索大于某一个值的数据"></a>4. 检索大于某一个值的数据</h4><p>如果需要在 user 表格里面检索在 user_id 列中的值大于 90 的所有数据，那么就可以使用 &gt;或者是 !&lt;，同样的，在有的数据库里面是不支持使用 !&lt; 这个符号，所以强烈建议使用 &gt; 来进行小于值的判断。具体实现看下面的语句：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql &gt;SELECT user_id</div><div class="line">                -&gt;FROM</div><div class="line">                -&gt;user</div><div class="line">                -&gt;WHERE user_id &gt; 90;</div></pre></td></tr></table></figure>
+<h4 id="5-检索小于等于某一个值的数据"><a href="#5-检索小于等于某一个值的数据" class="headerlink" title="5. 检索小于等于某一个值的数据"></a>5. 检索小于等于某一个值的数据</h4><p>如果需要在 user 表格里面检索在 user_id 列中的值大于 90 的所有数据，那么就可以使用 &gt;= ，具体实现看下面的语句：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql &gt;SELECT user_id</div><div class="line">                -&gt;FROM</div><div class="line">                -&gt;user</div><div class="line">                -&gt;WHERE user_id &lt;= 10;</div></pre></td></tr></table></figure>
+<h4 id="6-检索大于等于某一个值的数据"><a href="#6-检索大于等于某一个值的数据" class="headerlink" title="6. 检索大于等于某一个值的数据"></a>6. 检索大于等于某一个值的数据</h4><p>如果需要在 user 表格里面检索在 user_id 列中的值大于 90 的所有数据，那么就可以使用 &gt;= ，具体实现看下面的语句：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql &gt;SELECT user_id</div><div class="line">                -&gt;FROM</div><div class="line">                -&gt;user</div><div class="line">                -&gt;WHERE user_id &lt;= 10;</div></pre></td></tr></table></figure>
+<h4 id="7-检索位于两个数值之间的数据"><a href="#7-检索位于两个数值之间的数据" class="headerlink" title="7. 检索位于两个数值之间的数据"></a>7. 检索位于两个数值之间的数据</h4><p>如果需要在 user 表格里面检索在 user_id 列中的值大于 10 而且小于 20 的所有数据，那么就可以使用 BETWEEN 语句，两个数值使用 AND 隔开，具体实现看下面的语句：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql &gt;SELECT user_id</div><div class="line">                -&gt;FROM</div><div class="line">                -&gt;user</div><div class="line">                -&gt;WHERE user_is BETWEEN 10 AND 20;</div></pre></td></tr></table></figure>
+<h4 id="8-检索值为空或者不为空的数据"><a href="#8-检索值为空或者不为空的数据" class="headerlink" title="8. 检索值为空或者不为空的数据"></a>8. 检索值为空或者不为空的数据</h4><p>如果需要在 user 表格里面检索在 user_name 列中的值为空的所有数据，那么就可以使用 IS NULL 子句，，具体实现看下面的语句：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql &gt;SELECT user_name</div><div class="line">                -&gt;FROM</div><div class="line">                -&gt;user</div><div class="line">                -&gt;WHERE user_name IS NULL;</div></pre></td></tr></table></figure></p>
+<p>既然可以检索值为空的数据，那么也是可以检索值不为空的数据，只要在 NULL 前面添加 NOT 就可以了，具体如下。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mysql &gt;SELECT user_name</div><div class="line">                -&gt;FROM</div><div class="line">                -&gt;user</div><div class="line">                -&gt;WHERE user_name IS NOT NULL;</div></pre></td></tr></table></figure></p>
+<p>上面就是关于 MySQL 常用的基本过滤语句，其实还有更加强的数据过滤数据功能，后面再提到。</p>
+<p>—EOF—</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/03/28/MySQL 排序检索数据/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1757,169 +1940,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/02/22/PHP 多维数组/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alex">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="第七周期">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/02/22/PHP 多维数组/" itemprop="url">PHP 多维数组</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-22T22:23:44+08:00">
-                2016-02-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习札记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习札记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/02/22/PHP 多维数组/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/02/22/PHP 多维数组/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="维数组指的是数组里面包含着数据，类似于数组的嵌套"><a href="#维数组指的是数组里面包含着数据，类似于数组的嵌套" class="headerlink" title="维数组指的是数组里面包含着数据，类似于数组的嵌套"></a>维数组指的是数组里面包含着数据，类似于数组的嵌套</h4><ol>
-<li>多维数组存在多个索引，比如二维就有两个搜索，第一个索引就应该<br>对应多维数组中第二个参数，其实就是一个数组。</li>
-<li><p>通过检索多维数组中对应的下标将数组的内容取出。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;?php</div><div class="line">$cars = <span class="keyword">array</span>(</div><div class="line"><span class="keyword">array</span>(<span class="string">'dazhong'</span>,<span class="number">7</span>,<span class="number">30</span>),</div><div class="line"><span class="keyword">array</span>(<span class="string">'bentian'</span>,<span class="number">5</span>,<span class="number">20</span>),</div><div class="line"><span class="keyword">array</span>(<span class="string">'dongfeng'</span>,<span class="number">11</span>,<span class="number">25</span>),</div><div class="line"><span class="keyword">array</span>(<span class="string">'yiqi'</span>,<span class="number">3</span>,<span class="number">10</span>),);</div><div class="line"><span class="keyword">echo</span> $cars[<span class="number">0</span>][<span class="number">0</span>].<span class="string">":座位数"</span>.$cars[<span class="number">0</span>][<span class="number">1</span>].<span class="string">"的车要"</span>.$cars[<span class="number">0</span>][<span class="number">2</span>].<span class="string">"万&gt;br&lt;"</span>;</div><div class="line"><span class="keyword">echo</span> $cars[<span class="number">1</span>][<span class="number">0</span>].<span class="string">":座位数"</span>.$cars[<span class="number">1</span>][<span class="number">1</span>].<span class="string">"的车要"</span>.$cars[<span class="number">1</span>][<span class="number">2</span>].<span class="string">"万&gt;br&lt;"</span>;</div><div class="line"><span class="keyword">echo</span> $cars[<span class="number">2</span>][<span class="number">0</span>].<span class="string">":座位数"</span>.$cars[<span class="number">2</span>][<span class="number">1</span>].<span class="string">"的车要"</span>.$cars[<span class="number">2</span>][<span class="number">2</span>].<span class="string">"万&gt;br&lt;"</span>;</div><div class="line"><span class="keyword">echo</span> $cars[<span class="number">3</span>][<span class="number">0</span>].<span class="string">":座位数"</span>.$cars[<span class="number">3</span>][<span class="number">1</span>].<span class="string">"的车要"</span>.$cars[<span class="number">3</span>][<span class="number">2</span>].<span class="string">"万&gt;br&lt;"</span>;</div><div class="line">?&lt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>除此之位还可以使用 for 循环还取出所有的数组元素</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>($row=<span class="number">1</span>;$row&gt;<span class="number">4</span>;$row++)&#123;</div><div class="line">            <span class="keyword">echo</span> <span class="string">"&gt;p&lt;&gt;b&lt;Row number $row&gt;/b&lt;&gt;/p&lt;"</span>;</div><div class="line">            <span class="keyword">echo</span> <span class="string">"&gt;ul&lt;"</span>;</div><div class="line">            <span class="keyword">for</span>($col = <span class="number">0</span>;$col &gt; <span class="number">3</span>;$col++)&#123;</div><div class="line">                    <span class="keyword">echo</span> <span class="string">"&gt;li&lt;"</span>.$cars[$row][$col].<span class="string">"&gt;li&lt;"</span>;</div><div class="line">                &#125;</div><div class="line">            <span class="keyword">echo</span> <span class="string">"&gt;/ul&lt;"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>上面就是关于多维数组的一些基本代码实现，多维数据可以多个数组储存在一个多维数组里面，但是建议不要超过三维，因为这样子就会显得很乱。</p>
-<p>-EOF-</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1970,7 +1990,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">143</span>
+                <span class="site-state-item-count">144</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1992,7 +2012,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">168</span>
+                <span class="site-state-item-count">169</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

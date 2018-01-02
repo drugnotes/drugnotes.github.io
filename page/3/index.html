@@ -286,6 +286,237 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/04/25/Axure 学习案例：动态面板制作淘宝登录页面/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/25/Axure 学习案例：动态面板制作淘宝登录页面/" itemprop="url">Axure 学习案例：动态面板制作淘宝登录页面</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-25T17:44:55+08:00">
+                2017-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/互联网/" itemprop="url" rel="index">
+                    <span itemprop="name">互联网</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/04/25/Axure 学习案例：动态面板制作淘宝登录页面/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/25/Axure 学习案例：动态面板制作淘宝登录页面/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="效果分析"><a href="#效果分析" class="headerlink" title="效果分析"></a>效果分析</h4><ol>
+<li>通过点击右上角的图标切换扫码、账号登录方式；</li>
+<li>在扫码登录页面，鼠标移入、移出二维码时，二维码平行移动，并且弹出图片的动态效果；</li>
+<li>在账号登录页面，当文本框获取焦点后，输入框的边框为蓝色。失去焦点后，边框颜色为灰色。<br><img src="http://source.drugnotes.pw/blog/20170425/173324381.gif" alt="淘宝登录原型预览"></li>
+</ol>
+<h4 id="元件组成介绍"><a href="#元件组成介绍" class="headerlink" title="元件组成介绍"></a>元件组成介绍</h4><ol>
+<li>扫码登录页面元件介绍。<br><img src="http://source.drugnotes.pw/blog/20170425/173513119.png" alt="动态面板_扫码登录"></li>
+<li>账号登录页面元件介绍。<br><img src="http://source.drugnotes.pw/blog/20170425/173545239.png" alt="动态面板_账户登录"></li>
+</ol>
+<h4 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h4><ul>
+<li><strong>设计动态面板</strong></li>
+</ul>
+<ol>
+<li>打开 Axure ，新建文件，在画布中拖入动态面板，并且设置动态面版宽度和高度均为 350。</li>
+<li>然后双击动态面板，打开面板状态管理窗口，为面板多增加一个状态（面板变为两个状态），并且将面板重命名，命名随意，方便个人理解即可。如下图显示，其中 scan_code 状态就是需要存放扫码登录界面的元件，user_name 状态就是存放用户名登录界面的元件；<br><img src="http://source.drugnotes.pw/blog/20170425/173646439.png" alt="动态面板管理界面"></li>
+</ol>
+<ul>
+<li><strong>设计 scan_code 页面</strong></li>
+</ul>
+<ol>
+<li>鼠标双击「scan_code」，打开scan_code页面；</li>
+<li>将面板背景颜色调整为 #F0F8FA；</li>
+<li>在页面中拖入一个矩形，选中矩形后右键，将矩形转换为自定义形状，调整图形形状为去掉右上角的五边形。去掉右上角是为了显示右上角的图标。</li>
+<li><p>拖放一张电脑 icon 到右上角，图标可以在 <a href="http://www.iconfont.cn/" target="_blank" rel="external">iconfont</a> 这个网站找到。<br><img src="http://source.drugnotes.pw/blog/20170425/173733361.png" alt="scan_code添加五边形和电脑图标"></p>
+</li>
+<li><p>插入二维码和手机图片，设置二维码图片大小为 140&#42;140，将手机图片设置为隐藏。<br><img src="http://source.drugnotes.pw/blog/20170425/173811194.png" alt="插入二维码图片和手机图片"></p>
+<ol>
+<li>设置鼠标移入时用例。第一个，设置鼠标移入二维码区域时，当前组件（二维码）移动，设置参数为：绝对位置、x=30，y=78，动画为线性、时间为500毫秒；第二个，设置等待时间300毫秒；第三个，显示弹窗图片，动画为逐渐，时间为200毫米。（思路是加上等待时间的300毫秒，二维码停止移动时图片完全显示出来）<br><img src="http://source.drugnotes.pw/blog/20170425/173911497.png" alt="设置鼠标移入二维码时水平左移"><br><img src="http://source.drugnotes.pw/blog/20170425/173950439.png" alt="设置显示弹窗图片"></li>
+</ol>
+</li>
+<li><p>设置鼠标移出二维码用例。选中二维码，新增鼠标移出用例，当前组件（二维码）移动，设置参数为：绝对位置、x=110，y=78，动画为线性、时间为500毫秒；第二个，设置等待时间200毫秒；第三个，显示弹窗图片，动画为逐渐，时间为300毫米。（思路是当二维码移动将要接触图片的时候，图片开始隐藏）<br><img src="http://source.drugnotes.pw/blog/20170425/174244668.png" alt="设置鼠标移出二维码时水平右移"><br><img src="http://source.drugnotes.pw/blog/20170425/174326336.png" alt="设置隐藏弹窗图片"></p>
+</li>
+<li><p>经过上面的步骤，scan_code 主要的交互效果已经完成，接下来就是将其他的文本元素补齐就好了，这些内容比较好理解，所以不过多讲述；补齐其他元件后，scan_code完整的元件目录如下；<br><img src="http://source.drugnotes.pw/blog/20170425/174354851.png" alt="scan_code完整的元件"></p>
+</li>
+</ol>
+<p>完成上面的步骤之后，scan_code 页面的已经完成，看一下实际效果：<br><img src="http://source.drugnotes.pw/blog/20170425/174433099.gif" alt="scan_code页面的实际效果"></p>
+<ul>
+<li><strong>设计 user_name 状态</strong></li>
+</ul>
+<ol>
+<li>鼠标双击「user_name」，打开 user_name 页面；</li>
+<li>同样的，将面板背景颜色调整为 #F0F8FA；</li>
+<li><p>跟前面一样，添加任意图形和右上角图标；<br><img src="http://source.drugnotes.pw/blog/20170425/174500029.png" alt="user_name 添加五边形和半个二维码图标"></p>
+</li>
+<li><p>设置用户名输入框。首先，插入icon文本，使用FontAwesome字体，（关于FontAwesome字体请移步：<a href="http://www.woshipm.com/rp/578031.html" target="_blank" rel="external">如何在Axure RP 8 中规范使用 Font Awesome 图标库完成设计</a>，大小为37&#42;40。第二，插入文本框，260 &#42; 40，设置文本框属性隐藏边框，提示文字：会员名/邮箱/手机号。第三，添加矩形框，大小为298&#42;42，并且放置在icon和文本框底部。<br><img src="http://source.drugnotes.pw/blog/20170425/174527476.png" alt="设置用户名输入框"></p>
+</li>
+<li><p>设置密码输入框。跟设置用户名输入框一样的形式添加密码输入框。<br><img src="http://source.drugnotes.pw/blog/20170425/174557553.png" alt="设置密码输入框"></p>
+</li>
+<li><p>设置文本框获取焦点后用例。选择用户名输入框，添加获取焦点时用例，用户名输入框底下的矩形框（用户名框）选中状态为Ture。在添加用例，当文本框失去焦点时，用户名框状态为False.<br><img src="http://source.drugnotes.pw/blog/20170425/174616861.png" alt="设置用户名输入框底下的矩形框为选中"></p>
+</li>
+<li><p>设置用户名框被选中时的交互样式。前面一步中，输入框获取焦点后，底下的矩形框（用户名框）就会被选中，所以需要继续设置用户名框被选中时边框颜色又灰色变为蓝色。（简单理解就是输入框获取焦点可以触发用户名框选中，用户名框选中就会变色。）<br><img src="http://source.drugnotes.pw/blog/20170425/174638161.png" alt="设置用户名框被选中时的交互样式"></p>
+</li>
+<li><p>设置密码输入框获取焦点后的交互效果。跟用户名输入框一样设置密码输入框，达到相同的效果。</p>
+</li>
+<li><p>完善页面其余的信息，完善后整个user_name状态下元件组成。<br><img src="http://source.drugnotes.pw/blog/20170425/174700532.png" alt="user_name元件组成"></p>
+</li>
+<li><p>user_name状态页面已经完成，整体的效果如下：<br><img src="http://source.drugnotes.pw/blog/20170425/174723248.gif" alt="user_name整体效果"></p>
+</li>
+</ol>
+<ul>
+<li><p><strong>设置点击右上角图标切换扫码登录和账号登录页面。</strong></p>
+<p>原型制作到这一步，基本已经完成，但是还没有起到动态面板的作用，关键的时候到了，接下来就是设置通过点击右上角的图标实现不同登录界面的切换。</p>
+</li>
+</ul>
+<ol>
+<li><p>设置scan_code状态页点击右上角半个电脑转换为账号登录。选择右上角的电脑图标，添加一个单击用例，添加「设置面板状态」，配置动态中选中动态面板，选择状态为user_name。<br><img src="http://source.drugnotes.pw/blog/20170425/174757034.png" alt="为右上角电脑图标添加单击用例"></p>
+</li>
+<li><p>设置user_name状态页点击右上角半个二维码转换为扫码登录。跟上面同样的操作，选择右上角的半个二维码图标，添加一个单击用例，添加「设置面板状态」，配置动态中选中动态面板，选择状态为scan_code。<br><img src="http://source.drugnotes.pw/blog/20170425/174818612.png" alt="为右上角二维码图标添加单击用例"></p>
+</li>
+<li><p>最后，整个原型基本完成，可能还需要增加一些额外的细节需要继续优化，需要慢慢调整，但是基本符合淘宝登录界面，整体的预览效果如下。<br><img src="http://source.drugnotes.pw/blog/20170425/173324381.gif" alt="淘宝登录原型预览"></p>
+</li>
+</ol>
+<p><strong>总结这个原型涉及到的知识点</strong></p>
+<ol>
+<li>通过移入移出鼠标实现元件的移动、显示和隐藏之间的切换。</li>
+<li>通过获取焦点实现其他的元件选中，并且实现被选中的组织交互样式的改变。</li>
+<li>通过切换动态面板的不同状态实现不同页面的切换。</li>
+</ol>
+<p>原型文件下载地址：<br><a href="http://pan.baidu.com/s/1jIp4YmM" target="_blank" rel="external">http://pan.baidu.com/s/1jIp4YmM</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/03/24/谈谈微信指数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1861,186 +2092,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/12/31/写在2016年最后一天/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alex">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="第七周期">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/12/31/写在2016年最后一天/" itemprop="url">写在2016年最后一天</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-31T14:34:51+08:00">
-                2016-12-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">生活随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/31/写在2016年最后一天/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/31/写在2016年最后一天/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="http://source.drugnotes.pw/blog/20161231/143117702.JPG" alt="毕业照"></p>
-<p>一年过去，总是需要有点东西留下来供以后回味，所以还是写点吧。</p>
-<p><strong>关于成长</strong></p>
-<p>今年 7 月 1 日，正式离开校园，走向社会。可能是因为已经在现有的岗位上工作快一年，所以这次身份的转变没有太多的惊慌失措，反而是顺利成章，也是理所当然。离开学校，没有老师课堂的课程规划，需要自己去规划自己需要学习的内容。在校介绍了三年的医学教育，让我最大的感受这些原本那些零散的知识原来可以形成一个有一个的体系，比如人体解剖、比如化学键与结构、药理学中的作用机理和药效。这些内容都有一整套体系，供我们去参考、总结和推论。当然，那些内容因日久生疏，早已忘记。</p>
-<p>每个人都渴望成长，甚至是每个人都渴望快速的成长。但是学习并不是一件让人愉快的事情，是一份苦差活。在自学的路上，需要自己的规划学习框架，查找学习资料，解决学习中遇到的问题，将自己学习到的知识转化为生产力。在这个过程中，一次又一次的碰壁，一次又一次的求助无门，一次又一次的放弃，一次又一次的捡起来。掉进了这样的一个循环当中，有的问题可能解决了，有的问题到现在还没有解决，可能这就是一个过程。</p>
-<p>无论成长的过程怎么磕磕碰碰，但都希望自己可以坚持一下几点：</p>
-<p>阅读，保持阅读。让我感到欣慰的是，无论是过去还是现在，自己都能保持阅读的习惯。无论是读商业鸡汤、技术书籍、虚构与非虚构文学，自己也总能坚持阅读的习惯。一年下来，读了差不多30来本书，不算的上好书，也算不上是理解透彻。有人说，甩书单是暴露智商的行为，所以具体读了那些书就不说了。</p>
-<p>输出，适当的输出。回去查看，印象笔记中2016年的日记目录里面躺着208条日记，也代表这这一年当中，只有208天写日记，缺席了157天，至于那些日记，我都去干嘛了？为什么不写，估计只有一个答案，那就是懒。除此之外，我还运营这一个微信公众号和博客。曾经有一段时间，我疯狂的更新公众号，写书评、写技能、介绍软件。但是事后发现，长时间的这样输出，不仅让自己的身体吃不消，而且消耗了自己大量的时间，自己的关注点也转移到用户和阅读数据上面来。如果我将这些时间和关注点花费在琢磨某个问题上面，是不是对自己的成长更有好处呢？所以，输出需要适当，适当的抑制。</p>
-<p>实践，尽可能的实践。2016年，开始关注信息的作用，在保持内容的质量的情况下，尽可能的吸收更多的内容，但是要将吸收的内容尽可能的用于实践或者解释现实生活。时常反思，自己去拥抱那么多的信息，缺少信息背后技能的实践，只会将自己处于一种摇摆的状态，最后什么都没有得到，所以面对信息，既要拥抱又要克制。将自己喜欢的产品做出原型，画出流程，整理成可执行的方案。将好看的图表进行仿制，琢磨制图过程中的技巧；将接触到的实际运营案例放到自己的产品中进行对比，自己的产品是否可以跟进；学习了好长时间的Python，总算是可以用来处理日常数据。这些技能，都需要自己去实践。</p>
-<p>这一年，有过热爱，也有过怀疑；有过兴奋，也有过失落；有过安逸，也有过痛苦；有过患得患失，也有过心满意足；有过十分钟热度，也有过持之以恒；有过放弃，也有过重新出发。</p>
-<p><strong>关于生活</strong></p>
-<p>在这一年中，没有外出旅游，甚至是广州周边的景点也没有认真的看过，但是我比过去更加关注家人的生活。</p>
-<p>毕业的时候，家人来参加我的毕业典礼，跟爸爸妈妈在图书馆的门口一起合影，这是他们第一次参与我人生中重要的成长仪式。我并不是说他们不关心我的成长，只是他们跟我一样，都是不会用表面的行动去表达他们的爱。</p>
-<p>很多时候，面对父母，我还是选择保持沉默，当然偶尔会跟他们提起工作的近况，自己内心的想法和困苦还是选择了深藏。</p>
-<p>7月31日，广西地震事件刷屏了朋友圈，听身边的小伙伴说老家也有震感，所以就跟爷爷拨了通电话，发现爷爷说话不清，貌似中风了。在之后的两三个月，几乎每个星期都要从广州往老家跑，周末在医院过夜成为常态。不知道什么时候开始，我变得胆子越来越大了，不像以前那么胆小了。后来细想，应该是从十年前奶奶去世之后吧。</p>
-<p>爷爷生病之后，虽然自己能解决自己基本生活。除此之外，我发现爷爷变得孩子气，也是第一次见爷爷哭，在弟弟发过来的视频当中，爷爷哭的很大声，一点都不想过去那个性格强硬的他。</p>
-<p>国庆假期，给爸妈买了体检套餐，检查之后发现爸妈的身体都还不错，之后有那么一两项指标不是很正常，需要复查。去医院复查之后，爸爸需要做进一步的全身检查，我们几兄妹都担起来了。最后的检查出来之后，我们心上的石头终于放下，爸爸只需要服药一段期间就没有大碍了。</p>
-<p>在给爸爸妈妈检查的过程中，虽然他们觉得费用很高，但是都相信我们和医生的决定，去做检查。其实，我们的父母都并不知道怎么的关心他们自己的身体，他们前半辈子的辛苦，给他们的身体造成了很大的伤害。</p>
-<p>我将很大一部分时间留在工作，剩下的部分留给自己独处，可能留给家人和朋友的时间就比较少了，但是我觉得独处的时间对一个人还是蛮重要的，因为一个人可以做很多自己想要做的事情。当然如果没有叶小姐的照顾和包容，我想我的生活会过得差一点，缺少了很多有意思的东西。</p>
-<p>之前看到一本书，作者说：我从来都没有好好了解过自己的父母。作者的话让我跟到一惊，20多年来，我一直都是在追求自己想要的东西，很少时间和父母相处和坦诚。让我觉得欣慰的是，2016年，我比过去更加关注家人，给他们更多的时间和支持，我想2017年可以做的更好。</p>
-<p><strong>关于工作</strong><br>抬头一看，发现自己参加工作已经一年半多了，看着自己的团队有变动，也看到团队和个人的成长，但是这些成长是不是就够了呢？我不知道，或者自己和团队应该走的更远，走的更高。</p>
-<p>总的来说，团队给了我足够的信任和自由，我想我还是幸运，可以去做自己想要做的事情。虽然钱少了点，工作累了点，但是我觉得过去在这个团队也是值得的。</p>
-<p>自己在工作的过程中，或者有很多的想法先要去实现，但是公司资源的原因，这些想法最后也还是被束之高阁，有时候自己会因为这些情况而失落，最后慢慢的学会去妥协，不知道是不是妥协就意味着不好，但是还是想要去极力争取本该能做到的。</p>
-<p>今年工作给我最大的感悟就是：努力认真对待自己的工作，虽然存在很多的不公平，政治变动，但是你的努力和工作是会被看见的，哪怕暂时得不到你自己想要的回报，但是相信不远的将来就能得到自己想要的。</p>
-<p><strong>结语</strong></p>
-<p>年度总结应该是用来自我批评的文章，却成了我用来自我赞美的文章。确实，2016年有太多做不好的地方，很多时候缺乏的就是一份坚持和专注，这是职业病，要戒掉。</p>
-<p>希望，2017年，我的会让自己满意。</p>
-<p>如果你阅读到此处，我想对你说声：谢谢您！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2091,7 +2142,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">143</span>
+                <span class="site-state-item-count">144</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2113,7 +2164,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">168</span>
+                <span class="site-state-item-count">169</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
