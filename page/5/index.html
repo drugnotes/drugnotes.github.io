@@ -286,6 +286,167 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/10/14/Python 字符串大小写转换/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/10/14/Python 字符串大小写转换/" itemprop="url">Python 字符串大小写转换</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-14T08:23:40+08:00">
+                2016-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/互联网/" itemprop="url" rel="index">
+                    <span itemprop="name">互联网</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/10/14/Python 字符串大小写转换/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/10/14/Python 字符串大小写转换/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>通过<code>upper()</code>、<code>lower()</code>、<code>title()</code>和<code>capitalize()</code>内置函数实现字符串大小写之间的转换<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># _*_ coding:utf-8 _*_</span></div><div class="line"></div><div class="line">str = <span class="string">"www.drugnotes.pw"</span></div><div class="line"><span class="comment">#将所有的字母转换为大写</span></div><div class="line"><span class="keyword">print</span> (str.upper())</div><div class="line"></div><div class="line"><span class="comment">#将所有的字母转换为小写</span></div><div class="line"><span class="keyword">print</span> (str.lower())</div><div class="line"></div><div class="line"><span class="comment">#将整个字段的第一个字母转换为大写，其余字母转为小写</span></div><div class="line"><span class="keyword">print</span> (str.capitalize())</div><div class="line"></div><div class="line"><span class="comment">#将每个单词的首字母转换为大写，其余字母为小写</span></div><div class="line"><span class="keyword">print</span> (str.title())</div><div class="line"></div><div class="line"><span class="comment">#通过切片器的形式可以对任意位置的字母进行大小写转换</span></div><div class="line"><span class="comment">#将前两个字母转换为大写，后面转化为小写</span></div><div class="line">print(str[<span class="number">0</span>:<span class="number">2</span>].upper+str[<span class="number">2</span>:]lower())</div></pre></td></tr></table></figure></p>
+<p>打印输出结果为：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;WWW.DRUGNOTES.PW</div><div class="line">&gt;</div><div class="line">&gt;www.drugnotes.pw</div><div class="line">&gt; </div><div class="line">&gt;Www.drugnotes.pw</div><div class="line">&gt; </div><div class="line">&gt;Www.Drugnotes.Pw</div><div class="line">&gt; </div><div class="line">&gt; WWw.drugnotes.pw</div></pre></td></tr></table></figure></p>
+<p><strong>练习题：</strong></p>
+<p>利用map()函数，把用户输入的不规范的英文名字，变为首字母大写，其他小写的规范名字。输入：[‘adam’, ‘LISA’, ‘barT’]，输出：[‘Adam’, ‘Lisa’, ‘Bart’]：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#  _*_ coding:utf-8 _*_</span></div></pre></td></tr></table></figure>
+<p>方法1：直接使用capitalize()函数将list上面的首字母改为大写，其余为小写<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">normalize</span><span class="params">(name)</span>:</span></div><div class="line">    <span class="keyword">return</span> name.capitalize()</div><div class="line">L1 = [<span class="string">'adam'</span>, <span class="string">'LISA'</span>, <span class="string">'barT'</span>]</div><div class="line">L2 = list(map(normalize, L1))</div><div class="line">print(L2)</div></pre></td></tr></table></figure></p>
+<p>方法2：直接使用title()函数将list上面的首字母改为大写，其余为小写<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">normalize</span><span class="params">(name)</span>:</span></div><div class="line">    <span class="keyword">return</span> name.title()</div><div class="line">L1 = [<span class="string">'adam'</span>, <span class="string">'LISA'</span>, <span class="string">'barT'</span>]</div><div class="line">L2 = list(map(normalize, L1))</div><div class="line">print(L2)</div></pre></td></tr></table></figure></p>
+<p>方法3：使用切片的方式获取每个将list里面的所有元素的首字母改为大写，后面的为小写<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">normalize</span><span class="params">(name)</span>:</span></div><div class="line">    <span class="keyword">return</span> name[<span class="number">0</span>:<span class="number">1</span>].upper()+name[<span class="number">1</span>:].lower()</div><div class="line">L1 = [<span class="string">'adam'</span>, <span class="string">'LISA'</span>, <span class="string">'barT'</span>]</div><div class="line">L2 = list(map(normalize, L1))</div><div class="line">print(L2)</div></pre></td></tr></table></figure></p>
+<p>以上就是关于 Python 大小写转换的代码实现。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/09/13/Power BI 简明教程（1）：初识 Power BI/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1817,164 +1978,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2016/05/16/做点事情/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alex">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="第七周期">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/05/16/做点事情/" itemprop="url">做点事情</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-16T08:15:58+08:00">
-                2016-05-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">生活随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/05/16/做点事情/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/05/16/做点事情/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>大概已经有很长的一段时间没有写文章，在过去的一个周末，待在学校里，白天到图书馆复习功课，晚上回来就跟同学们一起喝点小酒聊天。这样的日子很自在开心，但是也让整个人很疲惫。因为有早起的习惯，所以在学校睡觉到了早上六点多就会醒来，然后就再也睡不进去了，只能是起来处理工作和看书。</p>
-<p>我喜欢一个人安安静静的看书，写点东西。在人多的地方，总是觉得整天都是人浮于事，没能静下心来好好看书写字。在这样的生活有了一个开头，就会变得一发不可收拾，最后一个星期过去了，发现一本书都读不完，一篇文章都没有写。</p>
-<p>忘记了是哪一天看到和菜头写的文章，讲的是他的一个朋友总是拉他进群。文章除了讲和菜头自己是多么的不愿意进群之外，还讨论了他那个朋友的这种生活方式是如此的糟糕，整天就是沉浸在这样烂七八糟的生活里面，却忘记自己需要的是做点事情。</p>
-<p>是的，我们都需要做点事情，做点事情可以是学习一些技能，比如编程、Excel处理数据、数据分析，画画读书写作写作也可以；还需要在工作上面做点事情，比如跟进项目进展、给用户数据建模、给产品写需求文档，又或者是写个运营或者活动方案，并且不断的推进；这些都是属于「做点事情」的范畴。</p>
-<p>而做点事情就需要我们养成做事的一种习惯，比如每天看书、写作、编程、看数据、阅读咨询文章等等。或者我们不需要每天工作很长的时间，但是我们需要每天给自己一个输入和输出的途径，输入时为了以后更多更好的输出，而输出就是验证我们过去输入的东西是否在我们做事时候有帮助。</p>
-<p>所以，我在阅读、写作、学习编程和工作，这就是我做点事情的方式。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2025,7 +2028,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">145</span>
+                <span class="site-state-item-count">146</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2036,7 +2039,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>

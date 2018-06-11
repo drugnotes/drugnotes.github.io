@@ -286,6 +286,162 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/08/10/Python 学习笔记—zfill() 函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="第七周期">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/10/Python 学习笔记—zfill() 函数/" itemprop="url">Python 学习笔记—zfill() 函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-10T00:10:54+08:00">
+                2017-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习札记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习札记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/10/Python 学习笔记—zfill() 函数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/10/Python 学习笔记—zfill() 函数/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Python 的<code>zfill()</code>函数，指定字符串长度，原字符串向右看齐，左边的空缺位数填充为 0。</p>
+<p>经常遇到这样的情况，需要将数字「1」改为「00005」，如果是以数值的形式难以实现，这时候就需要使用 <code>zfill()</code>函数， <code>zfill()</code>语法为：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">str.zfill(width)</div></pre></td></tr></table></figure></p>
+<p>实例：将数字转为 5 位数，不足 5 位的前面加 0。比如需要爬去网站<a href="http://www.drugbank.ca/drugs/DB00001，链接最后面就是页码，需要自动生成页码。" target="_blank" rel="external">http://www.drugbank.ca/drugs/DB00001，链接最后面就是页码，需要自动生成页码。</a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">10</span>):</div><div class="line">    i = str(i)  <span class="comment">#需要将 i 转为字符型</span></div><div class="line">    i = i.zfill(<span class="number">5</span>)</div><div class="line">    <span class="keyword">print</span> (i)</div></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">runfile(<span class="string">'/Applications/anaconda/code/untitled2.py'</span>, wdir=<span class="string">'/Applications/anaconda/code'</span>)</div><div class="line"><span class="number">00001</span></div><div class="line"><span class="number">00002</span></div><div class="line"><span class="number">00003</span></div><div class="line"><span class="number">00004</span></div><div class="line"><span class="number">00005</span></div><div class="line"><span class="number">00006</span></div><div class="line"><span class="number">00007</span></div><div class="line"><span class="number">00008</span></div><div class="line"><span class="number">00009</span></div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/08/08/医药电商是不是伪需求/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1701,163 +1857,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://drugnotes.github.io/2017/06/20/究竟需要付出多大的努力才能成为专家/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Alex">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="第七周期">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/20/究竟需要付出多大的努力才能成为专家/" itemprop="url">究竟需要付出多大的努力才能成为专家</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T23:48:30+08:00">
-                2017-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/生活随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">生活随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/20/究竟需要付出多大的努力才能成为专家/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/20/究竟需要付出多大的努力才能成为专家/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>回过头来，发现自己已经在职场上走过两年，虽然相比过去刚出校园实习的时候，无论是专业技能还是职场经验，都有所提高。但是放眼望去，很多优秀的同龄人，先有的行业地位和职业成就远远高于自己，不得让人反思自己两年的职场生涯。</p>
-<p>现在我们都喜欢斜杠青年，也都想成为那样的人。但是自己每天都很努力，每天都很忙，但是效果总是不佳。难道那些斜杠青年就真的比我们有更多的时间和精力。其实不尽然，反观自己的生活和工作，生活并没有多出色，工作虽然不是很差，但还是有很大的提升空间。</p>
-<p>最近在反思该不该无休止的加班，加班意味着工作没有做完，无休止加班意味着工作永远做不完。其实，每天八小时的工作时间，足以用来应付工作所有的工作，只是在那八小时当中，我们是否尽情的投入到工作当中，抑或是混时间，或者把工作时间用来做别的事情。工作时间，很多干扰因素会影响到我们的工作效率，针对琐碎的事情，我们是不是安排在特定的时间处理，甚至是下班之后再处理。</p>
-<p>前几天，在「得到」上面听到吴军老师的《硅谷来信》，里面提到人工智能为什么进步这么快，就是因为人工智能可以专心去做一件事情，把一件事情做完之后再去做别的事情，所以效率非常高。</p>
-<p>在目标和时间管理上，自己确实存在很多的问题，假如这些问题没有很好的解决，将会在未来的职场生涯给自己带来很大的负面影响，很多时候决定一个人未来未来的并不是需要付出多大苦劳，而是看你贡献多少功劳。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1908,7 +1907,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">145</span>
+                <span class="site-state-item-count">146</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1919,7 +1918,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
